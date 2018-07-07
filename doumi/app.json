@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/mycenter/index/index",
+    "pages/home/index/index",
+    "pages/childStore/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/index/index",
+      "text": "逗米故事",
+      "iconPath": "",
+      "selectedIconPath": ""
+    },{
+      "pagePath": "pages/childStore/index/index",
+      "text": "童言无忌",
+      "iconPath": "",
+      "selectedIconPath": ""
+    },{
+      "pagePath": "pages/mycenter/index/index",
+      "text": "我的逗米",
+      "iconPath": "",
+      "selectedIconPath": ""
+    }]
+  }
+}
