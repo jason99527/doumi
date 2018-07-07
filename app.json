@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/mycenter/index/index",
     "pages/home/index/index",
+    "pages/mycenter/index/index",
     "pages/childStore/index/index"
   ],
   "window": {
@@ -11,21 +11,25 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/home/index/index",
-      "text": "逗米故事",
-      "iconPath": "",
-      "selectedIconPath": ""
-    },{
-      "pagePath": "pages/childStore/index/index",
-      "text": "童言无忌",
-      "iconPath": "",
-      "selectedIconPath": ""
-    },{
-      "pagePath": "pages/mycenter/index/index",
-      "text": "我的逗米",
-      "iconPath": "",
-      "selectedIconPath": ""
-    }]
+    "list": [
+      {
+        "pagePath": "pages/home/index/index",
+        "text": "逗米故事",
+        "iconPath": "images/icon_all.png",
+        "selectedIconPath": "images/icon_all_se.png"
+      },
+      {
+        "pagePath": "pages/childStore/index/index",
+        "text": "童言无忌",
+        "iconPath": "images/cart.png",
+        "selectedIconPath": "images/cart_se.png"
+      },
+      {
+        "pagePath": "pages/mycenter/index/index",
+        "text": "我的逗米",
+        "iconPath": "images/account.png",
+        "selectedIconPath": "images/account_se.png"
+      }
+    ]
   }
 }
