@@ -1,4 +1,7 @@
 /* pages/home/index/index.wxss */
+#ContentBox{
+  overflow-y: scroll;
+}
 .TextOverflow{
   overflow: hidden;
   text-overflow: ellipsis;
@@ -68,8 +71,8 @@
   margin-left: 12rpx
 }
 .StoryBottom{
-  padding: 21rpx 30rpx;
-  overflow: hidden;
+  padding: 21rpx 30rpx 38rpx;
+  /* overflow: hidden; */
 }
 .StroyItem{
   border-radius:10px;
