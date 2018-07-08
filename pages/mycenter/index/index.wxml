@@ -1,2 +1,52 @@
 <!--pages/mycenter/index/index.wxml-->
-<text>pages/mycenter/index/index.wxml</text>
+<view class='title'>
+  <view class='user'>
+   <view class='user-img'>
+      <image src=''>
+        
+      </image>
+    </view>
+    <view class='user-name'>
+      取唐僧的经
+    </view>
+  </view>
+  <view class='Sign-in font-Bold'>
+    <image src=''></image>
+    <text>每日签到</text>
+  </view>
+</view>
+<view class='nav-box'>
+  <view class='nav'>
+    <view class='list'>
+      关注
+    </view>
+    <view class='line'></view>
+    <view class='list'>
+      粉丝
+    </view>
+    <view class='line'></view>
+    <view class='list'>
+      消息
+    </view>
+  </view>
+</view>
+<view class='list-my top1'>
+  <view>
+    我的资料
+  </view>
+</view>
+<view class='list-my top2 Bline'>
+  <view>
+    我的财富
+  </view>
+</view>
+<view class='list-my'>
+  <view>
+    我的故事
+  </view>
+</view>
+<view class='list-my top2'>
+  <view>
+    关于逗迷讲故事
+  </view>
+</view>

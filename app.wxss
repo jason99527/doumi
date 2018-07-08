@@ -8,3 +8,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.font-Bold{
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+}
