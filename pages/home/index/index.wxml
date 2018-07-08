@@ -3,16 +3,17 @@
 <view id="Home">
   <view class="HomeSearch">
     <view class="HomeSearchBox">
-      <image src='../../../images/account.png'></image>
+      <image src='../../../images/account.png' mode="widthFix"></image>
       <input placeholder='搜索故事关键字'></input>
     </view>
   </view>
-  <view class="HomeHotStory StoryBox">
+  <scroll-view scroll-y="true" style="height:{{ scrollHeight }}px;" id="ContentBox">
+      <view class="HomeHotStory StoryBox">
     <view class="StoryTop">
       <text>热门故事</text>
       <view class="StoryMore">
         <text>更多</text>
-        <image src="../../../images/account.png"></image>
+        <image src="../../../images/account.png" mode="widthFix"></image>
       </view>
     </view>
     <view class="StoryBottom">
@@ -107,7 +108,7 @@
       <text>最新故事</text>
       <view class="StoryMore">
         <text>更多</text>
-        <image src="../../../images/account.png"></image>
+        <image src="../../../images/account.png" mode="widthFix"></image>
       </view>
     </view>
     <view class="StoryBottom">
@@ -197,4 +198,6 @@
       </view>
     </view>
   </view>
+  </scroll-view>
+
 </view>
