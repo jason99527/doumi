@@ -19,6 +19,10 @@ page{
   margin-top: 35rpx;
   margin-left:35rpx
 }
+.user-img image{
+  width: 120rpx;
+  height:120rpx
+}
 .user-name{
   font-family: PingFang-SC-Bold;
   font-size:32rpx;

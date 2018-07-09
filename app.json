@@ -2,7 +2,9 @@
   "pages": [
     "pages/home/index/index",
     "pages/mycenter/index/index",
-    "pages/childStore/index/index"
+    "pages/childStore/index/index",
+    "pages/mycenter/myAttention/index",
+    "pages/mycenter/myFans/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

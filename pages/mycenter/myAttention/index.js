@@ -1,4 +1,3 @@
-// pages/mycenter/index/index.js
 var app = getApp();
 Page({
 
@@ -6,18 +5,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_img: app.globalData.userInfo.user_img,
-    user_name: app.globalData.userInfo.user_name
-  },
-  TomyAttention: function (e) {
-    if(e.target.dataset.type =='follow')
-      wx.navigateTo({
-        url: '/pages/mycenter/myAttention/index?id='
-      })
-    else if (e.target.dataset.type == 'fans')
-      wx.navigateTo({
-        url: '/pages/mycenter/myFans/index?id='
-      })
+    follo_list:[{
+      header_url:'/images/test_header.jpg',
+      user_name:'一口吃掉唐僧肉',
+      user_type:true
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '这应该是假的',
+      user_type: true
+      }, {
+        header_url: '/images/test_header.jpg',
+        user_name: '不知道',
+        user_type: true
+      }]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -30,49 +30,49 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 
 })

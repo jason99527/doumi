@@ -1,0 +1,17 @@
+<!--pages/mycenter/component/userList/index.wxml-->
+<view>
+  <view class='individual' wx:for="{{list}}" wx:key='item.user_name'>
+    <view class='box'>
+        <view class='head-box'>
+         <image src='{{item.header_url}}' class='header_img'></image>
+        </view>
+        <text>{{item.user_name}}</text>  
+    </view>
+    <view class='follow' wx:if="{{item.user_type}}">
+      已关注
+    </view>
+     <view class='follow' wx:else>
+      互相关注
+    </view>
+  </view>
+</view>

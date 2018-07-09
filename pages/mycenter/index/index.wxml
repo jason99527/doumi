@@ -2,12 +2,12 @@
 <view class='title'>
   <view class='user'>
    <view class='user-img'>
-      <image src=''>
+      <image src="{{user_img}}">
         
       </image>
     </view>
     <view class='user-name'>
-      取唐僧的经
+      {{user_name}}
     </view>
   </view>
   <view class='Sign-in font-Bold'>
@@ -17,11 +17,11 @@
 </view>
 <view class='nav-box'>
   <view class='nav'>
-    <view class='list'>
+    <view class='list' bindtap='TomyAttention' data-type="follow">
       关注
     </view>
     <view class='line'></view>
-    <view class='list'>
+    <view class='list' bindtap='TomyAttention' data-type="fans">
       粉丝
     </view>
     <view class='line'></view>

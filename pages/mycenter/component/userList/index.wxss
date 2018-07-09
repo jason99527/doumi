@@ -1,0 +1,38 @@
+/* pages/mycenter/component/userList/index.wxss */
+.individual{
+  height: 180rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #E2E9EE;
+  justify-content: space-between;
+  font-size:28rpx;
+}
+.header_img{
+  width: 100rpx;
+  height:100rpx;
+}
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%
+}
+.head-box{
+  width: 100rpx;
+  height:100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 23rpx;
+}
+.follow{
+  height:54rpx;
+  border-radius: 5rpx;
+  border:1px solid #03A9F5;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  padding:0 20rpx;
+  font-size:24rpx;
+  color:#03A9F5;
+}

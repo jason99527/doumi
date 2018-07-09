@@ -8,6 +8,9 @@ App({
 
   },
   globalData: {
-    userInfo: null
+    userInfo:{
+      user_img: '/images/test_header.jpg',
+      user_name: '估计就是假的吧'
+    }
   }
 })
