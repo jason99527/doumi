@@ -1,5 +1,6 @@
 {
   "navigationBarBackgroundColor": "#03A9F5",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "我的逗迷"
+  "navigationBarTitleText": "逗迷故事",
+  "disableScroll": true
 }

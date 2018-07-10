@@ -3,8 +3,10 @@
     "pages/home/index/index",
     "pages/mycenter/index/index",
     "pages/childStore/index/index",
+    "pages/home/index/search/search",
     "pages/mycenter/myAttention/index",
-    "pages/mycenter/myFans/index"
+    "pages/mycenter/myFans/index",
+    "pages/common/player/player"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -13,24 +15,26 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "color":"#949fad",
+    "selectedColor":"#333333",
     "list": [
       {
         "pagePath": "pages/home/index/index",
         "text": "逗米故事",
-        "iconPath": "images/icon_all.png",
-        "selectedIconPath": "images/icon_all_se.png"
+        "iconPath": "images/icon-home.png",
+        "selectedIconPath": "images/icon-home-on.png"
       },
       {
         "pagePath": "pages/childStore/index/index",
         "text": "童言无忌",
-        "iconPath": "images/cart.png",
-        "selectedIconPath": "images/cart_se.png"
+        "iconPath": "images/icon-childStore.png",
+        "selectedIconPath": "images/icon-childStore-on.png"
       },
       {
         "pagePath": "pages/mycenter/index/index",
         "text": "我的逗米",
-        "iconPath": "images/account.png",
-        "selectedIconPath": "images/account_se.png"
+        "iconPath": "images/icon-mycenter.png",
+        "selectedIconPath": "images/icon-mycenter-on.png"
       }
     ]
   }
