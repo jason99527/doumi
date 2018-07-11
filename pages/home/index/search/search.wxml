@@ -1,2 +1,402 @@
 <!--pages/home/index/search/search.wxml-->
-<text>pages/home/index/search/search.wxml</text>
+<view class="Input">
+  <view>
+    <image src="../../../../images/Home/seek2.png" mode='widthFix'></image>
+  </view>
+  <view>
+    <input placeholder='搜索故事关键字' placeholder-style='font-size:24rpx;color:#fff;opacite:.5'  focus="true" type="text" bindinput='input'></input>
+  </view>
+  <view bindtap='BackIndex'>
+    取消
+  </view>
+</view>
+<scroll-view scroll-y style="height:{{scrollHeight}}px">
+  <view class="search-message" wx:if="{{value === ''}}">
+    <text>热门搜索</text>
+    <view class="search-hot">
+      <view>灰姑娘的故事</view>
+      <view>放羊的小孩</view>
+      <view>大闹东海</view>
+      <view>白雪公主和七个小矮人</view>
+      <view>三打白骨精</view>
+      <view>一千零一夜</view>
+      <view>白雪公主和七个小矮人</view>
+    </view>
+    <view class="serch-history-box">
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗阿里巴巴与四十大盗阿里巴巴与四十大盗阿里巴巴与四十大盗阿里巴巴与四十大盗阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+      <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+          <view class="serch-history">
+        <view>
+          <image src="../../../../images/Home/lately.png" mode='widthFix'></image>
+        </view>
+        <view>
+          阿里巴巴与四十大盗
+        </view>
+        <view>
+          <image src="../../../../images/Home/delete.png"></image>
+        </view>
+      </view>
+    </view> 
+  </view>
+
+  <view class="search-result" wx:else>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+        <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+        <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+        <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+    <view class="result-content">
+      <view>
+        <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+        <view>绘本</view>
+      </view>
+      <view>
+        <text class="text-overflow result-content-name">宝宝第一次说话12312312312312312</text>
+        <view>
+          <image src="../../../../images/Home/author.png" ></image>
+          <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+        </view>
+      </view>
+      <view>
+        <view class="text-overflow">可爱</view>
+        <view class="text-overflow">动物123123123</view>
+        <view class="text-overflow">动物231</view>
+        <view class="text-overflow">动物</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

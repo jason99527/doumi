@@ -1,12 +1,15 @@
 /* pages/home/index/index.wxss */
 #ContentBox{
   overflow-y: scroll;
+  background: #FEFEFE!important;
+  padding-bottom: 40rpx;
 }
 .TextOverflow{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space:nowrap;
 }
+#Home{background:#FEFEFE!important;}
 /*Head*/
 .HomeSearch{
   height: 92rpx;
@@ -74,7 +77,7 @@
 }
 .StoryBottom{
   padding: 21rpx 30rpx 38rpx;
-  /* overflow: hidden; */
+   overflow: hidden; 
 }
 .StroyItem{
   border-radius:10px;

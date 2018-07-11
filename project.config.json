@@ -39,9 +39,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "player",
-					"pathName": "pages/common/player/player",
+					"id": 1,
+					"name": "search",
+					"pathName": "pages/home/index/search/search",
 					"query": ""
 				}
 			]

@@ -2,9 +2,9 @@
 <!-- <text>pages/home/index/index.wxml</text> -->
 <view id="Home">
   <view class="HomeSearch">
-    <view class="HomeSearchBox">
+    <view class="HomeSearchBox" bindtap='OpenInput'>
       <image src='../../../images/Home/seek.png' mode="widthFix"></image>
-      <input placeholder='搜索故事关键字'></input>
+      <input placeholder='搜索故事关键字' disabled="true"></input>
     </view>
   </view>
   <scroll-view scroll-y="true" style="height:{{ scrollHeight }}px;" id="ContentBox">

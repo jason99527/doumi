@@ -96,6 +96,12 @@ Page({
       url: '/pages/common/player/player?id='
     })
   },
+  //跳转搜索页
+  OpenInput:function(){
+    wx.navigateTo({
+      url: './search/search'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
