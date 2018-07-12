@@ -1,0 +1,3 @@
+/* pages/home/index/HotStroy/HotStroy.wxss */
+.Story{padding: 20rpx 30rpx}
+page{background:#FAFAFA}

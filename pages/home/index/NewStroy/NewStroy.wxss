@@ -1,0 +1,3 @@
+/* pages/home/index/NewStroy/NewStroy.wxss */
+.Story{padding: 20rpx 30rpx}
+page{background:#FAFAFA}

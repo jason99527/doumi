@@ -11,7 +11,7 @@
       <view class="HomeHotStory StoryBox">
     <view class="StoryTop">
       <text>热门故事</text>
-      <view class="StoryMore">
+      <view class="StoryMore" bindtap='moreHot'>
         <text>更多</text>
         <image src="../../../images/Home/more.png" mode="widthFix"></image>
       </view>
@@ -40,7 +40,7 @@
    <view class="HomeNewStory StoryBox">
     <view class="StoryTop">
       <text>最新故事</text>
-      <view class="StoryMore">
+      <view class="StoryMore" bindtap='moreNew'>
         <text>更多</text>
         <image src="../../../images/Home/more.png" mode="widthFix"></image>
       </view>

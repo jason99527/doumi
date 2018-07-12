@@ -1,4 +1,6 @@
 // pages/common/player/player.js
+const App = getApp()
+
 Page({
 
   /**
@@ -57,57 +59,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //如果是从别的页面点击进来的
-    // console.log(this.innerAudioContext)
-    // if (options.id){
-    //   return;
-    // }
-    const _this = this
-    //兼容处理
-    if (wx.createInnerAudioContext) {
-      _this.innerAudioContext = wx.createInnerAudioContext()
-      const innerAudioContext = _this.innerAudioContext
-      //是否自动播放
-      innerAudioContext.autoplay = true
-      //歌曲src
-      innerAudioContext.src = _this.data.PlayItem.src
-      //开始播放
-      innerAudioContext.onPlay(() => {
-        wx.hideToast()
-        console.log('开始播放')
-      })
-      //监听播放 需先onPlay()
-      innerAudioContext.onTimeUpdate(function (res) {
-        _this.setData({
-          starttime: _this.funTime(innerAudioContext.currentTime),  //当前时长
-          duration: _this.funTime(innerAudioContext.duration),  //总时长
-          offset: parseInt(innerAudioContext.currentTime),  //播放器当前长度
-          max: parseInt(innerAudioContext.duration) //播放器总长度
-        })
-      })
-      //播放失败
-      innerAudioContext.onError((res) => {
-        console.log(res.errMsg)
-        console.log(res.errCode)
-      })
-      //播放结束
-      innerAudioContext.onEnded(() => {
-        // _this.nextplay(0);
-        console.log('播放结束')
-      })
-      //歌曲加载中
-      innerAudioContext.onWaiting(()=>{
-        wx.showLoading({
-          title: "Loading...",
-          icon: "loading"
-        })
-      })
-    } else {
-      wx.showModal({
-        title: '提示',
-        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
-      })
+    const _this = this;
+    //如果当前没有播放歌曲
+    if (App.globalData.PlayItem.src === ''){
+      App.globalData.PlayItem.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+      App.innerAudioContext()
     }
+    //监听播放器播放事件
+    App.innerAudioContext.onTimeUpdate(function (res) {
+      const innerAudioContext = App.innerAudioContext
+      _this.setData({
+        starttime: _this.funTime(innerAudioContext.currentTime),  //当前时长
+        duration: _this.funTime(innerAudioContext.duration),  //总时长
+        offset: parseInt(innerAudioContext.currentTime),  //播放器当前长度
+        max: parseInt(innerAudioContext.duration) //播放器总长度
+      })
+    });
+
   },
 
   //将时长换算成时间格式
@@ -121,7 +89,7 @@ Page({
   //拖动进度条 松开
   sliderchange: function (e) {
     const val = e.detail.value
-    this.innerAudioContext.seek(val)
+    App.innerAudioContext.seek(val)
   },
 
   //拖动进度条 移动
@@ -138,9 +106,9 @@ Page({
     const playSwitch = this.data.playSwitch
     //如果正在播放
     if (playSwitch){
-      this.innerAudioContext.pause()  //暂停
+      App.innerAudioContext.pause()  //暂停
     }else{  //否则还没播放
-      this.innerAudioContext.play() //播放
+      App.innerAudioContext.play() //播放
     }
     //修改数据
     this.setData({
@@ -148,13 +116,6 @@ Page({
     })
   },
 
-  //切换歌曲
-  switchMusic: function (data) {
-    this.innerAudioContext.pause()  //将正在播放的歌曲暂停
-    this.innerAudioContext.seek(0)  //跳转到0秒
-    this.innerAudioContext.src = data ? data : this.data.PlayItem.src //修改src地址
-    this.innerAudioContext.play()   //播放
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

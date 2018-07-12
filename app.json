@@ -4,6 +4,8 @@
     "pages/mycenter/index/index",
     "pages/childStore/index/index",
     "pages/home/index/search/search",
+    "pages/home/index/HotStroy/HotStroy",
+    "pages/home/index/NewStroy/NewStroy",
     "pages/mycenter/myAttention/index",
     "pages/mycenter/myFans/index",
     "pages/common/player/player"
@@ -12,7 +14,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor":"#F4F4F4"
   },
   "tabBar": {
     "color":"#949fad",

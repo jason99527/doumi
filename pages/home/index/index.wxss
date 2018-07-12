@@ -76,8 +76,8 @@
   top: 5rpx;
 }
 .StoryBottom{
-  padding: 21rpx 30rpx 38rpx;
-   overflow: hidden; 
+  padding: 21rpx 30rpx 48rpx;
+  overflow: hidden;  
 }
 .StroyItem{
   border-radius:10px;

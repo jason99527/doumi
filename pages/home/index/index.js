@@ -102,6 +102,17 @@ Page({
       url: './search/search'
     })
   },
+
+  moreNew:function(){
+    wx.navigateTo({
+      url: './NewStroy/NewStroy'
+    })
+  },
+  moreHot: function () {
+    wx.navigateTo({
+      url: './HotStroy/HotStroy'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

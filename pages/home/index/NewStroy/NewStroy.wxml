@@ -1,0 +1,4 @@
+<!--pages/home/index/NewStroy/NewStroy.wxml-->
+<view class="Story">
+  <List list="{{List}}" type="{{ListType}}"></List>
+</view>
