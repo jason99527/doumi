@@ -18,6 +18,10 @@ Page({
       wx.navigateTo({
         url: '/pages/mycenter/myFans/index?id='
       })
+    else if (e.target.dataset.type == 'news')
+      wx.navigateTo({
+        url: '/pages/mycenter/myNews/index?id='
+      })
   },
   /**
    * 生命周期函数--监听页面加载

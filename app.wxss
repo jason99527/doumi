@@ -12,3 +12,8 @@
   font-family: PingFang-SC-Bold;
   font-weight: bold;
 }
+.font-hidden{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}

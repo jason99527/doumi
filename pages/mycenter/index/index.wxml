@@ -1,5 +1,6 @@
 <!--pages/mycenter/index/index.wxml-->
 <view class='title'>
+  <image class='bg' src='/images/thecard.png'></image>
   <view class='user'>
    <view class='user-img'>
       <image src="{{user_img}}">
@@ -11,42 +12,61 @@
     </view>
   </view>
   <view class='Sign-in font-Bold'>
-    <image src=''></image>
+    <image src='/images/pan.png' class='icon'></image>
     <text>每日签到</text>
   </view>
 </view>
 <view class='nav-box'>
   <view class='nav'>
-    <view class='list' bindtap='TomyAttention' data-type="follow">
+    <view class='list'  data-type="follow">
+      <image src='/images/follow.png' class='card_icon follow' bindtap='TomyAttention' data-type="follow"></image>
       关注
     </view>
     <view class='line'></view>
-    <view class='list' bindtap='TomyAttention' data-type="fans">
+    <view class='list'  data-type="fans">
+      <image src='/images/fans.png' class='card_icon fans' bindtap='TomyAttention' data-type="fans"></image>
       粉丝
     </view>
     <view class='line'></view>
     <view class='list'>
+      <image src='/images/news.png' class='card_icon news'bindtap='TomyAttention' data-type="news"></image>
       消息
     </view>
   </view>
 </view>
 <view class='list-my top1'>
-  <view>
+  <view class='lfbox'>
+    <view class='wbox q1'>
+      <image src='/images/myifon.png' class='icon1'></image>
+    </view>
     我的资料
   </view>
+   <image src='/images/more.png' class='more-icon'></image>
 </view>
 <view class='list-my top2 Bline'>
-  <view>
+  <view class='lfbox'>
+    <view class='wbox q2'>
+      <image src='/images/mywealth.png' class='icon2'></image>
+    </view>
     我的财富
   </view>
+   <image src='/images/more.png' class='more-icon'></image>
 </view>
 <view class='list-my'>
-  <view>
+  <view class='lfbox'>
+    <view class='wbox q3'>
+      <image src='/images/mystory.png' class='icon3'></image>
+    </view>
     我的故事
   </view>
+   <image src='/images/more.png' class='more-icon'></image>
 </view>
 <view class='list-my top2'>
-  <view>
+  <view class='lfbox'>
+    <view class='wbox q3'>
+      <image src='/images/doumi.png' class='icon3'></image>
+    </view>
     关于逗迷讲故事
   </view>
+   <image src='/images/more.png' class='more-icon'></image>
 </view>

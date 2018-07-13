@@ -8,16 +8,40 @@ Page({
     follo_list:[{
       header_url:'/images/test_header.jpg',
       user_name:'一口吃掉唐僧肉',
-      user_type:true
+      user_type:"1"
     }, {
       header_url: '/images/test_header.jpg',
       user_name: '这应该是假的',
-      user_type: false
+      user_type: "2"
       }, {
         header_url: '/images/test_header.jpg',
         user_name: '不知道',
-        user_type: true
-      }]
+        user_type: "3"
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '一口吃掉唐僧肉',
+      user_type: "1"
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '这应该是假的',
+      user_type: "2"
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '不知道',
+      user_type: "3"
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '一口吃掉唐僧肉',
+      user_type: "1"
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '这应该是假的',
+      user_type: "2"
+    }, {
+      header_url: '/images/test_header.jpg',
+      user_name: '不知道',
+      user_type: "3"
+    }]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -65,7 +89,21 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.data.follo_list.push({
+      header_url: '/images/test_header.jpg',
+      user_name: '一口吃掉唐僧肉',
+      user_type: "1"
+    }, {
+        header_url: '/images/test_header.jpg',
+        user_name: '这应该是假的',
+        user_type: "2"
+      }, {
+        header_url: '/images/test_header.jpg',
+        user_name: '不知道',
+        user_type: "3"
+      }
+    )
+    this.setData({ follo_list: this.data.follo_list })
   },
 
   /**

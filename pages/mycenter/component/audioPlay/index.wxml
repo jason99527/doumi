@@ -1,0 +1,7 @@
+<!--pages/mycenter/component/audioPlay/index.wxml-->
+<view class='box'>
+  <view class='rectangle {{playing?"playing":" "}}' bindtap='audioPlay' data-bgmSrc="{{bgmSrc}}">
+    <image src='/images/voice.png' class='voice'></image>
+  </view>
+  <view class='time'>{{time}}</view>
+</view>

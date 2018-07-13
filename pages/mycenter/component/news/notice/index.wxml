@@ -1,0 +1,15 @@
+<!--pages/mycenter/component/news/notice/index.wxml-->
+<scroll-view class='myscroll' scroll-y style='height:{{height}}px'>
+  <view class='notice-list' wx:for="{{list}}" wx:key="item">
+    <image src='{{item.header}}' class='header'></image>
+    <view class='cont-box'>
+      <view class='title'>
+        <view class='name'>{{item.username}}</view>
+        <view class='time'>{{item.time}}</view>
+      </view>
+      <view>
+        <view class='content font-hidden'>{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

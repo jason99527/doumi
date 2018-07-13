@@ -4,7 +4,8 @@
     "pages/mycenter/index/index",
     "pages/childStore/index/index",
     "pages/mycenter/myAttention/index",
-    "pages/mycenter/myFans/index"
+    "pages/mycenter/myFans/index",
+    "pages/mycenter/myNews/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

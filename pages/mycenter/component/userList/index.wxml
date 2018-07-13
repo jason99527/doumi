@@ -7,11 +7,17 @@
         </view>
         <text>{{item.user_name}}</text>  
     </view>
-    <view class='follow' wx:if="{{item.user_type}}">
+    <view class='follow' wx:if="{{item.user_type=='1'}}">
+      <image src='/images/right.png' class='icon-right'></image>
       已关注
     </view>
-     <view class='follow' wx:else>
+    <view class='follow' wx:elif="{{item.user_type=='2'}}">
+      <image src='/images/mutual.png' class='icon-mutual'></image>
       互相关注
+    </view>
+     <view class='follow add' wx:else>
+      <image src='/images/add.png' class='icon-mutual'></image>
+       关注
     </view>
   </view>
 </view>
