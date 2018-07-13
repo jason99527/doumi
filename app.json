@@ -6,6 +6,8 @@
     "pages/home/index/search/search",
     "pages/home/index/HotStroy/HotStroy",
     "pages/home/index/NewStroy/NewStroy",
+    "pages/home/index/CreateType/CreateType",
+    "pages/home/index/CreateStroy/CreateStroy",
     "pages/mycenter/myAttention/index",
     "pages/mycenter/myFans/index",
     "pages/common/player/player"

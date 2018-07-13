@@ -40,8 +40,8 @@
 				},
 				{
 					"id": 1,
-					"name": "List",
-					"pathName": "pages/home/index/HotStroy/HotStroy",
+					"name": "append",
+					"pathName": "pages/home/index/CreateType/CreateType",
 					"query": ""
 				}
 			]

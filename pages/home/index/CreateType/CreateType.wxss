@@ -1,0 +1,28 @@
+/* pages/home/index/CreateType/CreateType.wxss */
+page{background: #FBFBFB}
+.content{padding: 25rpx 30rpx;}
+.content-view{
+  border-radius:10px;
+  box-shadow:19px 0px 60px rgba(153,153,153,0.15);
+  background: #fff;
+  width: 690rpx;
+  height: 560rpx; 
+  padding: 20rpx 35rpx;
+  box-sizing: border-box;
+  text-align: right;
+  margin-bottom: 16rpx
+}
+.content-view > image{width: 560rpx;height: 454rpx}
+.button{
+  width:420rpx;
+  height:76rpx;
+  background:linear-gradient(to right,#49DEF9,#03A9F5);
+  border-radius:10rpx;
+  box-shadow:10px 0px 30px rgba(153,153,153,0.3);
+  margin: 26rpx auto 0;
+  line-height: 76rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 28rpx
+}
+.button image{width: 33rpx;height: 33rpx;margin-right: 12rpx;position: relative;top: 6rpx}

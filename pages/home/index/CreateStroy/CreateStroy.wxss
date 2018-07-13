@@ -1,0 +1,72 @@
+/* pages/home/index/CreateStroy/CreateStroy.wxss */
+@import '../CreateType/CreateType.wxss';
+
+.content-setData{
+  background: rgba(0,0,0,0);
+  box-shadow: none; 
+  text-align: center;
+  padding: 84rpx 0 0 81rpx;
+}
+.setName{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.setName > view{width: 100rpx; text-align: right;color: #333;font-size: 28rpx;margin-right: 37rpx}
+.setName > input{
+  width: 320rpx;
+  height: 30rpx;
+  color: #888;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #E0E0E0;
+  text-align: left;
+  text-indent: 5rpx
+}
+.setLabel{
+  margin-top: 94rpx;
+  align-items: stretch
+}
+.label{
+  width: 640rpx!important;
+  max-height: 236rpx;
+}
+.label view{
+  height: 44rpx;
+  border-radius: 22px;
+  background: #DFF4FC;
+  color: #6295CF;
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  float: left;
+   box-sizing: border-box; 
+  line-height: 1;
+  max-width: 200rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;text-overflow: ellipsis;white-space:nowrap;
+  transition: all .3s;
+}
+.content-setData .button{
+  margin-top:60rpx;
+  position: relative;
+  right: 35rpx
+}
+.content-setData .button image{
+  width: 27rpx!important;
+  /* height: 33rpx!important; */
+}
+.tabLabel{
+  background: #91B8D1!important;
+  color: #fff!important;
+}
+
+.chollImg{
+  width: 560rpx;
+  height: 420rpx;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 8px
+}
+.chollImg image{
+  width: 100%;
+}

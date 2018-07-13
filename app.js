@@ -13,10 +13,22 @@ App({
       user_name: '估计就是假的吧'
     },
     PlayItem: {  //当前播放歌曲信息
-      id: '10086',
-      name: '测试歌曲',
-      author: '歌曲作者',
-      src: ''
+      id: '10086',  //歌曲id
+      name: '测试歌曲', //歌曲名称
+      author: '歌曲作者', //作者
+      src: '',    //播放源
+      starttime:'loading...', //当前时长
+      duration: '∞',  //总时长
+      offset:0,   //当前播放位置
+      max:100,   //总长度
+      playing:true //是否正在播放
+    },
+    uploadStroyData:{ //准备提交的故事信息
+      stroyType:null, //故事类型  绘本||原创
+      coverImg:null,  //故事封面
+      name:null, //故事名称
+      label:null,  //故事标签
+      src:null  //录音文件
     }
   },
   //音乐播放器
@@ -35,8 +47,9 @@ App({
         wx.hideLoading()
         console.log('开始播放')
       })
-      // // 监听播放 需先onPlay()
+      // 监听播放 需先onPlay()
       // innerAudioContext.onTimeUpdate(function (res) {
+        // console.log(_this.globalData.PlayItem)
         // _this.setData({
         //   starttime: _this.funTime(innerAudioContext.currentTime),  //当前时长
         //   duration: _this.funTime(innerAudioContext.duration),  //总时长
@@ -78,11 +91,4 @@ App({
     this.innerAudioContext.src = data ? data : this.globalData.PlayItem.src //修改src地址
     this.innerAudioContext.play()   //播放
   }
-  // //将时长换算成时间格式
-  // funTime: function (time) {
-  //   const min = parseInt(time / 60);
-  //   const set = parseInt(time % 60) < 10 ? '0' + parseInt(time % 60) : parseInt(time % 60);
-  //   const Time = min + ':' + set;
-  //   return Time;
-  // }
 })

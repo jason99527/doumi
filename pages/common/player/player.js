@@ -59,6 +59,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //页面初始化数据
+    this.setData({
+      starttime: App.globalData.PlayItem.starttime,  //当前时长
+      duration: App.globalData.PlayItem.duration,  //总时长
+      offset: App.globalData.PlayItem.offset,  //播放器当前长度
+      max: App.globalData.PlayItem.max, //播放器总长度
+      playSwitch: App.globalData.PlayItem.playing //是否在播放
+    })
     const _this = this;
     //如果当前没有播放歌曲
     if (App.globalData.PlayItem.src === ''){
@@ -67,12 +75,18 @@ Page({
     }
     //监听播放器播放事件
     App.innerAudioContext.onTimeUpdate(function (res) {
+      //修改当前页面数据 同时修改全局歌曲信息
       const innerAudioContext = App.innerAudioContext
+      App.globalData.PlayItem.starttime = _this.funTime(innerAudioContext.currentTime)  //当前时长
+      App.globalData.PlayItem.duration = _this.funTime(innerAudioContext.duration)  //总时长
+      App.globalData.PlayItem.offset = parseInt(innerAudioContext.currentTime)  //播放器当前长度
+      App.globalData.PlayItem.max = parseInt(innerAudioContext.duration) //播放器总长度
+
       _this.setData({
-        starttime: _this.funTime(innerAudioContext.currentTime),  //当前时长
-        duration: _this.funTime(innerAudioContext.duration),  //总时长
-        offset: parseInt(innerAudioContext.currentTime),  //播放器当前长度
-        max: parseInt(innerAudioContext.duration) //播放器总长度
+        starttime: App.globalData.PlayItem.starttime,  //当前时长
+        duration: App.globalData.PlayItem.duration,  //总时长
+        offset: App.globalData.PlayItem.offset,  //播放器当前长度
+        max: App.globalData.PlayItem.max //播放器总长度
       })
     });
 
@@ -90,6 +104,8 @@ Page({
   sliderchange: function (e) {
     const val = e.detail.value
     App.innerAudioContext.seek(val)
+    App.innerAudioContext.play()
+    App.globalData.PlayItem.playing = true
   },
 
   //拖动进度条 移动
@@ -107,8 +123,10 @@ Page({
     //如果正在播放
     if (playSwitch){
       App.innerAudioContext.pause()  //暂停
+      App.globalData.PlayItem.playing = false
     }else{  //否则还没播放
       App.innerAudioContext.play() //播放
+      App.globalData.PlayItem.playing = true
     }
     //修改数据
     this.setData({

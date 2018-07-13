@@ -66,6 +66,9 @@
       </view>
     </view>
   </view> 
+  <view class='AddButton' bindtap='ToCreate'>
+    <image src="../../../images/Home/add.png"></image>
+  </view>
   </scroll-view>
 
 </view>

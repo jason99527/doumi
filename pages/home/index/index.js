@@ -113,6 +113,12 @@ Page({
       url: './HotStroy/HotStroy'
     })
   },
+
+  ToCreate:function(){
+    wx.navigateTo({
+      url: './CreateType/CreateType'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
