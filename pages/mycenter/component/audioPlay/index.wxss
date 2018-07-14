@@ -1,0 +1,24 @@
+/* pages/mycenter/component/audioPlay/index.wxss */
+.rectangle{
+  width: 240rpx;
+  height:50rpx;
+  background: #EFF3F6;
+  border-radius: 10rpx;
+  display: flex;
+  padding: 0 16rpx;
+  align-items: center;
+}
+.voice{
+  width: 18rpx;
+  height:28rpx;
+}
+.box{
+  display:flex;
+  align-items: center;
+}
+.time{
+  margin-left: 10rpx;
+}
+.playing{
+  background:#d5d7d8;
+}

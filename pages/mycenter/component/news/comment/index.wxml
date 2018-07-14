@@ -1,0 +1,20 @@
+<!--pages/mycenter/component/news/comment/index.wxml-->
+<scroll-view class='myscroll' scroll-y style='height:{{height}}px'>
+  <view class='notice-list' wx:for='{{list}}' wx:key='{{item}}'>
+    <image src='{{item.header}}' class='header'></image>
+    <view class='cont-box'>
+      <view class='title'>
+        <view class='left_box'>
+          <view class='name'>{{item.name}}</view>
+          <view>评论：</view>
+        </view>
+        <view class='time'>{{item.time}}</view>
+      </view>
+      <view>
+        <view class='content font-hidden'>
+          <audio-paly bgmSrc='{{item.bgmSrc}}'> </audio-paly>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

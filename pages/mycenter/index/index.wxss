@@ -1,3 +1,4 @@
+
 /* pages/mycenter/index/index.wxss */
 page{
   background:rgba(245,246,248,1);
@@ -5,10 +6,17 @@ page{
 .title{
   width: 750rpx;
   height:300rpx;
-  background:#03A9F5;
   display:flex;
   color:#fff;
-  justify-content: space-between; 
+  justify-content: space-between;
+}
+.bg{
+  width: 750rpx;
+  height: 300rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1
 }
 .user-img{
   width:120rpx;
@@ -40,11 +48,14 @@ page{
   width:220rpx;
   height:60rpx;
   line-height: 60rpx;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 .Sign-in image{
   width:25rpx;
-  height:29rpx;
+  height:28rpx;
+  margin-right: 10rpx
 }
 .user{
   display: flex;
@@ -78,7 +89,6 @@ page{
   color:#333333;
 }
 .list-my{
-  width: 100%;
   height:86rpx;
   background:#fff;
   display:flex;
@@ -98,4 +108,53 @@ page{
 }
 .list-my.Bline{
   border-bottom: 1px solid #E2E9EE;
+}
+.card_icon{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10rpx
+}
+.card_icon.follow{
+  width:64rpx;
+  height:58rpx;
+}
+.card_icon.fans{
+  width:81rpx;
+  height:65rpx;
+}
+.card_icon.news{
+  width:73rpx;
+  height:68rpx;
+}
+.list-my .icon1{
+  width:33rpx;
+  height:38rpx;
+}
+.list-my .icon2{
+  width:38rpx;
+  height:40rpx;
+}
+.list-my .icon3{
+  width:43rpx;
+  height:43rpx;
+}
+.lfbox{
+  display: flex;
+  justify-content: center
+}
+.wbox{
+  width: 50rpx;
+}
+.wbox.q1{
+  height:38rpx;
+}
+.wbox.q2{
+  height:40rpx;
+}
+.wbox.q3{
+  height:43rpx;
+}
+.more-icon{
+  width: 14rpx;
+  height:26rpx
 }

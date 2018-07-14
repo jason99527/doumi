@@ -1,0 +1,41 @@
+/* pages/mycenter/component/news/notice/index.wxss */
+.notice-list{
+  height:140rpx;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1px solid #E2E9EE;
+  padding: 0 30rpx;
+}
+.cont-box{
+  max-width: 553rpx
+}
+.header{
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+}
+.title{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.name{
+  color: #333333;
+  font-size:28rpx;
+}
+.time{
+  font-size:24rpx;
+  color:#CCCCCC;
+}
+.content{
+  margin-top: 10rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size:24rpx;
+  color:#999999
+}
+.myscroll{
+  white-space: nowrap; 
+}

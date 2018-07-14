@@ -1,0 +1,15 @@
+<!--pages/mycenter/component/news/@me/index.wxml-->
+<scroll-view class='myscroll' scroll-y style='height:{{height}}px' bindscrolltolower="ReachBottom">
+  <view class='notice-list' wx:for='{{list}}' wx:key='{{item}}'>
+    <image src='{{item.header}}' class='header'></image>
+    <view class='cont-box'>
+      <view class='title'>
+        <view class='left_box'>
+          <view class='name'>{{item.name}}</view>
+          <view>赞了我的评论</view>
+        </view>
+        <view class='time'>{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

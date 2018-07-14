@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#03A9F5",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的消息",
+  "usingComponents": {
+    "notice-list": "/pages/mycenter/component/news/notice/index",
+    "comment-list": "/pages/mycenter/component/news/comment/index",
+    "callme-list":"/pages/mycenter/component/news/@me/index",
+    "praised-list":"/pages/mycenter/component/news/praised/index"
+  }
+}

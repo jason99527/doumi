@@ -27,8 +27,9 @@
   align-items: stretch
 }
 .label{
-  width: 640rpx!important;
+  width: 460rpx!important;
   max-height: 236rpx;
+  margin-right: 0!important
 }
 .label view{
   height: 44rpx;
@@ -47,7 +48,7 @@
   transition: all .3s;
 }
 .content-setData .button{
-  margin-top:60rpx;
+  margin-top:50rpx;
   position: relative;
   right: 35rpx
 }

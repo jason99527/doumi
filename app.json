@@ -10,6 +10,7 @@
     "pages/home/index/CreateStroy/CreateStroy",
     "pages/mycenter/myAttention/index",
     "pages/mycenter/myFans/index",
+    "pages/mycenter/myNews/index",
     "pages/common/player/player"
   ],
   "window": {

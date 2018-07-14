@@ -10,12 +10,18 @@ Page({
     num:0,
     label:[
       { tab: true, text: '可爱' },
-      { tab: false, text: '可爱123123' },
-      { tab: false, text: '可爱123' },
-      { tab: false, text: '可爱a' },
-      { tab: false, text: '可爱a' },
-      { tab: false, text: '可123123123爱a' },
-      { tab: false, text: '可爱a' },
+      { tab: false, text: '玄幻' },
+      { tab: false, text: '童话' },
+      { tab: false, text: '公主' },
+      { tab: false, text: '惊悚' },
+      { tab: false, text: '动物' },
+      { tab: false, text: '修仙' },
+      { tab: false, text: '修仙' },
+      { tab: false, text: '修仙' },
+      { tab: false, text: '修仙' },
+      { tab: false, text: '修仙' },
+      { tab: false, text: '修仙' },
+      { tab: false, text: '修仙' }
     ],
     Image:null, //上传的图片
     name:null, //故事名称
@@ -75,10 +81,9 @@ Page({
   },
   //输入框
   input:function(e){
-    console.log(e.detail.value.indexOf(' '), e.detail.value.length)
-    this.setData({
-      name: e.detail.value
-    })
+      this.setData({
+        name: e.detail.value
+      })
   },
   //开始录制按钮
   upload:function(){
@@ -125,7 +130,7 @@ Page({
     ListData.coverImg = Data.Image
     ListData.name = Data.name
     ListData.label = LabelList.join()
-    
+
     console.log(ListData)
 
   },

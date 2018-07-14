@@ -1,3 +1,4 @@
+
 // pages/mycenter/index/index.js
 var app = getApp();
 Page({
@@ -17,6 +18,10 @@ Page({
     else if (e.target.dataset.type == 'fans')
       wx.navigateTo({
         url: '/pages/mycenter/myFans/index?id='
+      })
+    else if (e.target.dataset.type == 'news')
+      wx.navigateTo({
+        url: '/pages/mycenter/myNews/index?id='
       })
   },
   /**
