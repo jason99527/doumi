@@ -38,7 +38,7 @@
       <image src="../../../images/Player/Button-last.png"></image>
     </view>
     <view class="Button" bindtap='play'>
-      <image src="../../../images/Player/Button-play.png"></image>
+      <image src="../../../images/Player/Button-{{playSwitch ? 'pause' : 'play'}}.png"></image>
     </view>
     <view class="Button">
       <image src="../../../images/Player/Button-next.png"></image>
