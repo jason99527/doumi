@@ -11,7 +11,8 @@
     "pages/mycenter/myAttention/index",
     "pages/mycenter/myFans/index",
     "pages/mycenter/myNews/index",
-    "pages/common/player/player"
+    "pages/common/player/player",
+    "pages/common/record/record"
   ],
   "window": {
     "backgroundTextStyle": "light",

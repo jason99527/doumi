@@ -40,8 +40,8 @@
 				},
 				{
 					"id": 1,
-					"name": "append",
-					"pathName": "pages/home/index/CreateType/CreateType",
+					"name": "录制",
+					"pathName": "pages/common/record/record",
 					"query": ""
 				}
 			]

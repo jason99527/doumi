@@ -130,8 +130,10 @@ Page({
     ListData.coverImg = Data.Image
     ListData.name = Data.name
     ListData.label = LabelList.join()
-
-    console.log(ListData)
+    //跳转页面
+    wx.navigateTo({
+      url: '/pages/common/record/record'
+    })
 
   },
   /**
