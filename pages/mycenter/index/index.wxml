@@ -29,12 +29,12 @@
     </view>
     <view class='line'></view>
     <view class='list'>
-      <image src='/images/news.png' class='card_icon news'bindtap='TomyAttention' data-type="news"></image>
+      <image src='/images/news.png' class='card_icon news' bindtap='TomyAttention' data-type="news"></image>
       消息
     </view>
   </view>
 </view>
-<view class='list-my top1'>
+<view class='list-my top1' bindtap='Myinformation'>
   <view class='lfbox'>
     <view class='wbox q1'>
       <image src='/images/myifon.png' class='icon1'></image>
