@@ -40,8 +40,8 @@
 				},
 				{
 					"id": 1,
-					"name": "录制",
-					"pathName": "pages/common/record/record",
+					"name": "童言无忌",
+					"pathName": "pages/childStore/author/index",
 					"query": ""
 				}
 			]

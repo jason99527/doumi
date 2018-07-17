@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#03A9F5",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "趣事作者",
+  "backgroundColor":"#fff",
+  "usingComponents": {
+    "stroyList": "/pages/common/component/stroyList/index"
+  }
+}

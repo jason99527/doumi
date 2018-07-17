@@ -3,6 +3,7 @@
     "pages/home/index/index",
     "pages/mycenter/index/index",
     "pages/childStore/index/index",
+    "pages/childStore/author/index",
     "pages/home/index/search/search",
     "pages/home/index/HotStroy/HotStroy",
     "pages/home/index/NewStroy/NewStroy",

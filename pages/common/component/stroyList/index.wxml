@@ -1,0 +1,17 @@
+<!--pages/common/component/stroyList/index.wxml-->
+<view class="Item">
+  <view class="HomeImg">
+    <image src="../../../../images/Home/banner.png" mode='widthFix'></image>
+    <view>{{list.type}}</view>
+  </view>
+  <view class="Item-data">
+    <view class="font-hidden">{{list.name}}</view>
+    <view>
+      <image src="../../../../images/Home/author.png"></image>
+      <text class="font-hidden">{{list.author}}</text>
+    </view>
+  </view>
+  <view class="Item-Label">
+    <view class="font-hidden" wx:for="{{list.label}}">{{item}}</view>
+  </view>
+</view>

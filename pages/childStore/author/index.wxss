@@ -1,0 +1,55 @@
+/* pages/childStore/author/index.wxss */
+.author-data{
+  height: 345rpx;
+  background: linear-gradient(rgb(3,169,245),rgb(49,208,250),rgb(94,246,255));
+  position: relative;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+.head{
+  height: 120rpx;
+  width: 120rpx;
+  border: 8rpx solid #fff;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto
+}
+.head image{
+  width: 100%;
+  min-height: 120rpx
+}
+.name{
+  margin-top: 30rpx;
+  font-size: 32rpx;
+  color: #fff
+}
+.state{
+  width: 160rpx;
+  height: 54rpx;
+  margin: 0 auto;
+  border: 1rpx solid #fff;
+  font-size: 24rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 54rpx;
+  margin-top: 18rpx
+}
+.state image{
+  width: 22rpx;
+  height: 18rpx;
+  margin-right: 4rpx
+}
+.mask{
+  width: 150%;
+  height: 300rpx;
+  background: rgba(252,252,252,1);
+  border-radius: 50%;
+  position: absolute;
+  bottom:-262rpx;
+  left: -25.5%
+}
+.content{
+  padding: 30rpx;
+  box-sizing: border-box
+}
