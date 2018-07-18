@@ -68,5 +68,11 @@ Page({
     wx.navigateTo({
       url: '../author/index'
     })
+  },
+
+  GoComment:function(){
+    wx.navigateTo({
+      url: '/pages/common/comment/comment'
+    })
   }
 })

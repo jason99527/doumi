@@ -13,18 +13,19 @@
     "pages/mycenter/myFans/index",
     "pages/mycenter/myNews/index",
     "pages/common/player/player",
-    "pages/common/record/record"
+    "pages/common/record/record",
+    "pages/common/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
-    "backgroundColor":"#F4F4F4"
+    "backgroundColor": "#F4F4F4"
   },
   "tabBar": {
-    "color":"#949fad",
-    "selectedColor":"#333333",
+    "color": "#949fad",
+    "selectedColor": "#333333",
     "list": [
       {
         "pagePath": "pages/home/index/index",

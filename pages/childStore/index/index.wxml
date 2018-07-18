@@ -35,7 +35,7 @@
           <image src="../../../images/childStore/like.png"></image>
           2588
         </view>
-        <view>
+        <view bindtap='GoComment'>
           <image src="../../../images/childStore/comment.png"></image>
           31
         </view>
@@ -64,7 +64,7 @@
           <image src="../../../images/childStore/like.png"></image>
           2588
         </view>
-        <view>
+        <view bindtap='GoComment'>
           <image src="../../../images/childStore/comment.png"></image>
           31
         </view>

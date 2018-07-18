@@ -41,7 +41,9 @@
 .Item-data>view:nth-child(1){color: #333;font-size: 32rpx;width: 100%}
 .Item-data>view:nth-child(2){color: #999;font-size: 28rpx;}
 .Item-data>view:nth-child(2) text{display: inline-block;width: calc(100% - 35rpx)}
-.Item-data>view:nth-child(2) image{width: 23rpx;height: 25rpx;margin-right: 8rpx;margin-top: 29rpx;position: relative;top: -8rpx;}
+.Item-data>view:nth-child(2) image{width: 23rpx;height: 25rpx;margin-right: 8rpx;margin-top: 29rpx;
+  /* position: relative;top: -8rpx; */
+  }
 .Item-Label{
   width: 220rpx;
   height: 100%

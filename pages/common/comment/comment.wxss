@@ -1,0 +1,106 @@
+/* pages/childStore/comment/index.wxss */
+.comTop{height: 180rpx;background: #fff;padding: 40rpx 30rpx;display: flex;justify-content: flex-start;align-items:stretch;box-sizing: border-box}
+.MusicImg{width: 100rpx;height: 98rpx;overflow: hidden;position: relative;text-align: center;border-radius: 8rpx;margin-right: 24rpx;}
+.MusicImg image:nth-child(1){width: 100rpx;}
+.MusicImg image:nth-child(2){height: 50rpx;width: 50rpx;position: absolute;margin: 0 auto;left: 0;right: 0;top: 25rpx;}
+.MusicData view:nth-child(1){color: #333;font-size:28rpx;font-family: PingFang-SC-Bold;margin-top: 11rpx}
+.MusicData view:nth-child(2){color: #5B83B1;font-size: 24rpx;margin-top: 15rpx;}
+.HotComment{height: 43rpx;background: #EFF3F6;font-size: 24rpx;color: #797979;text-indent: 40rpx;line-height: 43rpx}
+
+.content{padding-bottom: 116rpx;background: #F4F4F4;}
+.item{border-bottom: 1rpx solid #EEF2F5;padding: 40rpx 30rpx 30rpx;box-sizing: border-box;background: #fff}
+.item-data{
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.headImg{width: 100rpx;height: 100rpx;margin-right: 24rpx;}
+.headImg image{width: 100rpx;height: 100rpx;}
+.data-time{width: 316rpx}
+.data-time view:nth-child(1){font-size: 28rpx;color: #333;margin-bottom: 12rpx;margin-top: 10rpx}
+.data-time view:nth-child(2){font-size: 24rpx;color: #999}
+.data-comment{font-size: 24rpx;color: #999;margin-top: 10rpx;min-width: 250rpx}
+.data-comment view{float: right}
+.data-comment view:nth-child(2){margin-right: 32rpx}
+.data-comment image{width: 32rpx;height: 32rpx;position: relative;}
+.data-comment view:nth-child(1) image{margin-left: 11rpx;top: 2rpx}
+.data-comment view:nth-child(2) image{top: 5px}
+
+.item-music{
+  margin-left: 122rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20rpx;
+  position: relative
+}
+.music-voice{
+  background: #EFF3F6;
+  min-width: 120rpx;
+  height: 54rpx;
+  border-radius: 10rpx;
+  text-indent: 16rpx;
+  line-height: 54rpx;
+  max-width: 365rpx;
+}
+.music-voice image{
+  width: 18rpx;
+  height: 28rpx;
+}
+.music-length{
+  color: #999;font-size: 24rpx;
+  margin-left: 9rpx;
+  width: 100rpx
+}
+.delete{position: absolute;right: 0}
+.delete image{
+  width: 28rpx;
+  height: 30rpx
+}
+
+.addcomment{
+  margin-left: 122rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 12rpx;
+  position: relative
+}
+.addUser{font-size: 24rpx;color: #5B83B1;margin-right: 25rpx;max-width: 200rpx;}
+.addcom-voice{
+  max-width: 250rpx!important;
+}
+
+.comment{
+  height: 116rpx;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 25rpx 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  box-shadow:1px 1px 15px rgba(51,51,51,0.1);
+  width: 100%;
+}
+.userName{
+  font-size: 24rpx;
+  color: #5B83B1;
+  width: 165rpx;
+  position: absolute;
+  left:30rpx;
+  top: 40rpx;
+}
+.commentButton{
+  width: 360rpx;
+  height: 64rpx;
+  color: #333;
+  font-size: 28rpx;
+  background: #EFF3F6;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 64rpx;
+  margin: 0 auto
+}
+.commentButton image{width: 25rpx;height: 29rpx;margin-right: 10rpx;position: relative;top: 5rpx;}

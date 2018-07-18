@@ -1,0 +1,65 @@
+<view class="comTop">
+  <view class="MusicImg">
+    <image src="../../../images/Home/banner.png" mode="widthFix"></image>
+    <image src="../../../images/childStore/commentPlay.png"></image>
+  </view>
+  <view class="MusicData">
+    <view>放羊的小孩</view>
+    <view>取唐僧的经</view>
+  </view>
+</view>
+
+<view class="HotComment">最近热评</view>
+
+<view class="content">
+  <view class="item" wx:for="{{List}}">
+    <view class="item-data">
+      <view class="headImg">
+        <image src="../../../images/childStore/userPortrait.png"></image>
+      </view>
+      <view class="data-time">
+        <view>{{item.name}}</view>
+        <view>{{item.Time}}</view>
+      </view>
+      <view class="data-comment">
+        <view>
+          {{item.like}}
+          <image src="../../../images/childStore/like.png"></image>
+        </view>
+        <view>
+          <image src="../../../images/childStore/comment.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="item-music">
+      <view class="music-voice" style="width:{{item.length}}rpx">
+        <image src="../../../images/childStore/voice.png"></image>
+      </view>
+      <view class="music-length">3`00``</view>
+      <view class="delete" wx:if="{{user.id === store.authorId}}">
+        <image src="../../../images/childStore/delete.png"></image>
+      </view>
+    </view>
+     <view class="addcomment" 
+          wx:for="{{item.addcomment}}" 
+          wx:for-item="addcomment" 
+          wx:if="{{item.addcomment.length > 0}}">
+      <view class="addUser font-hidden">@{{addcomment.name}}:</view>
+      <view class="music-voice addcom-voice" style="width:{{addcomment.length}}rpx">
+         <image src="../../../images/childStore/voice.png"></image>
+      </view>
+      <view class="music-length">42``</view>
+      <view class="delete" wx:if="{{user.id === addcomment.id}}">
+        <image src="../../../images/childStore/delete.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="comment"> 
+  <view class="userName font-hidden">@{{user.name}}:</view>
+  <view class="commentButton">
+    <image src="../../../images/childStore/microphone.png"></image>
+    按住评论
+  </view>
+</view>
