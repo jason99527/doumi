@@ -3,6 +3,7 @@
     "pages/home/index/index",
     "pages/mycenter/index/index",
     "pages/childStore/index/index",
+    "pages/childStore/author/index",
     "pages/home/index/search/search",
     "pages/home/index/HotStroy/HotStroy",
     "pages/home/index/NewStroy/NewStroy",
@@ -16,7 +17,9 @@
     "pages/mycenter/myInformation/myName/index",
     "pages/mycenter/myInformation/myBirthday/index",
     "pages/mycenter/myInformation/myAddress/index",
-    "pages/mycenter/myInformation/myAddress/add/index"
+    "pages/mycenter/myInformation/myAddress/add/index",
+    "pages/common/record/record",
+    "pages/common/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,8 +29,8 @@
     "backgroundColor":"#F4F4F4"
   },
   "tabBar": {
-    "color":"#949fad",
-    "selectedColor":"#333333",
+    "color": "#949fad",
+    "selectedColor": "#333333",
     "list": [
       {
         "pagePath": "pages/home/index/index",

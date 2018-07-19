@@ -40,8 +40,8 @@
 				},
 				{
 					"id": 1,
-					"name": "append",
-					"pathName": "pages/home/index/CreateType/CreateType",
+					"name": "童言无忌",
+					"pathName": "pages/common/comment/comment",
 					"query": ""
 				}
 			]

@@ -1,0 +1,16 @@
+<!--pages/childStore/author/index.wxml-->
+<view class="author-data">
+  <view class="head">
+    <image src="../../../images/childStore/userPortrait.png" mode='widthFix'></image>
+  </view>
+  <view class="name">宝妈</view>
+  <view class="state">
+    <image src="../../../images/childStore/author/attention.png"></image>
+    互相关注
+  </view>
+  <view class="mask"></view>
+</view>
+
+<view class="content">
+  <stroyList wx:for="{{List}}" list="{{item}}"></stroyList>
+</view>

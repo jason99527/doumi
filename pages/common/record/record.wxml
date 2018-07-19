@@ -1,0 +1,25 @@
+<!--pages/common/record/record.wxml-->
+<view class="record">
+  <view class="content">
+    <image src="../../../images/record/banner.png" mode='widthFix'></image>
+    <text>{{GetTime}}</text> 
+  </view>
+  <view class="banner">
+    <view id="listen" bindtap='button' class="{{state === 'pause' ? 'hidden icon' : 'icon'}}">
+      <image src="../../../images/record/{{listen.listening ? 'pause' : 'listen'}}.png"></image>
+      <view>{{listen.text}}</view>
+    </view>
+    <view id="restart" bindtap='button' class="{{state === 'pause' ? 'hidden icon' : 'icon'}}">
+      <image src="../../../images/record/restart.png"></image>
+      <view>重新录制</view>
+    </view>
+    <view id="start" bindtap='button' class="{{state === 'pause' ? 'center icon' : 'icon'}}">
+      <image src="../../../images/record/{{state}}.png"></image>
+      <view>{{stateHtm}}</view>
+    </view>
+    <view id="success" bindtap='button' class="{{state === 'pause' ? 'hidden icon' : 'icon'}}">
+      <image src="../../../images/record/success.png"></image>
+      <view>完成</view>
+    </view>
+  </view>
+</view>

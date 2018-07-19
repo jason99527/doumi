@@ -28,7 +28,8 @@ App({
       coverImg:null,  //故事封面
       name:null, //故事名称
       label:null,  //故事标签
-      src:null  //录音文件
+      src:null,  //录音文件
+      storyLength:null // 故事长度
     }
   },
   //音乐播放器

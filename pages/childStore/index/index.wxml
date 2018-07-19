@@ -1,2 +1,89 @@
 <!--pages/childStore/index/index.wxml-->
-<text>pages/childStore/index/index.wxml</text>
+<view class="Me">
+  <view>
+    <image src="../../../images/childStore/myPortrait.png"></image>
+  </view>
+  <view class="font-hidden">
+      取唐僧的经123333312312321312312312
+  </view>
+  <view>
+    <image src="../../../images/childStore/+.png"></image>
+    上传趣事
+  </view>
+</view>
+
+<view class="content">
+  <view class="item">
+    <view class="item-user" bindtap='GoAuthor'>
+      <image src="../../../images/childStore/userPortrait.png"></image>
+    </view>
+    <view class="item-right">
+      <view class="item-userData">
+        <view class="font-hidden">宝妈1231231231231231231231212312312312312</view>
+        <view>16:45</view>
+      </view>
+      <view class="item-content">12312312312balabalablabalabalabl啊我的娃的abalabalablabalabalablabalabalablalabalablabalabalab</view>
+      <view class="item-music">
+        <view>
+          <image src="../../../images/Home/banner.png" mode='widthFix'></image>
+          <image src="../../../images/childStore/commentPlay.png"></image>
+        </view>
+        <view class="font-hidden">宝宝第一次说话123123123123123123123123123</view>
+      </view>
+      <view class="item-comment">
+        <view>
+          <image src="../../../images/childStore/like.png"></image>
+          2588
+        </view>
+        <view bindtap='GoComment'>
+          <image src="../../../images/childStore/comment.png"></image>
+          31
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="item-user"  bindtap='GoAuthor'>
+      <image src="../../../images/childStore/userPortrait.png"></image>
+    </view>
+    <view class="item-right">
+      <view class="item-userData">
+        <view>宝妈</view>
+        <view>16:45</view>
+      </view>
+      <view class="item-content">12312312312balabalablabalabalabl啊我的娃的abalabalablabalabalablabalabalablalabalablabalabalab</view>
+      <view class="item-music">
+        <view>
+          <image src="../../../images/Home/banner.png" mode='widthFix'></image>
+          <image src="../../../images/childStore/commentPlay.png"></image>
+        </view>
+        <view>宝宝第一次说话</view>
+      </view>
+      <view class="item-comment">
+        <view>
+          <image src="../../../images/childStore/like.png"></image>
+          2588
+        </view>
+        <view bindtap='GoComment'>
+          <image src="../../../images/childStore/comment.png"></image>
+          31
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="player">
+  <view>
+    <image src="../../../images/Home/banner.png" mode='widthFix'></image>
+  </view>
+  <view class="font-hidden">
+    宝宝第一次说话123123123123132133123123123123123123
+  </view>
+  <view>
+    <image src="../../../images/childStore/play.png"></image>
+  </view> 
+   <view>
+    <image src="../../../images/childStore/list.png"></image>
+  </view> 
+</view>
