@@ -74,5 +74,11 @@ Page({
     wx.navigateTo({
       url: '/pages/common/comment/comment'
     })
+  },
+
+  GoRecord:function(){
+    wx.navigateTo({
+      url: '/pages/common/record/record?from=childStore'
+    })
   }
 })

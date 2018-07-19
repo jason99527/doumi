@@ -6,7 +6,7 @@
   <view class="font-hidden">
       取唐僧的经123333312312321312312312
   </view>
-  <view>
+  <view bindtap='GoRecord'>
     <image src="../../../images/childStore/+.png"></image>
     上传趣事
   </view>

@@ -1,8 +1,11 @@
 <!--pages/common/record/record.wxml-->
-<view class="record">
+<view class="{{from === 'childStore' ? 'childStore record' : 'record'}}">
   <view class="content">
     <image src="../../../images/record/banner.png" mode='widthFix'></image>
-    <text>{{GetTime}}</text> 
+    <text>{{GetTime}}</text>
+    <view wx:if="{{from === 'childStore'}}" class="startButton"  id="start" bindtap='button'>
+      <image src="../../../images/record/startButton.png"></image>
+    </view>
   </view>
   <view class="banner">
     <view id="listen" bindtap='button' class="{{state === 'pause' ? 'hidden icon' : 'icon'}}">
@@ -13,13 +16,27 @@
       <image src="../../../images/record/restart.png"></image>
       <view>重新录制</view>
     </view>
-    <view id="start" bindtap='button' class="{{state === 'pause' ? 'center icon' : 'icon'}}">
+    <view wx:if="{{from === 'childStore'}}" id="Image" bindtap='setImg' class="{{state === 'pause' ? 'hidden icon' : 'icon'}}">
+      <image src="../../../images/record/Image.png"></image>
+      <view>{{setImgButton}}</view>
+    </view>
+    <view wx:else id="start" bindtap='button' class="{{state === 'pause' ? 'center icon' : 'icon'}}">
       <image src="../../../images/record/{{state}}.png"></image>
       <view>{{stateHtm}}</view>
     </view>
     <view id="success" bindtap='button' class="{{state === 'pause' ? 'hidden icon' : 'icon'}}">
       <image src="../../../images/record/success.png"></image>
       <view>完成</view>
+    </view>
+  </view>
+
+  <view class="CPM" style="{{animation.anim ? (animation.zIndex ? 'opacity:0;z-index:-1' : 'opacity:0') : ''}}">
+    <view class="Mask"></view>
+    <view class="CPM-content">
+      <image src="../../../images/record/maskBackground.png"></image>
+      <view class="title">趣事标题</view>
+      <input placeholder='请输入趣事标题' placeholder-style='color:#888;font-size:28rpx' bindblur="inputTitle"></input>
+      <view class="complete" bindtap='cpmInputTitle'>确定</view>
     </view>
   </view>
 </view>

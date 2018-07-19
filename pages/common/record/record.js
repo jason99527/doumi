@@ -12,70 +12,65 @@ Page({
     recordSrc:null,   //文件src
     Time:1,  //录制的秒数
     GetTime:'00:00:00', //显示的时长
+    from:null,//从哪个页面进来
+    Image:null,//上传图片
+    setImgButton:'封面',//上传图片状态
     listen:{
       listening:false,    //是否正在试听
       text:'试听',
       time:0  //播放时间
     },
-    FrameRecorded:false //是否超出最大文件大小
+    FrameRecorded:false, //是否超出最大文件大小
+    animation:{   //遮罩动画效果
+      zIndex:false, 
+      anim:false
+    },
+    UpLoadData:{  //上传趣事的故事名称和封面
+      title:null,
+      image:null
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //根据上级页面对页面进行修改
+    this.setData({
+      from: options.from
+    })
+    if (options.from === 'childStore'){
+      wx.setNavigationBarTitle({
+        title: '趣事录制'
+      })
+    }
+
+
+
+
     //停止播放
     if (App.globalData.PlayItem.src !== '') {
       App.innerAudioContext.stop()
     } 
-
-    const _this = this;
-    if (wx.getRecorderManager) {
-      this.recorderManager = wx.getRecorderManager()
-      const recorderManager = this.recorderManager
-
-      // recorderManager.onStart(() => {
-      //   console.log('录音接口开始录音')
-      // })
-      // recorderManager.onPause(() => {
-      //   console.log('录音接口暂停')
-      // })
-      // recorderManager.onStop((res) => {
-      //   console.log('录音结束')
-      // })
-      recorderManager.onFrameRecorded((res) => {
-        const { frameBuffer } = res
-        console.log('录音超出限定文件大小', frameBuffer.byteLength / 1048576)
-        if ((frameBuffer.byteLength / 1048576) > 95){
-            //结束计时器
-            clearInterval(this.setinterval)
-            //停止录制
-            _this.recorderManager.stop()
-            _this.setData({
-              stateHtm: '开始录制',
-              state: 'start',
-              FrameRecorded:true
-            })
-            //获取文件地址
-            _this.recorderManager.onStop(res => {
-              _this.setData({
-                recordSrc: res.tempFilePath
-              })
-            })
-            wx.showModal({
-              title: '提示',
-              content: '最大支持录制100M大小的故事哦'
-            })
-        }
-      })
-
-    } else {
-      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
-      wx.showModal({
-        title: '提示',
-        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
-      })
+    //如果没有实例化录音接口
+    if (!App.recorderManager){
+      App.setRecorderManager()
     }
+    const _this = this
+    const recorderManager = App.recorderManager
+    this.recorderManager = App.recorderManager
+    //先把原来的录音停掉
+    recorderManager.stop()
+    recorderManager.onFrameRecorded((res) => {
+      const { frameBuffer } = res
+      console.log('录音超出限定文件大小', frameBuffer.byteLength / 1048576)
+      if ((frameBuffer.byteLength / 1048576) > 95){
+        _this.recorderManagerStop()
+      }
+    })
+    recorderManager.onStop(res => {
+        _this.recorderManagerStop()
+    })
   },
 
   //按钮点击
@@ -226,6 +221,7 @@ Page({
         if (App.globalData.PlayItem.src !== '') {
           App.innerAudioContext.stop()
         } 
+        //停止试听
         this.setData({
           GetTime: this.funTime(this.data.Time-1),
           listen: {
@@ -241,6 +237,17 @@ Page({
             content: '最少需要录制20秒的故事哦'
           })
         }else{
+          //如果是从童言无忌页面跳转进来的则需要上传图片
+          if (this.data.from === 'childStore'){
+            //如果还没有上传图片
+            if (this.data.Image === null) {
+                this.alert('请上传图片封面')
+                return;
+            }
+            App.globalData.uploadStroyData.stroyType = '趣事'
+            App.globalData.uploadStroyData.coverImg = this.data.Image
+          }
+          
           App.globalData.uploadStroyData.src = this.data.recordSrc
           App.globalData.uploadStroyData.storyLength = this.data.Time - 1
           wx.showToast({
@@ -250,15 +257,7 @@ Page({
           console.log(App.globalData.uploadStroyData)
         }
         break
-    }
-    // console.log(e.currentTarget.id)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+      }
   },
   //记录播放时间
   SetTime:function(){
@@ -296,6 +295,29 @@ Page({
     
     
   },
+  //录音超出限定大小
+  recorderManagerStop:function(){
+    const _this = this
+    //结束计时器
+    clearInterval(this.setinterval)
+    //停止录制
+    this.recorderManager.stop()
+    this.setData({
+      stateHtm: '开始录制',
+      state: 'start',
+      FrameRecorded: true
+    })
+    //获取文件地址
+    this.recorderManager.onStop(res => {
+      _this.setData({
+        recordSrc: res.tempFilePath
+      })
+    })
+    wx.showModal({
+      title: '提示',
+      content: '最大支持录制100M大小的故事哦'
+    })
+  },
   //试听
   player:function(src){
     const _this = this
@@ -314,5 +336,72 @@ Page({
     const Time = (hour < 10 ? '0' + hour : hour) + ':' + (min < 10 ? '0' + min : min) + ':' + set;
     return Time;
   },
-
+  //输入标题
+  inputTitle:function(e){
+    const str = 'UpLoadData.title'
+    this.setData({
+      [str]: e.detail.value
+    })
+  },
+  //遮罩层完成按钮
+  cpmInputTitle:function(){
+    const alert = this.alert
+    const Title = this.data.UpLoadData.title
+    switch ((Title === null && 1) ||
+    (Title.length < 6 && 2) ||
+    (Title.indexOf(' ') !== -1 && 3) || 0) {
+      case 1:
+        alert('请输入故事名称')
+        return;
+      case 2:
+        alert('故事名称不得少于6个字符')
+        return;
+      case 3:
+        alert('故事名称不能出现空格')
+        return;
+    }
+    //关闭遮罩层
+    this.closeMask()
+    App.globalData.uploadStroyData.name = this.data.UpLoadData.title
+  },
+  //关闭遮罩层动画
+  closeMask:function(){
+    //先将弹窗隐藏
+    this.setData({
+      animation: {
+        zIndex: false,
+        anim: true
+      }
+    })
+    //等弹窗动画执行完毕后修改z-index
+    setTimeout(() => {
+      this.setData({
+        animation: {
+          zIndex: true,
+          anim: true
+        }
+      })
+    }, 300)
+  },
+  //弹窗
+  alert(text) {
+    wx.showModal({
+      content: text
+    })
+  },
+  //上传图片
+  setImg(){
+    const _this = this
+    wx.chooseImage({
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        _this.setData({
+          Image: res.tempFilePaths[0],
+          setImgButton:'上传成功'
+        })
+      }
+    })
+  }
 })
