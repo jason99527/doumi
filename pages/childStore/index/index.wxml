@@ -13,64 +13,7 @@
 </view>
 
 <view class="content">
-  <view class="item">
-    <view class="item-user" bindtap='GoAuthor'>
-      <image src="../../../images/childStore/userPortrait.png"></image>
-    </view>
-    <view class="item-right">
-      <view class="item-userData">
-        <view class="font-hidden">宝妈1231231231231231231231212312312312312</view>
-        <view>16:45</view>
-      </view>
-      <view class="item-content">12312312312balabalablabalabalabl啊我的娃的abalabalablabalabalablabalabalablalabalablabalabalab</view>
-      <view class="item-music">
-        <view>
-          <image src="../../../images/Home/banner.png" mode='widthFix'></image>
-          <image src="../../../images/childStore/commentPlay.png"></image>
-        </view>
-        <view class="font-hidden">宝宝第一次说话123123123123123123123123123</view>
-      </view>
-      <view class="item-comment">
-        <view>
-          <image src="../../../images/childStore/like.png"></image>
-          2588
-        </view>
-        <view bindtap='GoComment'>
-          <image src="../../../images/childStore/comment.png"></image>
-          31
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="item">
-    <view class="item-user"  bindtap='GoAuthor'>
-      <image src="../../../images/childStore/userPortrait.png"></image>
-    </view>
-    <view class="item-right">
-      <view class="item-userData">
-        <view>宝妈</view>
-        <view>16:45</view>
-      </view>
-      <view class="item-content">12312312312balabalablabalabalabl啊我的娃的abalabalablabalabalablabalabalablalabalablabalabalab</view>
-      <view class="item-music">
-        <view>
-          <image src="../../../images/Home/banner.png" mode='widthFix'></image>
-          <image src="../../../images/childStore/commentPlay.png"></image>
-        </view>
-        <view>宝宝第一次说话</view>
-      </view>
-      <view class="item-comment">
-        <view>
-          <image src="../../../images/childStore/like.png"></image>
-          2588
-        </view>
-        <view bindtap='GoComment'>
-          <image src="../../../images/childStore/comment.png"></image>
-          31
-        </view>
-      </view>
-    </view>
-  </view>
+  <List class="item" wx:for="{{List}}" item="{{item}}"></List>
 </view>
 
 <view class="player">

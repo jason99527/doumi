@@ -1,0 +1,29 @@
+<view class="item">
+    <view class="item-user" bindtap='GoAuthor'>
+      <image src="/images/childStore/userPortrait.png"></image>
+    </view>
+    <view class="item-right">
+      <view class="item-userData">
+        <view class="font-hidden">{{item.author}}</view>
+        <view>{{item.time}}</view>
+      </view>
+      <textarea wx:if="{{item.text !== ''}}" class="item-content" disabled="true" auto-height value="{{item.text}}" />
+      <view class="item-music">
+        <view>
+          <image src="/images/Home/banner.png" mode='widthFix'></image>
+          <image src="/images/childStore/commentPlay.png"></image>
+        </view>
+        <view class="font-hidden">{{item.title}}</view>
+      </view>
+      <view class="item-comment">
+        <view>
+          <image src="/images/childStore/like.png"></image>
+          {{item.like}}
+        </view>
+        <view bindtap='GoComment'>
+          <image src="/images/childStore/comment.png"></image>
+          {{item.comment}}
+        </view>
+      </view>
+    </view>
+  </view>

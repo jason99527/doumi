@@ -41,7 +41,7 @@
 				{
 					"id": 1,
 					"name": "童言无忌",
-					"pathName": "pages/childStore/index/index",
+					"pathName": "pages/common/record/record",
 					"query": ""
 				}
 			]

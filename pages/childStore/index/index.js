@@ -5,7 +5,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    List:[
+      {
+        id:'11001',
+        author:'宝妈',
+        time:'14:22',
+        comment:'30',
+        like:'2500',
+        title:'宝宝第一次说话',
+        text:''
+      },
+      {
+        id: '11001',
+        author: '宝妈',
+        time: '14:22',
+        comment: '30',
+        like: '2500',
+        title: '宝宝第一次说话',
+        text: '哦啦啦啦啦啦啦啦啦啦啦啦啦啦\n啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦\n啦啦啦啦啦啦啦啦啦啦啦啦\nOHHHHHHHHHHHH\n\n\n\n\n\n'
+      }
+    ]
   },
 
   /**
@@ -62,18 +81,6 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  GoAuthor:function(){
-    wx.navigateTo({
-      url: '../author/index'
-    })
-  },
-
-  GoComment:function(){
-    wx.navigateTo({
-      url: '/pages/common/comment/comment'
-    })
   },
 
   GoRecord:function(){

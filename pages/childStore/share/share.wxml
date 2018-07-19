@@ -1,0 +1,21 @@
+<!--pages/childStore/share/share.wxml-->
+<view class="Top">
+  <image src="/images/childStore/userPortrait.png"></image>
+  <view class="name">宝妈</view>
+  <view class="button" bindtap='upLoad'>
+    <image src="/images/childStore/upload.png"></image>
+    发送
+  </view>
+</view>
+
+<view class="content">
+  <textarea bindblur="bindTextAreaBlur" bindlinechange="bindlinechange" maxlength='500' auto-height placeholder="说点什么吧..." placeholder-style="font-size:25rpx"/>
+  <view class="Data">
+    <view class="img">
+      <image src="/images/Home/banner.png"></image>
+      <image src="/images/childStore/commentPlay.png"></image>
+    </view>
+    <view class="shareName">宝宝第一次说话</view>
+  </view>
+</view>
+

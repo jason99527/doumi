@@ -10,7 +10,7 @@ Page({
     state:'start', //当前录音图标
     stateHtm:'开始录制', //当前录音文本
     recordSrc:null,   //文件src
-    Time:1,  //录制的秒数
+    Time:0,  //录制的秒数
     GetTime:'00:00:00', //显示的时长
     from:null,//从哪个页面进来
     Image:null,//上传图片
@@ -35,13 +35,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //根据上级页面对页面进行修改
-    this.setData({
-      from: options.from
-    })
     if (options.from === 'childStore'){
       wx.setNavigationBarTitle({
         title: '趣事录制'
+      })
+      //根据上级页面对页面进行修改
+      this.setData({
+        from: options.from
       })
     }
 
@@ -59,8 +59,7 @@ Page({
     const _this = this
     const recorderManager = App.recorderManager
     this.recorderManager = App.recorderManager
-    //先把原来的录音停掉
-    recorderManager.stop()
+
     recorderManager.onFrameRecorded((res) => {
       const { frameBuffer } = res
       console.log('录音超出限定文件大小', frameBuffer.byteLength / 1048576)
@@ -69,6 +68,7 @@ Page({
       }
     })
     recorderManager.onStop(res => {
+      console.log(111)
         _this.recorderManagerStop()
     })
   },
@@ -96,7 +96,7 @@ Page({
 
         if (stateHtm === '开始录制' || Id === 'restart'){
           this.setData({
-            Time: 1,
+            Time: 0,
             GetTime: '00:00:00',
             listen: {
               listening: false,
@@ -121,10 +121,10 @@ Page({
         if (stateHtm === '开始录制' || stateHtm === '继续录制') {
           this.setinterval = setInterval(() => {
             this.setData({
-              Time: this.data.Time + 1,
+              Time: this.data.Time + 0.1 ,
               GetTime: this.funTime(this.data.Time)
             })
-          }, 1000)
+          }, 100)
         } else if (stateHtm === '暂停录制') { //暂停的时候清空定时器
           clearInterval(this.setinterval)
         }    
@@ -223,20 +223,24 @@ Page({
         } 
         //停止试听
         this.setData({
-          GetTime: this.funTime(this.data.Time-1),
+          GetTime: this.funTime(this.data.Time),
           listen: {
             listening: false,
             text: '试听',
-            time: -1
+            time: 0
           }
         })
-
+        console.log(this.data.Time)
         if((this.data.Time - 1) < 20){
           wx.showModal({
             title: '提示',
             content: '最少需要录制20秒的故事哦'
           })
+          return;
         }else{
+          App.globalData.uploadStroyData.src = this.data.recordSrc
+          App.globalData.uploadStroyData.storyLength = this.data.Time - 1
+
           //如果是从童言无忌页面跳转进来的则需要上传图片
           if (this.data.from === 'childStore'){
             //如果还没有上传图片
@@ -246,14 +250,16 @@ Page({
             }
             App.globalData.uploadStroyData.stroyType = '趣事'
             App.globalData.uploadStroyData.coverImg = this.data.Image
+
+            wx.navigateTo({
+              url: '/pages/childStore/share/share'
+            })
+          }else{
+            wx.showToast({
+              title: '上传成功',
+              duration: 2000
+            })
           }
-          
-          App.globalData.uploadStroyData.src = this.data.recordSrc
-          App.globalData.uploadStroyData.storyLength = this.data.Time - 1
-          wx.showToast({
-            title: '上传成功',
-            duration: 2000
-          })
           console.log(App.globalData.uploadStroyData)
         }
         break
@@ -273,7 +279,7 @@ Page({
           listen:{
             listening: true,
             text: '停止',
-            time: this.data.listen.time + 1
+            time: this.data.listen.time + 0.1
           },
           GetTime: this.funTime(this.data.listen.time)
         })
@@ -291,7 +297,7 @@ Page({
           duration: 1500
         })
       }
-    },1000)
+    },100)
     
     
   },

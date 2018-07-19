@@ -29,7 +29,9 @@ App({
       name:null, //故事名称
       label:null,  //故事标签
       src:null,  //录音文件
-      storyLength:null // 故事长度
+      storyLength:null, // 故事长度
+      text:null, //作者感想
+      time:null //上传时间
     }
   },
   //音乐播放器

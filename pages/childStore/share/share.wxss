@@ -1,0 +1,60 @@
+/* pages/childStore/share/share.wxss */
+.Top{
+  width: 100%;
+  box-shadow:1px 0px 15px rgba(51,51,51,0.2);
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  line-height: 75rpx;
+  height: 115rpx;
+  box-sizing: border-box
+}
+.Top>image{
+  width: 75rpx;
+  height: 75rpx;
+  margin-right: 11rpx;
+}
+.name{color: #999;font-size: 24rpx;width: 470rpx}
+.button{width: 134rpx;height: 54rpx;text-align: center;line-height: 56rpx;border-radius: 10rpx;background: #03A9F5;color: #fff;font-size: 24rpx;margin-top: 11rpx}
+.button image{height: 26rpx;width: 26rpx;position: relative;top: 5rpx;margin-right: 9rpx}
+.content{
+  padding: 35rpx;
+}
+.content textarea{
+  font-size: 28rpx;
+  color: #999;
+  min-height: 180rpx;
+  width: 100%;
+}
+.Data{
+  width: 100%;
+  height: 132rpx;
+  background: #EFF3F6;
+  padding: 16rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30rpx
+}
+.img{
+  width: 98rpx;
+  height: 100rpx;
+  overflow: hidden;
+  border-radius: 8rpx;
+  position: relative;
+  margin-right: 26rpx
+}
+.img image:nth-child(1){
+  width: 100%;
+  height: 100%
+}
+.img image:nth-child(2){
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 25rpx;
+  left: 25rpx
+}
+.shareName{color: #797979;font-size: 28rpx}
