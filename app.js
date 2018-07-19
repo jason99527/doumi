@@ -24,7 +24,7 @@ App({
       playing:true //是否正在播放
     },
     uploadStroyData:{ //准备提交的故事信息
-      stroyType:null, //故事类型  绘本||原创
+      stroyType:null, //故事类型  绘本||原创 || 趣事
       coverImg:null,  //故事封面
       name:null, //故事名称
       label:null,  //故事标签
@@ -85,11 +85,44 @@ App({
       })
     }
   },
-  //切换歌曲
+  //切换播放歌曲
   switchMusic: function (data) {
     this.innerAudioContext.pause()  //将正在播放的歌曲暂停
     this.innerAudioContext.seek(0)  //跳转到0秒
     this.innerAudioContext.src = data ? data : this.globalData.PlayItem.src //修改src地址
     this.innerAudioContext.play()   //播放
+  },
+  //全局录音接口
+  setRecorderManager:function (){
+    const _this = this;
+    if (wx.getRecorderManager) {
+      this.recorderManager = wx.getRecorderManager()
+      const recorderManager = this.recorderManager
+
+      recorderManager.onStart(() => {
+        console.log('录音接口开始录音')
+      })
+      recorderManager.onPause(() => {
+        console.log('录音接口暂停')
+      })
+      recorderManager.onStop((res) => {
+        console.log('录音结束')
+      })
+      recorderManager.onFrameRecorded((res) => {
+        const { frameBuffer } = res
+        console.log('录音超出限定文件大小', frameBuffer.byteLength / 1048576)
+      })
+    } else {
+      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
+  },
+  //重置录音接口
+  resetRecorderManager:function(obj){
+    this.recorderManager.stop()
+    this.recorderManager.start(obj)
   }
 })
