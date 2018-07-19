@@ -1,3 +1,4 @@
+
 // pages/mycenter/index/index.js
 var app = getApp();
 Page({

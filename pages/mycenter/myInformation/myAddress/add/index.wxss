@@ -1,0 +1,40 @@
+/* pages/childStore/index/index.wxss */
+.box{
+  display: flex;
+  height:126rpx;
+  justify-content:space-between;
+  align-items: center;
+  padding:0 30rpx;
+  font-size:28rpx;
+}
+.name{
+  color: #333333;
+  margin-right: 30rpx;
+  width: 120rpx;
+  text-align: right;
+  height:1.4rem;
+  line-height: 1.4rem
+}
+.input{
+  font-size:28rpx;
+  flex: 1;
+  color:#999999
+}
+input{
+  color:#999999
+}
+.create-title{
+  padding: 0;
+  margin: 0
+}
+.button{
+  background: linear-gradient(to right, #49DEF9 , #03A9F5);
+  margin:0 30rpx;
+  height: 76rpx;
+  color:white;
+  font-size:28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+}

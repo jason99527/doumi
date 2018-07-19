@@ -7,6 +7,23 @@ Page({
   data: {
     
   },
+  gotohere:function(e){
+    switch (e.currentTarget.dataset.tab){
+      case '1': wx.navigateTo({
+        url: '/pages/mycenter/myInformation/myName/index?id='
+      })
+        break;
+      case '2': wx.navigateTo({
+        url: '/pages/mycenter/myInformation/myAddress/index?id='
+      })
+        break;
+      case '3': wx.navigateTo({
+        url: '/pages/mycenter/myInformation/myBirthday/index?id='
+      })
+        break;
+    }
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */

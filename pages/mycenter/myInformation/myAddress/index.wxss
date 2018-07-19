@@ -1,0 +1,97 @@
+/* pages/childStore/index/index.wxss */
+page{
+  background: #F5F6F8;
+}
+.box{
+  font-size:28rpx;
+  background: #FFFFFF;
+  color:#333333;
+}
+.title{
+  font-size:28rpx;
+  display: flex;
+  justify-content:space-between;
+  width: 100%
+}
+.content{
+  color:#999999;
+  font-size: 24rpx;
+  margin-top:34rpx;
+  max-width: 100%;
+}
+.bottom{
+  height:70rpx;
+  border-top: 1px solid #E2E9EE;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.top-box{
+  padding: 30rpx
+}
+.right{
+  display: flex;
+  justify-content: center
+}
+.right_lf{
+  margin-right: 30rpx;
+  display: flex;
+  align-items: center
+}
+.right_rt{
+  display: flex;
+  align-items: center
+}
+.edit-icon{
+  width: 31rpx;
+  height:30rpx;
+  margin-right: 10rpx
+}
+.delete-icon{
+  width:33rpx;
+  height:30rpx;
+  margin-right: 10rpx;
+}
+radio .wx-radio-input{
+   border-radius: 5rpx;/* 圆角 */
+   width: 26rpx; /* 背景的宽 */
+   height: 26rpx; /* 背景的高 */
+}
+/* 选中后的 背景样式 （背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   background-color: #03A9F5;
+/* 自定义样式.... */
+
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-radio::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: transparent;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.button{
+  background: linear-gradient(to right, #49DEF9 , #03A9F5);
+  margin:0 30rpx;
+  height: 76rpx;
+  color:white;
+  font-size:28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  margin-top: 140rpx
+}
+
+.plus-icon{
+  width: 27rpx;
+  height:27rpx;
+  margin-right:14rpx
+}

@@ -1,4 +1,4 @@
-<!--pages/mycenter/index/index.wxml-->
+
 <view class='title'>
   <image class='bg' src='/images/thecard.png'></image>
   <view class='user'>

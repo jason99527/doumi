@@ -2,201 +2,72 @@
 <!-- <text>pages/home/index/index.wxml</text> -->
 <view id="Home">
   <view class="HomeSearch">
-    <view class="HomeSearchBox">
-      <image src='../../../images/account.png' mode="widthFix"></image>
-      <input placeholder='搜索故事关键字'></input>
+    <view class="HomeSearchBox" bindtap='OpenInput'>
+      <image src='../../../images/Home/seek.png' mode="widthFix"></image>
+      <input placeholder='搜索故事关键字' disabled="true"></input>
     </view>
   </view>
   <scroll-view scroll-y="true" style="height:{{ scrollHeight }}px;" id="ContentBox">
       <view class="HomeHotStory StoryBox">
     <view class="StoryTop">
       <text>热门故事</text>
-      <view class="StoryMore">
+      <view class="StoryMore" bindtap='moreHot'>
         <text>更多</text>
-        <image src="../../../images/account.png" mode="widthFix"></image>
+        <image src="../../../images/Home/more.png" mode="widthFix"></image>
       </view>
     </view>
     <view class="StoryBottom">
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
+      <view class="StroyItem"  wx:for="{{hotList}}" bindtap='ToPlay'>
+        <view class="Item-Img"><image src="{{item.homeImg}}" mode="aspectFill"></image></view>
         <view class="StroyItemBottom">
           <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
+            <text class="TextOverflow">{{item.title}}</text>
             <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
+              <image src="../../../images/Home/author.png" mode="widthFix"></image>
+              <text class="TextOverflow">{{item.author}}</text>
             </view>
           </view>
           <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
+            <view class="Label" wx:for="{{item.Label}}" wx:for-item="laberl">{{laberl}}</view>
           </view>
           <view class="ItemType">
-            原创
-          </view>
-        </view>
-      </view>
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
-        <view class="StroyItemBottom">
-          <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
-            <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
-            </view>
-          </view>
-          <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
-          </view>
-          <view class="ItemType">
-            原创
-          </view>
-        </view>
-      </view>
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
-        <view class="StroyItemBottom">
-          <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
-            <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
-            </view>
-          </view>
-          <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
-          </view>
-          <view class="ItemType">
-            原创
-          </view>
-        </view>
-      </view>
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
-        <view class="StroyItemBottom">
-          <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
-            <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
-            </view>
-          </view>
-          <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
-          </view>
-          <view class="ItemType">
-            原创
+            {{item.itemtype}}
           </view>
         </view>
       </view>
     </view>
   </view>
-  <view class="HomeNewStory StoryBox">
+   <view class="HomeNewStory StoryBox">
     <view class="StoryTop">
       <text>最新故事</text>
-      <view class="StoryMore">
+      <view class="StoryMore" bindtap='moreNew'>
         <text>更多</text>
-        <image src="../../../images/account.png" mode="widthFix"></image>
+        <image src="../../../images/Home/more.png" mode="widthFix"></image>
       </view>
     </view>
     <view class="StoryBottom">
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
+      <view class="StroyItem"  wx:for="{{newList}}" bindtap='ToPlay'>
+        <view class="Item-Img"><image src="{{item.homeImg}}" mode="aspectFill"></image></view>
         <view class="StroyItemBottom">
           <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
+            <text class="TextOverflow">{{item.title}}</text>
             <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
+              <image src="../../../images/Home/author.png" mode="widthFix"></image>
+              <text class="TextOverflow">{{item.author}}</text>
             </view>
           </view>
           <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
+            <view class="Label" wx:for="{{item.Label}}" wx:for-item="laberl">{{laberl}}</view>
           </view>
           <view class="ItemType">
-            原创
-          </view>
-        </view>
-      </view>
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
-        <view class="StroyItemBottom">
-          <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
-            <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
-            </view>
-          </view>
-          <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
-          </view>
-          <view class="ItemType">
-            原创
-          </view>
-        </view>
-      </view>
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
-        <view class="StroyItemBottom">
-          <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
-            <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
-            </view>
-          </view>
-          <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
-          </view>
-          <view class="ItemType">
-            原创
-          </view>
-        </view>
-      </view>
-      <view class="StroyItem">
-        <image src="../../../images/Item.jpg"></image>
-        <view class="StroyItemBottom">
-          <view class="ItemText">
-            <text class="TextOverflow">放羊的小孩213123123123</text>
-            <view>
-              <image src="../../../images/account.png"></image>
-              <text class="TextOverflow">取唐僧的经12312312312312</text>
-            </view>
-          </view>
-          <view class="ItemLabel">
-            <view class="Label">可312312312爱</view>
-            <view class="Label">12312</view>
-            <view class="Label">152</view>
-            <view class="Label">4684684684</view> 
-          </view>
-          <view class="ItemType">
-            原创
+            {{item.itemtype}}
           </view>
         </view>
       </view>
     </view>
+  </view> 
+  <view class='AddButton' bindtap='ToCreate'>
+    <image src="../../../images/Home/add.png"></image>
   </view>
   </scroll-view>
 

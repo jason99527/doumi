@@ -1,0 +1,73 @@
+<!--pages/common/player/player.wxml-->
+<view id="player">
+  <text class="title">
+    {{PlayItem.name}}
+  </text>
+  <text class="author">
+    {{PlayItem.author}}
+  </text>
+  <view class="playerContent">
+    <image src="../../../images/Player/right-img.png"></image>
+    <view class="player-banner">
+      <image src="../../../images/Home/banner.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="nav">
+    <view class="list">
+      <image src="../../../images/Player/like.png"></image>
+    </view>
+    <view class="list">
+      <image src="../../../images/Player/comment.png"></image>
+    </view>
+    <view class="list">
+      <image src="../../../images/Player/share.png"></image>
+    </view>
+  </view>
+  <view class="{{ListSwitch ? 'slider-Open slider' : 'slider'}}">
+    <slider value="20" min="0" max="100" selected-color="#333333" backgroundColor="#DDDDE8" block-size="12" block-color="#FFE411" value="{{offset}}" min="0" max="{{max}}"  bindchange="sliderchange" bindchanging="touchmove"></slider>
+    <view class="musictimeBox">
+      <view class="musictime">{{starttime}}</view>
+      <view class="musictime">{{duration}}</view>
+    </view>
+  </view>
+  <view class="ButtonBox">
+    <view class="Button" bindtap='PlayType'>
+      <image src="{{PlayType.ImageSrc}}"></image>
+    </view>
+    <view class="Button">
+      <image src="../../../images/Player/Button-last.png"></image>
+    </view>
+    <view class="Button" bindtap='play'>
+      <image src="../../../images/Player/Button-play.png"></image>
+    </view>
+    <view class="Button">
+      <image src="../../../images/Player/Button-next.png"></image>
+    </view>
+    <view class="Button" bindtap='OpenList'>
+      <image src="../../../images/Player/list.png"></image>
+    </view>
+  </view>
+
+  <view class="{{ListSwitch ? 'playListBox OpenList' : (animateSWitch ? 'Anima-zIndex playListBox' : 'playListBox')}}">
+    <view class="mask" bindtap='OpenList'></view>
+    <view class="playList">
+      <view class="playItem playList-top">
+        <view><image></image></view> 
+        <view>
+          <text class="playItem-top-text">播放列表</text>
+        </view>
+        <view bindtap='OpenList'><image src="../../../images/Player/packUp.png" mode="widthFix"></image></view>
+      </view>
+      <scroll-view style="height:557rpx" scroll-y>
+        <view class="{{playNum === index ? 'ItemPlaying playItem playList-content' : 'playItem playList-content'}}" wx:for="{{playRecord}}">
+          <view><image src="../../../images/Player/playing.png" mode="widthFix"></image></view> 
+          <view>
+            <text class="playItem-title">{{item.name}}</text>
+            <text class="playItem-title">{{item.author}}</text> 
+          </view>
+          <view></view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

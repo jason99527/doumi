@@ -1,0 +1,4 @@
+<!--pages/home/index/HotStroy/HotStroy.wxml-->
+<view class="Story">
+  <List list="{{List}}" type="{{ListType}}"></List>
+</view>

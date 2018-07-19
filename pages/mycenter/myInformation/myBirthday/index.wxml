@@ -1,0 +1,13 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box'>
+  <view class='name'>生日</view>
+  <view class='input'>
+    <picker mode="date" value="{{date}}" start="1978-01-01" bindchange="voteTitle">  
+      <view class="picker">   
+        {{birthday}}
+      </view>  
+  </picker>  
+  </view>
+</view>
+
+<view class='button' bindtap='updata'>保存</view>

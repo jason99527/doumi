@@ -35,7 +35,13 @@
 				{
 					"id": 0,
 					"name": "test",
-					"pathName": "pages/mycenter/myInformation/index",
+					"pathName": "pages/mycenter/index/index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "append",
+					"pathName": "pages/home/index/CreateType/CreateType",
 					"query": ""
 				}
 			]

@@ -1,1 +1,39 @@
 <!--pages/childStore/index/index.wxml-->
+<view class='box' bindtap='gotohere' data-tab='1'>
+  <view class='left'>
+    <view class='max-box'>
+      <image src='/images/myinfo/myname.png' class='icon1'></image>
+    </view>
+    <view class='lfcont'>昵称</view>
+  </view>
+  <view class='right'>
+    <view class='rtcont font-hidden'>取唐僧的经</view>
+    <image src='/images/more.png' class='rticon'></image>
+  </view>
+</view>
+
+<view class='box' bindtap='gotohere' data-tab='2'>
+  <view class='left'>
+    <view class='max-box' style='height:46rpx'>
+      <image src='/images/myinfo/icon.png' class='icon2'></image>
+    </view>
+    <view class='lfcont'>收货地址</view>
+  </view>
+  <view class='right'>
+    <view class='rtcont font-hidden'>广东省深圳市南山区爱南路朝北无限朝阳</view>
+    <image src='/images/more.png' class='rticon'></image>
+  </view>
+</view>
+
+<view class='box' bindtap='gotohere' data-tab='3'>
+  <view class='left'>
+    <view class='max-box'>
+      <image src='/images/myinfo/born.png' class='icon3'></image>
+    </view>
+    <view class='lfcont'>我的生日</view>
+  </view>
+  <view class='right'>
+    <view class='rtcont font-hidden'>1996-5-20</view>
+    <image src='/images/more.png' class='rticon'></image>
+  </view>
+</view>

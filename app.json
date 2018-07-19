@@ -3,36 +3,49 @@
     "pages/home/index/index",
     "pages/mycenter/index/index",
     "pages/childStore/index/index",
+    "pages/home/index/search/search",
+    "pages/home/index/HotStroy/HotStroy",
+    "pages/home/index/NewStroy/NewStroy",
+    "pages/home/index/CreateType/CreateType",
+    "pages/home/index/CreateStroy/CreateStroy",
     "pages/mycenter/myAttention/index",
     "pages/mycenter/myFans/index",
     "pages/mycenter/myNews/index",
-    "pages/mycenter/myInformation/index"
+    "pages/common/player/player",
+    "pages/mycenter/myInformation/index",
+    "pages/mycenter/myInformation/myName/index",
+    "pages/mycenter/myInformation/myBirthday/index",
+    "pages/mycenter/myInformation/myAddress/index",
+    "pages/mycenter/myInformation/myAddress/add/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor":"#F4F4F4"
   },
   "tabBar": {
+    "color":"#949fad",
+    "selectedColor":"#333333",
     "list": [
       {
         "pagePath": "pages/home/index/index",
         "text": "逗米故事",
-        "iconPath": "images/icon_all.png",
-        "selectedIconPath": "images/icon_all_se.png"
+        "iconPath": "images/icon-home.png",
+        "selectedIconPath": "images/icon-home-on.png"
       },
       {
         "pagePath": "pages/childStore/index/index",
         "text": "童言无忌",
-        "iconPath": "images/cart.png",
-        "selectedIconPath": "images/cart_se.png"
+        "iconPath": "images/icon-childStore.png",
+        "selectedIconPath": "images/icon-childStore-on.png"
       },
       {
         "pagePath": "pages/mycenter/index/index",
         "text": "我的逗米",
-        "iconPath": "images/account.png",
-        "selectedIconPath": "images/account_se.png"
+        "iconPath": "images/icon-mycenter.png",
+        "selectedIconPath": "images/icon-mycenter-on.png"
       }
     ]
   }

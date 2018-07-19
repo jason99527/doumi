@@ -1,0 +1,28 @@
+<!--pages/home/index/CreateType/CreateType.wxml-->
+<view class="content">
+  <view class="content-view">
+    <image wx:if="{{Image === null}}" src="../../../../images/Home/create/banner3.png" mode='widthFix'></image>
+    <view class="chollImg" wx:else>
+      <image src="{{Image}}" mode='aspectFill'></image>
+    </view>
+    <view class="button" bindtap='chooseImage'>
+      <text>上传故事封面</text>
+    </view>
+  </view>
+  <view class="content-view content-setData">
+    <view class="setName">
+      <view>故事名</view>
+      <input placeholder='请输入故事名称' bindblur="input"></input>
+    </view>
+    <view class="setLabel setName">
+      <view>标签</view>
+      <view class="label">
+        <view wx:for="{{ label }}" class="{{item.tab ? 'tabLabel' : ''}}" data-num='{{index}}' bindtap='tab'>{{item.text}}</view>
+      </view>
+    </view> 
+    <view class="button" bindtap='upload'>
+      <image src="../../../../images/Home/create/icon2.png" mode='widthFix'></image>
+      <text>开始录制</text>
+    </view>
+  </view>
+</view>

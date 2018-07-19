@@ -1,0 +1,9 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box'>
+  <view class='name'>昵称</view>
+  <view class='input'>
+    <input class='create-title' placeholder="{{username}}" bindinput="voteTitle"></input>
+  </view>
+</view>
+
+<view class='button' bindtap='updata'>保存</view>

@@ -1,0 +1,35 @@
+/* pages/childStore/index/index.wxss */
+page{
+  background:#F5F6F8
+}
+.box{
+  display: flex;
+  height:126rpx;
+  justify-content:space-between;
+  align-items: center;
+  padding:0 85rpx;
+  font-size:28rpx;
+  background: #FFFFFF;
+}
+.name{
+
+  color: #333333;
+  margin-right: 30rpx;
+}
+.input{
+  flex: 1;
+  font-size:28rpx;
+  color:#999999
+}
+
+.button{
+  background: linear-gradient(to right, #49DEF9 , #03A9F5);
+  margin:50rpx 30rpx;
+  height: 76rpx;
+  color:white;
+  font-size:28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+}

@@ -5,7 +5,75 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollHeight:0
+    scrollHeight:0,
+    hotList:[
+      {
+        id:1,
+        homeImg:'../../../images/Home/banner.png',
+        title:'放羊的小孩',
+        Label:['可爱','动人','童话','公主'],
+        itemtype:'原创',
+        author:'取唐增的经'
+      },
+      {
+        id: 2,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      },
+      {
+        id: 3,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      },
+      {
+        id: 4,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      }
+    ],
+    newList: [
+      {
+        id: 1,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      },
+      {
+        id: 2,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      },
+      {
+        id: 3,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      },
+      {
+        id: 4,
+        homeImg: '../../../images/Home/banner.png',
+        title: '放羊的小孩',
+        Label: ['可爱', '动人', '童话', '公主'],
+        itemtype: '原创',
+        author: '取唐增的经'
+      }
+    ]
   },
 
   /**
@@ -23,6 +91,34 @@ Page({
     })
   },
 
+  ToPlay:function(){
+    wx.navigateTo({
+      url: '/pages/common/player/player?id='
+    })
+  },
+  //跳转搜索页
+  OpenInput:function(){
+    wx.navigateTo({
+      url: './search/search'
+    })
+  },
+
+  moreNew:function(){
+    wx.navigateTo({
+      url: './NewStroy/NewStroy'
+    })
+  },
+  moreHot: function () {
+    wx.navigateTo({
+      url: './HotStroy/HotStroy'
+    })
+  },
+
+  ToCreate:function(){
+    wx.navigateTo({
+      url: './CreateType/CreateType'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

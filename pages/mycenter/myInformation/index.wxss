@@ -1,1 +1,49 @@
 /* pages/childStore/index/index.wxss */
+page{
+  background:rgba(245,246,248,1);
+}
+.box{
+  display: flex;
+  height:126rpx;
+  border-bottom: 1px solid #E2E9EE;
+  justify-content:space-between;
+  align-items: center;
+  padding:0 30rpx;
+  background: #FFFFFF
+}
+.left{
+  display:flex;
+  align-items: center;
+  color:#333333;
+  font-size:28rpx
+}
+.icon1{
+  width: 40rpx;
+  height:40rpx;
+}
+.rticon{
+  width:14rpx;
+  height:26rpx;
+  margin-left:11rpx;
+}
+.max-box{
+  width:58rpx;
+  height: 40rpx;
+}
+.right{
+  display: flex;
+  color:#999999;
+  font-size:28rpx;
+  align-items: center;
+}
+.rtcont{
+  max-width: 270rpx;
+}
+.icon2{
+  width:37rpx;
+  height:46rpx;
+}
+.icon3{
+  width:40rpx;
+  height:40rpx
+}

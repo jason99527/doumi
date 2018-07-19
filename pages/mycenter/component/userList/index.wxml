@@ -1,3 +1,4 @@
+
 <!--pages/mycenter/component/userList/index.wxml-->
 <view>
   <view class='individual' wx:for="{{list}}" wx:key='item.user_name'>
@@ -21,3 +22,4 @@
     </view>
   </view>
 </view>
+
