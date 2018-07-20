@@ -1,6 +1,6 @@
 <!--pages/childStore/index/index.wxml-->
 <view class="Me">
-  <view>
+  <view bindtap='GoMyShare'>
     <image src="../../../images/childStore/myPortrait.png"></image>
   </view>
   <view class="font-hidden">

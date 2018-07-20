@@ -231,7 +231,7 @@ Page({
           }
         })
         console.log(this.data.Time)
-        if((this.data.Time - 1) < 20){
+        if(this.data.Time  < 20){
           wx.showModal({
             title: '提示',
             content: '最少需要录制20秒的故事哦'

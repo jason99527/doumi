@@ -23,6 +23,15 @@ Page({
         like: '2500',
         title: '宝宝第一次说话',
         text: '哦啦啦啦啦啦啦啦啦啦啦啦啦啦\n啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦\n啦啦啦啦啦啦啦啦啦啦啦啦\nOHHHHHHHHHHHH\n\n\n\n\n\n'
+      },
+      {
+        id: '11001',
+        author: '宝妈',
+        time: '14:22',
+        comment: '30',
+        like: '2500',
+        title: '宝宝第一次说话',
+        text: '哦啦啦啦啦啦啦啦啦啦啦啦啦啦\n啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦\n啦啦啦啦啦啦啦啦啦啦啦啦\nOHHHHHHHHHHHH\n\n\n\n\n\n'
       }
     ]
   },
@@ -87,5 +96,12 @@ Page({
     wx.navigateTo({
       url: '/pages/common/record/record?from=childStore'
     })
+  },
+
+  GoMyShare:function(){
+    wx.navigateTo({
+      url: '/pages/childStore/myShare/myShare'
+    })
   }
+     
 })

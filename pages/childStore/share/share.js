@@ -40,10 +40,9 @@ Page({
       title: '上传成功',
       duration: 2000
     })
-
     setTimeout(()=>{
-      wx.navigateTo({
-        url: '/pages/childStore/myShare/myShare'
+      wx.switchTab({
+        url: '/pages/childStore/index/index'
       })
     },1200)
   },

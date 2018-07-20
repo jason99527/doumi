@@ -5,7 +5,7 @@
 .item-right{width:566rpx }
 .item-userData>view:nth-child(1){font-size: 28rpx;color: #333;margin: 15rpx 0 10rpx}
 .item-userData>view:nth-child(2){font-size: 24rpx;color: #999;margin-bottom: 21rpx}
-.item-content{font-size: 28rpx;color: #333;width: 100%;margin-bottom: 14rpx;
+.item-content{font-size: 28rpx;color: #333;width: 100%;margin-bottom: 10rpx;z-index: 30;
   word-break:break-all;
 
   overflow:hidden; 
