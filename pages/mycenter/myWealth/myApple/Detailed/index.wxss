@@ -1,0 +1,30 @@
+/* pages/childStore/index/index.wxss */
+.box{
+  border-bottom:1px solid #E2E9EE;
+  padding:30rpx;
+}
+.title{
+  display:flex;
+  justify-content:space-between;
+}
+.name{
+  color:#333333;
+  font-size:28rpx;
+}
+.guo{
+  font-size:24rpx;
+}
+.reduce{
+  color:#91A3B0;
+}
+.orange{
+  color:#FF560B;
+}
+.apple{
+  color:#F40000;
+}
+.time{
+  color:#999999;
+  font-size:24rpx;
+  margin-top: 10rpx
+}

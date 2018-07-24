@@ -1,0 +1,144 @@
+/* pages/childStore/index/index.wxss */
+page{
+  background:rgba(245,246,248,1);
+}
+.top{
+  margin: 30rpx;
+  background:#FFFFFF;
+  display: inline-block;
+  padding: 28rpx;
+  width:690rpx;
+  box-sizing: border-box;
+  border-radius:12rpx;
+  box-shadow:10px 1px 60px rgba(153,153,153,0.15);
+}
+.title{
+  display: flex;
+  justify-content:  space-between;
+  font-size:28rpx;
+  color:#333333
+}
+.center{
+  width: 120px;
+  height:120px;
+  margin: 34rpx auto;
+  text-align: center;
+  font-size:28rpx;
+  color:#999999;
+  position:relative;
+  display: flex;
+  align-items: center;
+  justify-content:center
+}
+.center canvas{
+  position: absolute;
+}
+.list{
+  width: 237rpx;
+  text-align:center;
+  font-family:'PingFang-SC-Medium';
+  font-size: 28rpx;
+  color:#333333;
+}
+.list-my{
+  height:86rpx;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-family: 'PingFang-SC-Medium';
+  font-size:28rpx;
+  color:#333333;
+  padding-left: 35rpx;
+  padding-right: 30rpx
+}
+.more-icon{
+  width: 14rpx;
+  height:26rpx
+}
+.card_icon{
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10rpx
+}
+.lfbox{
+  display: flex;
+  justify-content: center
+}
+.top-right{
+  display: flex;
+  justify-content:space-between;
+  align-items: center
+}
+.wbox{
+  width: 60rpx;
+}
+.top2{
+  margin-bottom:16rpx
+}
+.icon1{
+  width:37rpx;
+  height:39rpx;
+}
+.icon3{
+  width:41rpx;
+  height:41rpx
+}
+.top-question{
+  width: 28rpx;
+  height:28rpx;
+}
+.icon-box-question{
+  width: 28rpx;
+  height:28rpx;
+  margin-right:9rpx;
+
+}
+.level{
+  width:36rpx;
+  height:36rpx;
+  font-size:20rpx;
+  margin-left: 5rpx;
+  position:relative;
+}
+.level-icon{
+  width: 36rpx;
+  height:36rpx;
+}
+.top-left{
+  display: flex;
+  justify-content:space-between;
+  align-items: center
+}
+.level-number{
+  position: absolute;
+  top: 0;
+  left:0;
+  bottom: 0;
+  right:0;
+  margin: auto;
+  width: 10rpx;
+  height:10rpx;
+  text-align: center;
+  line-height:10rpx;
+  color:#D7B100
+}
+.apple{
+  margin-left: 23rpx
+}
+.apple-icon{
+  width:33rpx;
+  height:35rpx;
+}
+.bottom{
+  font-size:28rpx;
+   display:flex;
+  align-items: flex-end 
+}
+.orange{
+  margin-left:25rpx
+}
+.orange-icon{
+  width:35rpx;
+  height:39rpx;
+}

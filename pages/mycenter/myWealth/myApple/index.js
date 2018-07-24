@@ -1,51 +1,53 @@
-
-// pages/mycenter/index/index.js
-var app = getApp();
+// pages/childStore/index/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user_img: app.globalData.userInfo.user_img,
-    user_name: app.globalData.userInfo.user_name
+    list:[{
+      pid:"0",
+      img_src:'/images/myinfo/textbanner.png',
+      title:'奖品一奖品一',
+      apple:50,
+      orange:30
+    }, {
+        pid: "1",
+        img_src: '/images/myinfo/textbanner.png',
+        title: '奖品二',
+        apple: 0,
+        orange: 30
+      }, {
+        pid: "2",
+        img_src: '/images/myinfo/textbanner.png',
+        title: '奖品三',
+        apple: 50,
+        orange: 0
+      }]
   },
-  TomyAttention: function (e) {
-    if(e.target.dataset.type =='follow')
-      wx.navigateTo({
-        url: '/pages/mycenter/myAttention/index?id='
+  gotohere:function(e){
+    switch (e.currentTarget.dataset.tab){
+      case '1': wx.navigateTo({
+        url: '/pages/mycenter/myWealth/myApple/Detailed/index?id='
       })
-    else if (e.target.dataset.type == 'fans')
-      wx.navigateTo({
-        url: '/pages/mycenter/myFans/index?id='
+        break;
+      case '2': wx.navigateTo({
+        url: '/pages/mycenter/myWealth/myApple/Prize/index?id=' + e.currentTarget.dataset.pid
       })
-    else if (e.target.dataset.type == 'news')
-      wx.navigateTo({
-        url: '/pages/mycenter/myNews/index?id='
-      })
-  },
-  Myinformation:function(){
-    wx.navigateTo({
-      url: '/pages/mycenter/myInformation/index?id='
-    })
-  },
-  myWealth:function(){
-    wx.navigateTo({
-      url: '/pages/mycenter/myWealth/index?id='
-    })
+        break;
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
@@ -88,6 +90,6 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
-
+  }, 
+  
 })

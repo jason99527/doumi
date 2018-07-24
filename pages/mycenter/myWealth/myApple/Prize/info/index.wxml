@@ -1,0 +1,11 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box'>
+  <view class='title'>
+    <image src='/images/myinfo/Trophy.png' class='Trophy-icon'></image>
+    <text class='text'>奖品信息</text>
+  </view>
+
+  <view class='content'>
+    　　奖品介绍、客户须知、使用说明、奖品参数。
+  </view>
+</view>

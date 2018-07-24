@@ -1,0 +1,88 @@
+/* pages/childStore/index/index.wxss */
+page{
+  background:rgba(245,246,248,1);
+}
+.top{
+  height:140rpx;
+  background: #fff;
+  display:flex;
+  align-items:center;
+  font-size:28rpx;
+  padding: 0 30rpx;
+  justify-content:space-between;
+  margin-bottom:16rpx;
+}
+.apple{
+  margin-left: 23rpx
+}
+.apple-icon{
+  width:33rpx;
+  height:35rpx;
+}
+.orange{
+  margin-left:60rpx
+}
+.orange-icon{
+  width:35rpx;
+  height:39rpx;
+}
+.top-left{
+  display:flex;
+  align-items:flex-end
+}
+.top-right{
+  /* width: 210rpx; */
+  padding:0 20rpx;
+  height:60rpx;
+  color:#03A9F5;
+  line-height:60rpx;
+  border: 2rpx solid #03A9F5;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 24rpx
+}
+.Prize{
+  display:flex;
+  padding: 30rpx;
+  justify-content:space-between;
+  background:#FFFFFF;
+  font-size:28rpx;
+  border-bottom:1px solid #E2E9EE;
+}
+.banner{
+  width:180rpx;
+  height:180rpx;
+  overflow: hidden;
+  border-radius:10rpx;
+  margin-right: 19rpx
+}
+.banner-img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+.right{
+  flex:1;
+  color:#333333;
+}
+.center{
+  display:flex;
+  margin-top: 30rpx;
+  justify-content: space-between
+}
+.center .apple,.center .orange{
+  margin: 0;
+}
+.center .apple{
+  margin-bottom:20rpx;
+}
+.center-right{
+  border-radius:10rpx;
+  background:#03A9F5;
+  color:#FFFFFF;
+  font-size:24rpx;
+  width:120rpx;
+  height:60rpx;
+  text-align: center;
+  line-height:60rpx;
+}

@@ -1,0 +1,10 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box' wx:for="{{list}}" wx:key=''>
+  <view class='title'>
+    <view class='name'>{{item.title}}</view>
+    <view class='guo reduce' wx:if='{{item.type=="reduce"}}'>{{item.content}}</view>
+    <view class='guo orange' wx:if='{{item.type=="orange"}}'>{{item.content}}</view>
+    <view class='guo apple' wx:if='{{item.type=="apple"}}'>{{item.content}}</view>
+  </view>
+  <view class='time'>{{item.time}}</view>
+</view>

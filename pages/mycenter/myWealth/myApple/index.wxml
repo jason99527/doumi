@@ -1,0 +1,42 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='top'>
+  <view class='top-left'>
+    <view class='apple'>
+      <image src='/images/myinfo/apple.png' class='apple-icon'></image>
+        x 50
+    </view>
+    <view class='orange'>
+        <image src='/images/myinfo/orange.png' class='orange-icon'></image>
+        x 300
+    </view>
+  </view>
+  <view class='top-right' bindtap='gotohere' data-tab='1'>
+    果果交易明细 >>
+  </view>
+</view>
+
+<view class='Prize' wx:for="{{list}}" wx:key=''>
+  <view class='banner'>
+    <image src='{{item.img_src}}' class='banner-img'></image>
+  </view>
+  <view class='right'>
+    <view class='title'>
+      {{item.title}}
+    </view>
+    <view class='center'>
+      <view class='center-left'>
+        <view class='apple' wx:if="{{item.apple}}">
+        <image src='/images/myinfo/apple.png' class='apple-icon'></image>
+          x {{item.apple}}
+      </view>
+      <view class='orange' wx:if="{{item.orange}}">
+          <image src='/images/myinfo/orange.png' class='orange-icon'></image>
+          x {{item.orange}}
+      </view>
+      </view>
+      <view class='center-right' bindtap='gotohere' data-tab='2' data-pid='{{item.pid}}'>
+        兑换
+      </view>
+    </view>
+  </view>
+</view>

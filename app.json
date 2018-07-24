@@ -21,7 +21,14 @@
     "pages/mycenter/myInformation/myAddress/index",
     "pages/mycenter/myInformation/myAddress/add/index",
     "pages/common/record/record",
-    "pages/common/comment/comment"
+    "pages/common/comment/comment",
+    "pages/mycenter/myWealth/index",
+    "pages/mycenter/myWealth/myApple/index",
+    "pages/mycenter/myWealth/myApple/Prize/index",
+    "pages/mycenter/myWealth/myApple/Prize/info/index",
+    "pages/mycenter/myWealth/myApple/Detailed/index",
+    "pages/mycenter/myWealth/About/index",
+    "pages/mycenter/myWealth/level/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

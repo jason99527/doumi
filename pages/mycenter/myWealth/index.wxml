@@ -1,0 +1,62 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='top'>
+  <view class='title'>
+    <view class='top-left'>
+      <text>我的等级: 四级</text>
+      <view class='level'>
+        <image src='/images/myinfo/level.png' class='level-icon'></image>
+        <view class='level-number'>4</view>
+      </view>
+    </view>
+    <view class='top-right' bindtap='gotohere' data-tab='1'>
+      <view class='icon-box-question'>
+        <image src='/images/myinfo/question.png' class='top-question'></image>
+      </view>
+      等级说明
+    </view>
+  </view>
+  <view class='center'>
+    <canvas class="cir" style="width:120px; height:120px;" canvas-id="canvasArc">
+    </canvas>
+    <view>
+       <view>
+        <image src='/images/myinfo/apple.png' class='apple-icon'></image>
+          x 50
+      </view>
+      <view>
+        离升级还差
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    累计获得 
+    <view class='apple'>
+      <image src='/images/myinfo/apple.png' class='apple-icon'></image>
+       x 50
+    </view>
+    <view class='orange'>
+      <image src='/images/myinfo/orange.png' class='orange-icon'></image>
+      x 300
+    </view>
+  </view>
+</view>
+
+<view class='list-my top2' bindtap="gotohere" data-tab="2">
+  <view class='lfbox'>
+    <view class='wbox q3'>
+      <image src='/images/myinfo/apple-gray.png' class='icon1'></image>
+    </view>
+    我的逗迷果果
+  </view>
+   <image src='/images/more.png' class='more-icon'></image>
+</view>
+
+<view class='list-my top2' bindtap="gotohere" data-tab="3">
+  <view class='lfbox'>
+    <view class='wbox q3'>
+      <image src='/images/myinfo/question.png' class='icon3'></image>
+    </view>
+    什么是逗迷果果？
+  </view>
+   <image src='/images/more.png' class='more-icon'></image>
+</view>

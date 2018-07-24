@@ -1,0 +1,79 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box'>
+  <view class='title'>
+    <image src='/images/myinfo/Level-big.png' class='Trophy-icon'></image>
+    <text class='text'>等级说明</text>
+  </view>
+
+  <view class='content'>
+    <view class='ct'>
+      逗迷勋章分为9级，分别对应一定数量的逗迷果果，等级越高，代表讲故事者的能力和水平越高，其所享受的礼品奖励或赏金分享也就越多。逗迷一级勋章可以授予上传故事的用户和拥有100个以上橙果果的其他用户，逗迷二级以上勋章只授予上传故事的用户。
+    </view>
+    <view class='content-title' style="margin-top:20rpx">
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>1</view>
+       </view>
+        逗迷一级勋章
+    </view>
+    <view>授予给<text style="color:#03a9f5">10-19</text>个红果果，或100个以上橙果果的用户；</view>
+    <view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>2</view>
+       </view>
+        逗迷二级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">20-49</text>个红果果的用户；</view>
+    <view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>3</view>
+       </view>
+        逗迷三级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">50-99</text>个红果果的用户；</view><view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>4</view>
+       </view>
+        逗迷四级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">100-199</text>个红果果的用户；</view><view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>5</view>
+       </view>
+        逗迷五级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">200-349</text>个红果果的用户；</view><view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>6</view>
+       </view>
+        逗迷六级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">350-549</text>个红果果的用户；</view><view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>7</view>
+       </view>
+        逗迷七级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">550-799</text>个红果果的用户；</view><view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>8</view>
+       </view>
+        逗迷八级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">800-1199</text>个红果果的用户；</view><view class='content-title'>
+        <view class='level'>
+          <image src='/images/myinfo/level.png' class='level-icon'></image>
+          <view class='level-number'>9</view>
+       </view>
+        逗迷九级勋章
+    </view>   
+    <view>授予给<text style="color:#03a9f5">1200</text>个红果果的用户；</view>
+  </view>
+</view>

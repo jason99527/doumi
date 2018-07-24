@@ -43,7 +43,7 @@
   </view>
    <image src='/images/more.png' class='more-icon'></image>
 </view>
-<view class='list-my top2 Bline'>
+<view class='list-my top2 Bline' bindtap='myWealth'>
   <view class='lfbox'>
     <view class='wbox q2'>
       <image src='/images/mywealth.png' class='icon2'></image>

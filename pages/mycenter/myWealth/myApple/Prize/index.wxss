@@ -1,0 +1,130 @@
+/* pages/childStore/index/index.wxss */
+page{
+  background:rgba(245,246,248,1);
+}
+.banner{
+  width: 750rpx;
+  height:750rpx;
+}
+.banner image{
+  width:100%;
+  height:100%;
+  object-fit: cover
+}
+.title{
+  padding: 30rpx;
+  background: #fff
+}
+.title-name{
+  font-size:32rpx;
+  color:#333333;
+  font-weight: bold;
+}
+.apple{
+  margin-right:19rpx
+}
+.apple-icon{
+  width:33rpx;
+  height:35rpx;
+}
+.orange{
+  margin-left:19rpx
+}
+.orange-icon{
+  width:35rpx;
+  height:39rpx;
+}
+.title-prize{
+  display: flex;
+  margin-top: 20rpx;
+  font-size:28rpx
+}
+
+.box{
+  font-size:28rpx;
+  background: #FFFFFF;
+  color:#333333;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx;
+  align-items:center;
+}
+.t-title{
+  font-size:28rpx;
+  display: flex;
+  justify-content:space-between;
+}
+.t-content{
+  color:#999999;
+  font-size: 24rpx;
+  margin-top:20rpx;
+  max-width: 100%;
+}
+.top-box{
+  width: 610rpx
+}
+.right{
+  display: flex;
+  justify-content: center
+}
+.list-my{
+  height:86rpx;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-family: 'PingFang-SC-Medium';
+  font-size:28rpx;
+  color:#333333;
+  padding-left: 35rpx;
+  padding-right: 30rpx
+}
+.list-my.top2{
+  margin-top:16rpx;
+}
+
+.list-my .icon3{
+  width:43rpx;
+  height:43rpx;
+}
+.lfbox{
+  display: flex;
+  justify-content: center
+}
+.wbox{
+  width: 50rpx;
+}
+.wbox.q3{
+  height:43rpx;
+}
+.more-icon{
+  width: 14rpx;
+  height:26rpx
+}
+.rtbox{
+  color:#03a9f5;
+  text-decoration:underline; 
+  display: flex;
+  align-items:center
+}
+.text{
+  margin-right:10rpx;
+
+}
+.bottom{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32rpx;
+}
+.button{
+  background: linear-gradient(to right, #49DEF9 , #03A9F5);
+  height: 76rpx;
+  color:white;
+  font-size:28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  width: 330rpx;
+}
