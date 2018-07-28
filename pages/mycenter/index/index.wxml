@@ -11,7 +11,7 @@
       {{user_name}}
     </view>
   </view>
-  <view class='Sign-in font-Bold'>
+  <view class='Sign-in font-Bold' bindtap='Sign'>
     <image src='/images/pan.png' class='icon'></image>
     <text>每日签到</text>
   </view>
@@ -52,7 +52,7 @@
   </view>
    <image src='/images/more.png' class='more-icon'></image>
 </view>
-<view class='list-my'>
+<view class='list-my' bindtap='myStory'>
   <view class='lfbox'>
     <view class='wbox q3'>
       <image src='/images/mystory.png' class='icon3'></image>
@@ -61,7 +61,7 @@
   </view>
    <image src='/images/more.png' class='more-icon'></image>
 </view>
-<view class='list-my top2'>
+<view class='list-my top2' bindtap='About'>
   <view class='lfbox'>
     <view class='wbox q3'>
       <image src='/images/doumi.png' class='icon3'></image>

@@ -1,0 +1,21 @@
+<view class="item">
+    <view class="item-user" bindtap='GoAuthor'>
+      <image src="/images/childStore/userPortrait.png"></image>
+    </view>
+    <view class="item-right">
+      <view class="item-userData">
+        <view class="font-hidden">{{name}}</view>
+        <view>{{time}}</view>
+      </view>
+      <view class="item-content">
+        {{content}}
+      </view>
+      <view class="item-music">
+        <view>
+          <image src="/images/Home/banner.png" mode='widthFix'></image>
+          <image src="/images/childStore/commentPlay.png"></image>
+        </view>
+        <view class="font-hidden">{{play_title}}</view>
+      </view>
+    </view>
+  </view>

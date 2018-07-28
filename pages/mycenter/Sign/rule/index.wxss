@@ -1,0 +1,68 @@
+/* pages/childStore/index/index.wxss */
+page{
+  width: 100%;
+}
+.box{
+  border-radius:12rpx;
+  box-shadow: 0 0 30rpx rgba(153, 153, 153, 0.2);
+  width: calc(100% - 60rpx);
+  margin: 30rpx;
+  padding:1px;
+  padding-bottom: 30rpx;
+  height: 890rpx;
+}
+.Trophy-icon{
+  width: 124rpx;
+  height:117rpx;
+  margin: 150rpx auto;
+  display:block;
+  margin-bottom: 10rpx
+}
+.text{
+  font-size:32rpx;
+  color:#333333;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+.content{
+  font-size:28rpx;
+  margin-top: 50rpx;
+  color:#666666;
+  padding: 0 60rpx
+}
+.content-title{
+  color:#666666;
+  font-size:28rpx;
+  font-weight: bold;
+  display: flex;
+  margin: 5rpx 0
+}
+.ct{
+  text-indent: 2em;
+  text-align: left;
+}
+.level{
+  width:36rpx;
+  height:36rpx;
+  font-size:20rpx;
+  position:relative;
+  margin-right: 10rpx
+}
+.level-icon{
+  width: 36rpx;
+  height:36rpx;
+}
+.level-number{
+  position: absolute;
+  top: 0;
+  left:0;
+  bottom: 0;
+  right:0;
+  margin: auto;
+  width: 10rpx;
+  height:10rpx;
+  text-align: center;
+  line-height:10rpx;
+  color:#D7B100
+}

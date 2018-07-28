@@ -1,0 +1,10 @@
+{
+  "navigationBarBackgroundColor": "#03A9F5",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的消息",
+  "usingComponents": {
+    "Yc-list": "/pages/mycenter/myStory/Yc/index",
+    "Hb-list": "/pages/mycenter/myStory/Hb/index",
+    "Sc-list":"/pages/mycenter/myStory/Sc/index"
+  }
+}

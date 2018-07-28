@@ -1,0 +1,77 @@
+/* pages/mycenter/component/news/@me/index.wxss */
+.notice-list{
+  height:160rpx;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:1px solid #E2E9EE;
+  padding: 0 30rpx;
+}
+.cont-box{
+  max-width: 553rpx;
+  flex:1;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+.left_box{
+  font-size:28rpx;
+  color:#333333;
+}
+.header{
+  width:100rpx;
+  height:100rpx;
+  border-radius:10rpx;
+}
+.title{
+  color: #333333;
+  font-size:32rpx;
+  margin-right: 26rpx
+}
+.name{
+  font-size:28rpx;
+  color:#999999
+}
+.content{
+  margin-top: 10rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  font-size:24rpx;
+  color:#999999
+}
+.myscroll{
+  white-space: nowrap; 
+}
+.name-icon{
+  width: 23rpx;
+  height:25rpx;
+  margin-right: 10rpx
+}
+.name-box{
+  margin-top:20rpx;
+  display: flex;
+  align-items:center
+}
+.Release{
+  width:100rpx;
+  height: 54rpx;
+  line-height:54rpx;
+  background: #03A9F5;
+  color:white;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+}
+.text{
+  font-size: 24rpx;
+}
+.gray{
+  color:#91A3B0
+}
+.red{
+  color:#DC0000
+}
+.green{
+  color:#01A33A
+}

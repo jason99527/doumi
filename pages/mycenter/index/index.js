@@ -34,6 +34,21 @@ Page({
       url: '/pages/mycenter/myWealth/index?id='
     })
   },
+  myStory: function () {
+    wx.navigateTo({
+      url: '/pages/mycenter/myStory/index?id='
+    })
+  },
+  About:function(){
+    wx.navigateTo({
+      url: '/pages/mycenter/About/index?id='
+    })
+  },
+  Sign: function () {
+    wx.navigateTo({
+      url: '/pages/mycenter/Sign/index?id='
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -1,0 +1,28 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box'>
+  <view class='title'>
+    <image src='/images/myinfo/smile.png' class='Trophy-icon'></image>
+    <text class='text'>关于逗迷讲故事</text>
+  </view>
+
+  <view class='content'>
+    <view class='text-title'>一、平台简介</view>
+    <view class='ct'>
+     “逗迷讲故事”是儿童故事听说平台。它通过设置相应的故事主题、情境和提示，让孩子、家长或其他儿童文学创作者可以直接对着手机讲故事，由此获得逗迷果果、等级荣誉、礼品奖励或赏金分享等；家长则可以通过平台定制不同主题的故事包，让自己的孩子可随时随地听到经典或原创的儿童故事内容。对于优秀的作品，平台还将把它们制作成精美的故事绘本，供用户在线选购。
+    </view>
+    <view class='text-title'>二、平台意义</view>
+    <view class='ct'>
+    讲故事作为孩子家庭教育的重要手段之一，长期以来都受到家长们的重视。但传统的讲故事都是家长给孩子们讲，孩子们自己的故事却很少有人去关注。“逗迷讲故事”恰好提供了这么一个平台，把孩子们由讲故事的客体变成主体，由此可以训练和激发孩子们的思维、想象、表达等多方面的能力，并促进亲子关系的良性互动，呵护孩子的生命成长。在这一过程中，也将让感恩与分享，逐步成为孩子生命成长中的重要特质。
+    </view>
+    <view class='text-title'>三、线下服务</view>
+    <view class='ct'>
+    为了更好地服务于用户，平台还提供了相关的线下服务项目。
+    </view>
+    <view>
+    1、“逗迷讲故事”活动：服务对象主要为3-12岁的孩子。
+    </view>
+    <view>
+    2、“逗迷故事讲师”培训：服务对象为学生家长、小学和幼教老师、社工等。
+    </view>
+  </view>
+</view>

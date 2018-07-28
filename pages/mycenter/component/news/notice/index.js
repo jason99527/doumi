@@ -25,6 +25,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    gotohere:function(){
+      wx.navigateTo({
+        url: '/pages/mycenter/myNews/new/index?id='
+      })
+    }
   }
 })

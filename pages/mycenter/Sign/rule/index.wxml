@@ -1,0 +1,16 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='box'>
+  <view class='title'>
+    <image src='/images/myinfo/sign.png' class='Trophy-icon'></image>
+    <text class='text'>等级说明</text>
+  </view>
+
+  <view class='content'>
+    <view class='ct'>
+      用户每日在一定的时间段内准时签到，比如早上起床后<text style="color:#03a9f5">6:30-8:00</text>之间，晚上睡觉前<text style="color:#03a9f5">8:30-10:00</text>之间，可以获得橙果果的奖励。每签到1次，可以获得1个橙果果；但如果是在<text style="color:#03a9f5">前30分钟</text>内签到，比如早上7:00之前，晚上9:00之前，则可以获得2个橙果果。
+    </view>
+    <view class='ct' style='margin-top:50rpx'>
+      <text style="color:#03a9f5">连续</text>签到七天可额外获得<text style="color:#03a9f5">10个橙果果</text>。
+    </view>
+  </view>
+</view>

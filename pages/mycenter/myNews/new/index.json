@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#03A9F5",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的消息",
+  "usingComponents": {
+    "List": "/pages/common/component/funStroyList/index"
+  }
+}

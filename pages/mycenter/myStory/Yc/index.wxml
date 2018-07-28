@@ -1,0 +1,29 @@
+<!--pages/mycenter/component/news/@me/index.wxml-->
+<scroll-view class='myscroll' scroll-y style='height:{{height}}px' bindscrolltolower="ReachBottom">
+  <view class='notice-list' wx:for='{{list}}' wx:key='{{item}}'>
+    <image src='{{item.banner}}' class='header'></image>
+    <view class='cont-box'>
+        <view class='left_box'>
+          <view class='title'>{{item.title}}</view>
+          <view class='name-box'>
+            <image src='/images/Home/author.png' class='name-icon'></image>            
+            <view class='name'>{{item.name}}</view>
+          </view>
+        </view>
+        <view>
+          <view class='Release' wx:if="{{item.stype=='1'}}">
+            发布
+          </view>
+          <view class='text gray' wx:if="{{item.stype=='2'}}">
+            正在审核
+          </view>
+          <view class='text red' wx:if="{{item.stype=='3'}}">
+            已驳回
+          </view>
+          <view class='text green' wx:if="{{item.stype=='4'}}">
+            发布成功
+          </view>
+        </view>
+    </view>
+  </view>
+</scroll-view>

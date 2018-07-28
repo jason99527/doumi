@@ -1,6 +1,6 @@
 <!--pages/mycenter/component/news/notice/index.wxml-->
 <scroll-view class='myscroll' scroll-y style='height:{{height}}px'>
-  <view class='notice-list' wx:for="{{list}}" wx:key="item">
+  <view class='notice-list' wx:for="{{list}}" wx:key="item" bindtap='gotohere'>
     <image src='{{item.header}}' class='header'></image>
     <view class='cont-box'>
       <view class='title'>

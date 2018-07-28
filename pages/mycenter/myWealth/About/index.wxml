@@ -1,7 +1,7 @@
 <!--pages/childStore/index/index.wxml-->
 <view class='box'>
   <view class='title'>
-    <image src='/images/myinfo/apple-big.png' class='Trophy-icon'></image>
+    <image src='/images/myinfo/Apple-big.png' class='Trophy-icon'></image>
     <text class='text'>逗迷果果</text>
   </view>
 

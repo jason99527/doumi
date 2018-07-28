@@ -1,0 +1,164 @@
+<!--pages/childStore/index/index.wxml-->
+<view class='top'>
+  <view class='title'>
+    <view class='top-left'>
+      <image src='/images/myinfo/date.png' class='time-icon'></image>
+      <view class='timeNub'>{{date}}</view>
+    </view>
+    <view class='top-right' bindtap='gotohere' data-tab='1'>
+      <view class='icon-box-question'>
+        <image src='/images/myinfo/question.png' class='top-question'></image>
+      </view>
+      签到规则
+    </view>
+  </view>
+  <view class='center'>
+    <view class='day'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{1}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>签</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{1}}"></image>
+        1天
+      </view>
+    </view>
+    <view class='day q2'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{0}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>到</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{0}}"></image>
+        2天
+      </view>
+    </view>
+    <view class='day q2'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{0}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>七</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{0}}"></image>
+        3天
+      </view>
+    </view>
+    <view class='day q2'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{0}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>天</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{0}}"></image>
+        4天
+      </view>
+    </view>
+    <view class='day q2'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{0}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>有</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{0}}"></image>
+        5天
+      </view>
+    </view>
+    <view class='day q2'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{0}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>惊</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{0}}"></image>
+        6天
+      </view>
+    </view>
+    <view class='day q2'>
+      <view class='mountain'>
+        <image src='/images/myinfo/mountain2.png' class='mountain-icon' wx:if="{{0}}"></image>
+        <image src='/images/myinfo/mountain.png' class='mountain-icon' wx:else></image>
+        <view class='day-text'>喜</view>
+      </view>
+      <view class='day-nub'>
+        <image src='/images/myinfo/r.png' class='r-icon' wx:if="{{0}}"></image>
+        7天
+      </view>
+    </view>
+  </view>
+  <view class='bottom'>
+    <view class='red'>红果果</view>
+    <view class='apple'>
+      <image src='/images/myinfo/apple.png' class='apple-icon'></image>
+      <view class='icon-text'>50</view>
+    </view>
+     <view class='oran'>橙果果</view>
+      <view class='orange'>
+      <image src='/images/myinfo/orange.png' class='orange-icon'></image>
+      <view class='icon-text'>300</view>
+    </view>
+  </view>
+</view>
+
+<view class='list-my bt-border' bindtap="gotohere" data-tab="">
+  <view class='lfbox'>
+    <image src='/images/myinfo/fx.png' class='fx-icon'></image>
+  </view>
+  <view class='rtbox'>
+    <view class='centent'>
+      <view class='centent-top'>
+        <view class='title'>每日分享</view>
+        <view class='add color-o'>+1橙果果</view>
+      </view>
+      <view class='centent-bottom'>
+        上传自己讲的绘本故事录音，+1橙果果
+      </view>
+    </view>
+    <view class='button'>
+      去分享
+    </view>
+  </view>
+</view>
+<view class='list-my bt-border' bindtap="gotohere" data-tab="">
+  <view class='lfbox'>
+    <image src='/images/myinfo/up.png' class='fx-icon'></image>
+  </view>
+  <view class='rtbox'>
+    <view class='centent'>
+      <view class='centent-top'>
+        <view class='title'>上传绘本故事</view>
+        <view class='add color-r'>+1红果果</view>
+      </view>
+      <view class='centent-bottom'>
+        上传自己讲的绘本故事录音，+1红果果
+      </view>
+    </view>
+    <view class='button'>
+      去上传
+    </view>
+  </view>
+</view>
+<view class='list-my' bindtap="gotohere" data-tab="">
+  <view class='lfbox'>
+    <image src='/images/myinfo/up.png' class='fx-icon'></image>
+  </view>
+  <view class='rtbox'>
+    <view class='centent'>
+      <view class='centent-top'>
+        <view class='title'>上传原创故事</view>
+        <view class='add color-r'>+1红果果</view>
+      </view>
+      <view class='centent-bottom'>
+        上传自己讲的原创故事录音，+1红果果
+      </view>
+    </view>
+    <view class='button'>
+      去上传
+    </view>
+  </view>
+</view>

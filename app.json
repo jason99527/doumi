@@ -28,7 +28,12 @@
     "pages/mycenter/myWealth/myApple/Prize/info/index",
     "pages/mycenter/myWealth/myApple/Detailed/index",
     "pages/mycenter/myWealth/About/index",
-    "pages/mycenter/myWealth/level/index"
+    "pages/mycenter/myWealth/level/index",
+    "pages/mycenter/myStory/index",
+    "pages/mycenter/About/index",
+    "pages/mycenter/Sign/index",
+    "pages/mycenter/Sign/rule/index",
+    "pages/mycenter/myNews/new/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
