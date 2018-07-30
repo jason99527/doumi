@@ -21,7 +21,7 @@ App({
       duration: '∞',  //总时长
       offset:0,   //当前播放位置
       max:100,   //总长度
-      playing:true //是否正在播放ces
+      playing:true //是否正在播放
     },
     uploadStroyData:{ //准备提交的故事信息
       stroyType:null, //故事类型  绘本||原创 || 趣事
