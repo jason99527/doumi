@@ -59,6 +59,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.GetPlayState()
     //页面初始化数据
     this.setData({
       starttime: App.globalData.PlayItem.starttime,  //当前时长
@@ -70,10 +71,12 @@ Page({
     const _this = this;
     //如果当前没有播放歌曲
     if (App.globalData.PlayItem.src === ''){
-      App.globalData.PlayItem.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
-      App.innerAudioContext()
+        this.SwitchPlay('此时此刻', '许巍', 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000', 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46')
+        App.innerAudioContext()
     }else{
-      App.switchMusic('http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46')
+      // 切换播放源
+      // this.SwitchPlay('此时此刻123123', '许巍123123', 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000', 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46')
+      // App.switchMusic()
     }
     //监听播放器播放事件
     App.innerAudioContext.onTimeUpdate(function (res) {
@@ -91,7 +94,18 @@ Page({
         max: App.globalData.PlayItem.max //播放器总长度
       })
     });
-
+    //暂停
+    App.innerAudioContext.onPause(function(){
+      App.globalData.PlayItem.playing =  false
+      _this.setData({
+        playSwitch: false
+      })
+      console.log('暂停')
+    })
+    //停止
+    App.innerAudioContext.onStop(function () {
+      console.log('停止')
+    })
   },
 
   //将时长换算成时间格式
@@ -100,6 +114,24 @@ Page({
     const set = parseInt(time % 60) < 10 ? '0' + parseInt(time % 60) : parseInt(time % 60);
     const Time = min + ':' + set;
     return Time;
+  },
+
+  // 获取后台音频播放进度
+  GetPlayState: function(){
+    wx.getBackgroundAudioPlayerState({
+      success: function (res) {
+        App.globalData.PlayItem.playing = res.status === 1 ? true : false
+        console.log(res)
+      }
+    })
+  },
+
+  // 修改播放源全局变量
+  SwitchPlay: function (name, author, coverImgUrl, src){
+    App.globalData.PlayItem.name = name
+    App.globalData.PlayItem.author = author
+    App.globalData.PlayItem.coverImgUrl = coverImgUrl
+    App.globalData.PlayItem.src = src
   },
 
   //拖动进度条 松开
