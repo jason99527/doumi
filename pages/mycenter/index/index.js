@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    user_img: app.globalData.userInfo.user_img,
-    user_name: app.globalData.userInfo.user_name
+    user_img: '',
+    user_name: ''
   },
   TomyAttention: function (e) {
     if(e.target.dataset.type =='follow')
@@ -53,14 +53,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    if(app.globalData.openid!=''){
+      app.request({
+        url: "generator/wxapi/nav",
+        data: {
+          action: "getUserInfo",
+          openid: app.globalData.openid
+        },
+        success: function (res) {
+          that.setData({
+            user_img: res.data.info.header,
+            user_name: res.data.info.alias
+          })
+        }
+      })
+    }else{
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            app.request({
+              url: "generator/wxapi/nav",
+              data: {
+                action: "getOpenId",
+                code: res.code
+              },
+              success: function (res) {
+                app.request({
+                  url: "generator/wxapi/nav",
+                  data: {
+                    action: "getUserInfo",
+                    openid: res.data.openid
+                  },
+                  success: function (res) {
+                    that.setData({
+                      user_img: res.data.info.header,
+                      user_name: res.data.info.alias
+                    })
+                  }
+                })
+              }
+            })
+          }
+        }
+      })
+    }
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    
   },
 
   /**

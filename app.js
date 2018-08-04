@@ -5,13 +5,89 @@ App({
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
-
+    var that=this;
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //先获取用户openid 
+          that.request({
+            url:"generator/wxapi/nav",
+            data:{
+              action:"getOpenId",
+              code:res.code
+            },
+            success:function(res){
+              var data = res.data;
+              that.globalData.openid = data.openid; //全局注册openid
+              //根据用户openid 查找该用户是否注册过
+              that.request({
+                url: "generator/wxapi/nav",
+                data:{
+                  action:"getUserInfo",
+                  openid:data.openid
+                },
+                success:function(res){
+                  var data = res.data
+                  if(data.type){ //已有用户数据  更新头像及最后登录时间
+                    //更新全局数据
+                    that.globalData.id = data.info.id; //全局注册id
+                    that.globalData.user_img = data.info.header;
+                    that.globalData.user_name = data.info.alias;
+                    wx.getUserInfo({
+                      success:function(e){
+                        that.request({
+                          url:'generator/dmuser/update',
+                          data:{
+                            id: data.info.id,
+                            header: e.userInfo.avatarUrl == data.info.header ? null : e.userInfo.avatarUrl
+                          },
+                          method:'POST',
+                          success:function(){
+                            console.log('登录成功')
+                          }
+                        })
+                        
+                      },
+                      fail:function(e){
+                        //没有授权缓存 跳转至授权页面重新授权
+                        wx.redirectTo({
+                          url: '/pages/home/Authorization/index?data=true'
+                        })
+                      }
+                    })
+                  }else{            //该用户没有数据 跳转授权界面
+                    wx.redirectTo({
+                      url: '/pages/home/Authorization/index?data=false'
+                    })
+                  }
+                },
+                fail:function(){
+                  console.log('失败')
+                }
+              })
+            }
+          })
+          //获取用户名头像
+          // that.request({
+          //   data:{
+          //     action:'getUserInfo',
+          //     openid:'1'
+          //   },
+          //   success:function(res){
+          //     console.log(res)
+          //   }
+          // })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    });
   },
   globalData: {
-    userInfo:{
-      user_img: '/images/test_header.jpg',
-      user_name: '估计就是假的吧'
-    },
+    id:'', //用户id
+    openid:'', //用户openid
+    user_img: '', //用户头像地址
+    user_name: '', //用户名字
     PlayItem: {  //当前播放歌曲信息
       id: '10086',  //歌曲id
       name: '测试歌曲', //歌曲名称
@@ -126,5 +202,25 @@ App({
   resetRecorderManager:function(obj){
     this.recorderManager.stop()
     this.recorderManager.start(obj)
+  },
+  request:function(it){
+    var url = 'http://192.168.0.106:8080/renren-fast/'
+    wx.request({
+      url: url+it.url,//请求地址
+      data: it.data,
+      header: it.header?it.header:{//请求头
+        "Content-Type": "application/json;charset=UTF-8"
+      },
+      method: it.method,//get为默认方法/POST
+      success: it.success,//请求成功
+      fail: it.fail ? it.fail:function(){
+        console.log('请求失败')
+        wx.showToast({
+          title: '服务器连接失败',  //标题
+          icon: 'loading',  //图标，支持"success"、"loading"
+        })
+      },//请求失败
+      complete: it.complete//请求完成后执行的函数
+    })
   }
 })

@@ -33,7 +33,8 @@
     "pages/mycenter/About/index",
     "pages/mycenter/Sign/index",
     "pages/mycenter/Sign/rule/index",
-    "pages/mycenter/myNews/new/index"
+    "pages/mycenter/myNews/new/index",
+    "pages/home/Authorization/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
