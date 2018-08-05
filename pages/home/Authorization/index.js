@@ -15,9 +15,10 @@ Page({
       var that = this;
       if(that.data._is=="true"){
         //没有授权缓存的用户
-        app.request({
-          url: 'generator/dmuser/update',
+        wx.request({
+          url: app.globalData.domain,
           data: {
+            action:"updateLogin",
             id: app.globalData.id,
             header: e.detail.userInfo.avatarUrl
           },
@@ -35,16 +36,13 @@ Page({
         })
       }else{
         //插入登录的用户的相关信息到数据库
-        app.request({
-          url:'generator/dmuser/save',
+        wx.request({
+          url:app.globalData.domain,
           data:{
+            action:'saveUser',
             openid:app.globalData.openid,
             alias:e.detail.userInfo.nickName,
             header: e.detail.userInfo.avatarUrl,
-          },
-          method:'POST',
-          header:{
-            "Content-Type": "application/json;charset=UTF-8"
           },
           success:function(res){
             if(res.data.type){ 
