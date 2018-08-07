@@ -6,31 +6,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:null
+    username:''
   },
-  getUserName:function(){
+  getUserName:function(name){
     this.setData({
-      username: app.globalData.userInfo.user_name
+      username: name
     })
   },
   voteTitle:function(e){
     this.data.username = e.detail.value
   },
   updata:function(){
-    console.log('updata')
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "updateUserAlias",
+        openid: app.globalData.openid,
+        alias:this.data.username
+      },
+      success:function(res){
+        if (res.data.type) {
+          wx.showToast({
+            title: res.data.msg,
+          })
+          wx.navigateBack()
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      },
+      fail:function(){
+        wx.showToast({
+          title: '请求服务器失败',
+        })
+      }
+    })
   },
     /**
      *    * 生命周期函数--监听页面加载
      *    */
      
   onLoad: function (options) {
-      this.getUserName()
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.getUserName()
+    options.name?this.getUserName(options.name):null
   },
 
   /**

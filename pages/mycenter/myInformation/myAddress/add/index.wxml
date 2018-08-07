@@ -2,13 +2,13 @@
 <view class='box'>
   <view class='name'>收货人</view>
   <view class='input'>
-    <input class='create-title' placeholder="{{username}}" bindinput="voteTitle"></input>
+    <input class='create-title' placeholder="{{username}}" bindinput="votename" value='{{name}}'></input>
   </view>
 </view>
 <view class='box'>
   <view class='name'>联系电话</view>
   <view class='input'>
-    <input class='create-title' placeholder="{{username}}" bindinput="voteTitle"></input>
+    <input class='create-title' type="number" placeholder="{{username}}" bindinput="votephone" value='{{phone}}' maxlength="11"></input>
   </view>
 </view>
 <view class='box'>
@@ -24,7 +24,7 @@
 <view class='box'>
   <view class='name'>详细地址</view>
   <view class='input'>
-    <input class='create-title' placeholder="{{username}}" bindinput="voteTitle"></input>
+    <input class='create-title' placeholder="{{username}}" bindinput="voteaddress" value='{{address}}' ></input>
   </view>
 </view>
 <view class='button' bindtap='updata'>保存</view>

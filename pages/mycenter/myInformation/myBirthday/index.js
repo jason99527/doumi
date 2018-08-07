@@ -6,12 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    birthday:"1996-05-20"
+    birthday:'1970-01-01',
+    end: new Date().toLocaleDateString().split('/').join('-')
   },
-  getUserName:function(e){
-    // this.setData({
-    //   birthday: birthday
-    // })
+  getUserName: function (birthday){
+    this.setData({
+      birthday: birthday
+    })
   },
   voteTitle:function(e){
     this.setData({
@@ -19,20 +20,39 @@ Page({
      })
   },
   updata:function(){
-    console.log(this.data.birthday)
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "updateUserBirthday",
+        openid: app.globalData.openid,
+        bithday: this.data.birthday
+      },
+      success: function (res) {
+        if (res.data.type) {
+          wx.showToast({
+            title: res.data.msg,
+          })
+          wx.navigateBack()
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      },
+      fail: function () {
+        wx.showToast({
+          title: '请求服务器失败',
+        })
+      }
+    })
   },
-    /**
-     *    * 生命周期函数--监听页面加载
-     *    */
      
-  onLoad: function (options) {
-      this.getUserName()
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserName()
+    if(!(options.birthday=='未设置'))
+    this.getUserName(options.birthday)
   },
 
   /**

@@ -7,7 +7,7 @@
     <view class='lfcont'>昵称</view>
   </view>
   <view class='right'>
-    <view class='rtcont font-hidden'>取唐僧的经</view>
+    <view class='rtcont font-hidden'>{{userName}}</view>
     <image src='/images/more.png' class='rticon'></image>
   </view>
 </view>
@@ -20,7 +20,7 @@
     <view class='lfcont'>收货地址</view>
   </view>
   <view class='right'>
-    <view class='rtcont font-hidden'>广东省深圳市南山区爱南路朝北无限朝阳</view>
+    <view class='rtcont font-hidden'>{{Address}}</view>
     <image src='/images/more.png' class='rticon'></image>
   </view>
 </view>
@@ -33,7 +33,7 @@
     <view class='lfcont'>我的生日</view>
   </view>
   <view class='right'>
-    <view class='rtcont font-hidden'>1996-5-20</view>
+    <view class='rtcont font-hidden'>{{Birthday}}</view>
     <image src='/images/more.png' class='rticon'></image>
   </view>
 </view>

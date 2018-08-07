@@ -6,37 +6,162 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:null
+    list:null
   },
   getUserName:function(){
-    this.setData({
-      username: app.globalData.userInfo.user_name
-    })
+    
   },
   voteTitle:function(e){
     this.data.username = e.detail.value
   },
-  updata:function(){
-    console.log('updata')
+  updata:function(e){
+    var i = e.target.dataset.i;
+    var data = this.data.list[i];
+    var item = {
+      id : data.id,
+      name : data.name,
+      phone : data.phone,
+      province: data.province,
+      city: data.city,
+      area: data.area,
+      address: data.address
+    }
     wx.navigateTo({
-      url: '/pages/mycenter/myInformation/myAddress/add/index?id='
+      url: '/pages/mycenter/myInformation/myAddress/add/index?data=' + JSON.stringify(item)
     })
   },
-  delete:function(){
-    console.log('delete')
+  insert:function(){
+    wx.navigateTo({
+      url: '/pages/mycenter/myInformation/myAddress/add/index'
+    });
+  },
+  delete:function(e){
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '确认删除该地址',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.domain,
+            data: {
+              action: "delUserAddress",
+              id: e.target.dataset.id,
+              openid: app.globalData.openid,
+            },
+            success: function (res) {
+              if (res.data.type) {
+                that.onLoad()
+                } else {
+                wx.showModal({
+                  title: '提示',
+                  content: res.data.msg,
+                  showCancel: false,
+                  success: function (res) {
+                    if (res.confirm) {
+
+                    }
+                  }
+                })
+              }
+            }
+          })
+        }
+      }
+    })
   },
     /**
      *    * 生命周期函数--监听页面加载
      *    */
-     
-  onLoad: function (options) {
-      this.getUserName()
-  },
+  updatedefault:function(e){
+    var that = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "changeUserDefaultAddress",
+        openid: app.globalData.openid,
+        id: e.target.dataset.id
+      },
+      success: function (res) {
+        if (res.data.type) {
+          wx.showToast({
+            title: '设置成功',
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+        that.onLoad(); 
+      }
+    })
+  },  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getUserName()
+    var that = this;
+    if(app.globalData.openid != '') {
+      wx.request({
+        url: app.globalData.domain,
+        data: {
+          action: "getUserAddressList",
+          openid: app.globalData.openid
+        },
+        success: function (res) {
+          if (res.data.type) {
+            that.setData({
+              list: res.data.list
+            })
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+            })
+          }
+        }
+      })
+    } else {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              url: app.globalData.domain,
+              data: {
+                action: "getOpenId",
+                code: res.code
+              },
+              success: function (res) {
+                if (res.data.type) {
+                  wx.request({
+                    url: app.globalData.domain,
+                    data: {
+                      action: "getUserAddressList",
+                      openid: res.data.openid
+                    },
+                    success: function (res) {
+                      if (res.data.type) {
+                        that.setData({
+                          list:res.data.list
+                        })
+                      } else {
+                        wx.showToast({
+                          title: res.data.msg,
+                        })
+                      }
+                    }
+                  })
+                } else {
+                  wx.showToast({
+                    title: res.data.msg,
+                  })
+                }
+              }
+            })
+          }
+        }
+      })
+    }
+
   },
 
   /**
@@ -50,7 +175,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.onLoad()
   },
 
   /**

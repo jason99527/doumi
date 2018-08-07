@@ -87,7 +87,7 @@ App({
   },
   globalData: {
     id: '', //用户id
-    domain: "http://10.50.37.123:8881/renren-fast/generator/wxapi/nav",//路径
+    domain: "http://192.168.0.107:8881/renren-fast/generator/wxapi/nav",//路径
     openid: '', //用户openid
     user_img: '', //用户头像地址
     user_name: '', //用户名字
@@ -211,7 +211,7 @@ App({
     this.recorderManager.start(obj)
   },
   request: function (it) {
-    var url = 'http://10.50.37.123:8881/renren-fast/'
+    var url = 'http://192.168.0.107:8881/renren-fast/'
     wx.request({
       url: url + it.url,//请求地址
       data: it.data,
