@@ -211,7 +211,10 @@ App({
     this.recorderManager.start(obj)
   },
   request: function (it) {
+
     var url = 'http://192.168.0.107:8881/renren-fast/'
+
+
     wx.request({
       url: url + it.url,//请求地址
       data: it.data,
