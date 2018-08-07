@@ -1,11 +1,22 @@
 // pages/childStore/index/index.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    userData:{
+      live: 1,  //等级
+      live_Chinese:'loading...',  //等级
+      AllRedGuo:'loading...',   //累计获得红果果
+      AllOrangeGuo:'loading...',  //累计获得橙果果
+      upgrade:{   //升级数据
+        plan:0.62,  //当前进度
+        short:50    //还差几个红果果升级
+      }
+    }
   },
   gotohere:function(e){
     switch (e.currentTarget.dataset.tab){
@@ -46,14 +57,85 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.drawAir(0.65)
+
+    const openId = app.globalData.openid
+    if (openId === ''){
+      // app.onLaunch()
+      this._Authorization()
+    }else{
+      this._getData(openId)
+    }
+    
+  },
+
+  // 用户未登录
+  _Authorization:()=>{
+    wx.showModal({
+      title: '提示',
+      content: '请先登录',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          wx.redirectTo({
+            url: '/pages/home/Authorization/index?data=false'
+          })
+        }
+      }
+    })
+  },
+
+  // 用户已登入 获取数据
+  _getData: function(openId){
+    const _this = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "selectUserGuoGuo",
+        openid: openId
+      },
+      success: function (res) {
+        if (res.data.type) {
+          const info = res.data.info
+          const Live_Number = info.levelId === null ? 0 : info.levelId
+          const Live_Chinese = _this._NumberToChinese(Live_Number)
+          const [AllRedGuo, AllOrangeGuo] = [info.allRedGuo, info.allOrangeGuo]
+          //进度
+          const plan = 0.2
+          _this.drawAir(plan)
+
+          _this.setData({
+            userData: {
+              live: Live_Number,
+              live_Chinese: Live_Chinese,
+              AllRedGuo: AllRedGuo,
+              AllOrangeGuo: AllOrangeGuo,
+              upgrade: {
+                plan: plan,
+                short: 50
+              }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
+
+  // 根据数字返回中文
+  _NumberToChinese: num => {
+    const Array = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五']
+    return Array[num-1]
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.drawAir(0.65)
+    
   },
 
   /**

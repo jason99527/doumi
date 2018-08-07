@@ -2,10 +2,10 @@
 <view class='top'>
   <view class='title'>
     <view class='top-left'>
-      <text>我的等级: 四级</text>
+      <text>我的等级: {{userData.live_Chinese}}</text>
       <view class='level'>
         <image src='/images/myinfo/level.png' class='level-icon'></image>
-        <view class='level-number'>4</view>
+        <view class='level-number'> {{userData.live}}</view>
       </view>
     </view>
     <view class='top-right' bindtap='gotohere' data-tab='1'>
@@ -21,7 +21,7 @@
     <view>
        <view>
         <image src='/images/myinfo/apple.png' class='apple-icon'></image>
-          x 50
+          x {{userData.upgrade.short}}
       </view>
       <view>
         离升级还差
@@ -32,11 +32,11 @@
     累计获得 
     <view class='apple'>
       <image src='/images/myinfo/apple.png' class='apple-icon'></image>
-       x 50
+       x {{userData.AllRedGuo}}
     </view>
     <view class='orange'>
       <image src='/images/myinfo/orange.png' class='orange-icon'></image>
-      x 300
+      x {{userData.AllOrangeGuo}}
     </view>
   </view>
 </view>
