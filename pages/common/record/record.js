@@ -327,11 +327,19 @@ Page({
   //试听
   player:function(src){
     const _this = this
+    // 记录原播放数据
+    App.globalData.OldPlayItem.playSwitch = true
+    App.globalData.OldPlayItem.oldData = App.globalData.PlayItem
+    // 赋值新播放信息
+    App.globalData.PlayItem.name = this.data.UpLoadData.title
+    App.globalData.PlayItem.author = App.globalData.user_name
+    App.globalData.PlayItem.coverImgUrl = this.data.UpLoadData.image
+    App.globalData.PlayItem.src = src
+    
     if (App.globalData.PlayItem.src === '') {
-      App.globalData.PlayItem.src = src
       App.innerAudioContext()
     }else{
-      App.switchMusic(src)
+      App.switchMusic()
     }
   },
   //转换格式
