@@ -97,12 +97,11 @@ Page({
       success: function (res) {
         if (res.data.type) {
           const info = res.data.info
-          const Live_Number = info.levelId === null ? 0 : info.levelId
-          const Live_Chinese = _this._NumberToChinese(Live_Number)
+          const Live_Number = res.data.level.level
+          const Live_Chinese = res.data.level.levelname
           const [AllRedGuo, AllOrangeGuo] = [info.allRedGuo, info.allOrangeGuo]
           //进度
-          const plan = 0.2
-          _this.drawAir(plan)
+          _this.drawAir(res.data.level.Percentage)
 
           _this.setData({
             userData: {
@@ -111,8 +110,8 @@ Page({
               AllRedGuo: AllRedGuo,
               AllOrangeGuo: AllOrangeGuo,
               upgrade: {
-                plan: plan,
-                short: 50
+                plan: res.data.level.Percentage,
+                short: res.data.level.disparity
               }
             }
           })
@@ -130,7 +129,10 @@ Page({
     const Array = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五']
     return Array[num-1]
   },
+  //计算等级
+  live: function (AllRedGuo, AllOrangeGuo){
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

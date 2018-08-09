@@ -3,11 +3,11 @@
   <view class='top-left'>
     <view class='apple'>
       <image src='/images/myinfo/apple.png' class='apple-icon'></image>
-        x 50
+        x {{userData.RedGuo}}
     </view>
     <view class='orange'>
         <image src='/images/myinfo/orange.png' class='orange-icon'></image>
-        x 300
+        x {{userData.OrangeGuo}}
     </view>
   </view>
   <view class='top-right' bindtap='gotohere' data-tab='1'>
