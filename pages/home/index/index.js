@@ -1,4 +1,6 @@
 // pages/home/index/index.js
+const app = getApp()
+
 Page({
 
   /**
@@ -98,9 +100,14 @@ Page({
   },
   //跳转搜索页
   OpenInput:function(){
-    wx.navigateTo({
-      url: './search/search'
-    })
+    const openId = app.globalData.openid
+    if (openId === '') {
+      this._Authorization()
+    } else {
+      wx.navigateTo({
+        url: './search/search'
+      })
+    }
   },
 
   moreNew:function(){
@@ -115,8 +122,29 @@ Page({
   },
 
   ToCreate:function(){
-    wx.navigateTo({
-      url: './CreateType/CreateType'
+    const openId = app.globalData.openid
+    if (openId === '') {
+      this._Authorization()
+    } else {
+      wx.navigateTo({
+        url: './CreateType/CreateType'
+      })
+    }
+  },
+
+  // 用户未登录
+  _Authorization: () => {
+    wx.showModal({
+      title: '提示',
+      content: '请先登录',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          wx.redirectTo({
+            url: '/pages/home/Authorization/index?data=false'
+          })
+        }
+      }
     })
   },
   /**

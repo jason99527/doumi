@@ -1,4 +1,6 @@
 // pages/home/index/search/search.js
+const app = getApp()
+
 Page({
 
   /**
@@ -6,14 +8,17 @@ Page({
    */
   data: {
     value:'',
-    scrollHeight:0
+    Vswitch:false,
+    scrollHeight:0,
+    hotSearchList:[],
+    userSearchList:[],
+    selectList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     const _this = this;
     if (wx.createSelectorQuery){
       //获取头部输入框高度
@@ -34,18 +39,88 @@ Page({
       })
     }
     
+    this._getData()
   },
-
-  //输入框 输入
+  //获取搜索词汇
+  _getData:function(){
+    const _this = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "getSearchList",
+        openid: app.globalData.openid
+      },
+      success: function (res) {
+        if (res.data.type) {
+          _this.setData({
+            hotSearchList: res.data.hotSearchList,
+            userSearchList: res.data.userSearchList
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
+  // 输入框 输入
+  setValue:function(e){
+    if (e.detail.value === ''){
+      this.setData({
+        value: ''
+      })
+    }
+  },
+  //输入框 完成按钮
   input:function(e){
-    // console.log(e.detail.value)
     this.setData({
       value: e.detail.value
     })
+    if (e.detail.value !== ''){
+      this.getSelectData(e.detail.value)
+      console.log('搜索结果差作者名称 标签')
+    }
   },
-  //返回首页按钮
-  BackIndex:function(){
-    wx.navigateBack({})
+  // <!--返回首页按钮--> 改为搜索按钮
+  BackIndex:function(e){
+    this.setData({
+      value: e.detail.value.text
+    })
+    if (e.detail.value.text !== ''){
+      this.getSelectData(e.detail.value.text)
+    }
+  },
+  // 点击标签
+  clickSelect:function(e){
+    const text = e.currentTarget.dataset.text
+    this.setData({
+      value: text
+    })
+    this.getSelectData(text)
+  },
+  // 发送搜索请求
+  getSelectData:function(name){
+    const that = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "searchStory",
+        openid: app.globalData.openid,
+        name: name
+      },
+      success: function (res) {
+        if (res.data.type) {
+          that.setData({
+            selectList: res.data.list
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -115,7 +115,8 @@ App({
       src: null,  //录音文件
       storyLength: null, // 故事长度123456
       text: null, //作者感想
-      time: null //上传时间
+      time: null, //上传时间
+      author: null
     }
   },
   //音乐播放器

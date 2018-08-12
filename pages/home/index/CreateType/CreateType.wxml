@@ -1,13 +1,13 @@
 <!--pages/home/index/CreateType/CreateType.wxml-->
 <view class="content">
-  <view class="content-view" data-type="绘本" bindtap='CreateStroyData'>
+  <view class="content-view" data-type="1" bindtap='CreateStroyData'>
     <image src="../../../../images/Home/create/banner1.png" mode='widthFix'></image>
     <view class="button">
       <image src="../../../../images/Home/create/icon1.png"></image>
       <text>绘本故事</text>
     </view>
   </view>
-  <view class="content-view" data-type="原创" bindtap='CreateStroyData'>
+  <view class="content-view" data-type="0" bindtap='CreateStroyData'>
     <image src="../../../../images/Home/create/banner2.png" mode='widthFix'></image>
     <view class="button">
       <image src="../../../../images/Home/create/icon1.png"></image>

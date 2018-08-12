@@ -192,6 +192,7 @@ Page({
                     _this.setData({
                       recordSrc: res.tempFilePath
                     })
+                  console.log(_this.data.recordSrc)
                     //调用音频播放接口
                     _this.player(_this.data.recordSrc)
                     //显示时长
@@ -239,8 +240,10 @@ Page({
           return;
         }else{
           App.globalData.uploadStroyData.src = this.data.recordSrc
-          App.globalData.uploadStroyData.storyLength = this.data.Time - 1
-
+          App.globalData.uploadStroyData.storyLength = this.data.Time
+          // App.globalData.uploadStroyData.time = new Date()
+          // const utils = require('../../../utils/util.js')
+          // console.log(utils.formatTime(new Date()))
           //如果是从童言无忌页面跳转进来的则需要上传图片
           if (this.data.from === 'childStore'){
             //如果还没有上传图片
@@ -327,16 +330,21 @@ Page({
   //试听
   player:function(src){
     const _this = this
-    // 记录原播放数据
-    App.globalData.OldPlayItem.playSwitch = true
-    App.globalData.OldPlayItem.oldData = App.globalData.PlayItem
+    let _switch
+    if (App.globalData.PlayItem.src === '') {
+      // 记录原播放数据
+      App.globalData.OldPlayItem.playSwitch = true
+      App.globalData.OldPlayItem.oldData = App.globalData.PlayItem
+      _switch = true
+    }
+    
     // 赋值新播放信息
     App.globalData.PlayItem.name = this.data.UpLoadData.title
     App.globalData.PlayItem.author = App.globalData.user_name
     App.globalData.PlayItem.coverImgUrl = this.data.UpLoadData.image
     App.globalData.PlayItem.src = src
     
-    if (App.globalData.PlayItem.src === '') {
+    if (_switch) {
       App.innerAudioContext()
     }else{
       App.switchMusic()
