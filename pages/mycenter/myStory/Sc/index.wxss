@@ -31,7 +31,10 @@
 .title{
   color: #333333;
   font-size:32rpx;
-  margin-right: 26rpx
+  margin-right: 26rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .name{
   font-size:28rpx;
@@ -112,7 +115,7 @@
   z-index: 99
 }
 .type-list{
-  width:88rpx;
+  min-width:88rpx;
   height:44rpx;
   background:#DFF4FC;
   color:#6295CF;
@@ -121,4 +124,9 @@
   line-height:44rpx;
   border-radius:22rpx;
   margin-right:10rpx
+}
+.display{
+  text-align: center;
+  padding-top: 50rpx;
+  font-size:24rpx
 }

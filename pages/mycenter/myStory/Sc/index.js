@@ -6,7 +6,21 @@ Component({
   properties: {
     list: {
       type: null,
-      value: null
+      value: null,
+      observer:function(e){
+        if(e!=''){
+          [].forEach.call(e,(v,i)=>{
+            v.tagName = v.tagName.split(";")
+            v.tagName.splice(-1);
+            if(v.tagName.length>3){
+              v.tagName.splice(3, v.tagNmae.length)
+            }
+          })
+          this.setData({
+            list:e
+          })
+        }
+      }
     },
     height: {
       type: null,

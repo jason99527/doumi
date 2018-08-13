@@ -1,26 +1,27 @@
 <!--pages/mycenter/component/news/@me/index.wxml-->
 <scroll-view class='myscroll' scroll-y style='height:{{height}}px' bindscrolltolower="ReachBottom">
-  <view class='notice-list' wx:for='{{list}}' wx:key='{{item}}'>
-    <image src='{{item.banner}}' class='header'></image>
+  <view class="display" wx:if='{{list==""}}'>暂无数据</view>
+  <view class='notice-list' wx:for='{{list}}' wx:key='{{item}}' data-pid='item.id'>
+    <image src='{{item.imgPath}}' class='header'></image>
     <view class='cont-box'>
         <view class='left_box'>
-          <view class='title'>{{item.title}}</view>
+          <view class='title'>{{item.name}}</view>
           <view class='name-box'>
             <image src='/images/Home/author.png' class='name-icon'></image>            
-            <view class='name'>{{item.name}}</view>
+            <view class='name'>{{item.alias}}</view>
           </view>
         </view>
         <view>
-          <view class='Release' wx:if="{{item.stype=='1'}}">
+          <view class='Release' wx:if="{{item.state=='3'}}">
             发布
           </view>
-          <view class='text gray' wx:if="{{item.stype=='2'}}">
+          <view class='text gray' wx:if="{{item.state=='0'}}">
             正在审核
           </view>
-          <view class='text red' wx:if="{{item.stype=='3'}}">
+          <view class='text red' wx:if="{{item.state=='2'}}">
             已驳回
           </view>
-          <view class='text green' wx:if="{{item.stype=='4'}}">
+          <view class='text green' wx:if="{{item.state=='1'}}">
             发布成功
           </view>
         </view>

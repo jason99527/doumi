@@ -1,4 +1,5 @@
 // pages/childStore/index/index.js
+var app = getApp()
 Page({
 
   /**
@@ -7,70 +8,9 @@ Page({
   data: {
     titleHeight:'',
     currentTab: 0,
-    yclist:[{
-        banner:'/images/Home/banner.png',
-        title:'宝宝第一次说话',
-        name:'宝妈',
-        stype:'1'
-      },{
-        banner:'/images/Home/banner.png',
-        title:'宝宝第一次说话',
-        name:'宝妈',
-        stype:'2'
-      },{
-        banner:'/images/Home/banner.png',
-        title:'宝宝第一次说话',
-        name:'宝妈',
-        stype:'3'
-      },{
-        banner:'/images/Home/banner.png',
-        title:'宝宝第一次说话',
-        name:'宝妈',
-        stype:'4'
-      }],
-    hblist: [{
-        banner: '/images/Home/banner.png',
-        title: '宝宝第一次说话',
-        name: '宝妈',
-        stype: '4'
-      }, {
-        banner: '/images/Home/banner.png',
-        title: '宝宝第一次说话',
-        name: '宝妈',
-        stype: '3'
-      }, {
-        banner: '/images/Home/banner.png',
-        title: '宝宝第一次说话',
-        name: '宝妈',
-        stype: '2'
-      }, {
-        banner: '/images/Home/banner.png',
-        title: '宝宝第一次说话',
-        name: '宝妈',
-        stype: '1'
-      }],
-    sclist:[{
-          banner: '/images/Home/banner.png',
-          title: '宝宝第一次说话',
-          name: '宝妈',
-          stype: '2',
-          label: ["可爱","童话"]
-        },
-        {
-          banner: '/images/Home/banner.png',
-          title: '宝宝第一次说话',
-          name: '宝妈',
-          stype: '1',
-          label:["可爱","动物","童话"]
-        },
-        {
-          banner: '/images/Home/banner.png',
-          title: '宝宝第一次说话',
-          name: '宝妈',
-          stype: '1',
-          label: ["童话"]
-        }
-      ]
+    yclist:[],
+    hblist: [],
+    sclist:[]
   },
   catchTouchMove:function (res) {
     return false
@@ -78,8 +18,151 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  getstory:function(_type){
+    var that = this;
+    if (app.globalData.openid != '') {
+      wx.request({
+        url: app.globalData.domain,
+        data: {
+          action: "selectUserStory",
+          openid: app.globalData.openid,
+          storyType: _type
+        },
+        success: function (res) {
+          if (res.data.type) {
+            if (_type) {
+              that.setData({
+                hblist: res.data.list
+              })
+            } else {
+              that.setData({
+                yclist: res.data.list
+              })
+            }
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+            })
+          }
+        }
+      })
+    } else {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              url: app.globalData.domain,
+              data: {
+                action: "getOpenId",
+                code: res.code
+              },
+              success: function (res) {
+                if (res.data.type) {
+                  wx.request({
+                    url: app.globalData.domain,
+                    data: {
+                      action: "selectUserStory",
+                      openid: res.data.openid,
+                      storyType: _type
+                    },
+                    success: function (res) {
+                      if (res.data.type) {
+                        if (_type){
+                          that.setData({
+                            hblist :  res.data.list
+                          })
+                        }else{
+                          that.setData({
+                            yclist: res.data.list
+                          })
+                        }
+                        
+                      } else {
+                        wx.showToast({
+                          title: res.data.msg,
+                        })
+                      }
+                    }
+                  })
+                } else {
+                  wx.showToast({
+                    title: res.data.msg,
+                  })
+                }
+              }
+            })
+          }
+        }
+      })
+    }
+  },
+  getCollection: function () {
+    var that = this;
+    if (app.globalData.openid != '') {
+      wx.request({
+        url: app.globalData.domain,
+        data: {
+          action: "selectUserCollectStory",
+          openid: app.globalData.openid,
+        },
+        success: function (res) {
+          if (res.data.type) {
+              that.setData({
+                sclist: res.data.list
+              })
+          } else {
+            wx.showToast({
+              title: res.data.msg,
+            })
+          }
+        }
+      })
+    } else {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.request({
+              url: app.globalData.domain,
+              data: {
+                action: "getOpenId",
+                code: res.code
+              },
+              success: function (res) {
+                if (res.data.type) {
+                  wx.request({
+                    url: app.globalData.domain,
+                    data: {
+                      action: "selectUserCollectStory",
+                      openid: res.data.openid,
+                    },
+                    success: function (res) {
+                      if (res.data.type) {
+                          that.setData({
+                            sclist: res.data.list
+                          })
+                      } else {
+                        wx.showToast({
+                          title: res.data.msg,
+                        })
+                      }
+                    }
+                  })
+                } else {
+                  wx.showToast({
+                    title: res.data.msg,
+                  })
+                }
+              }
+            })
+          }
+        }
+      })
+    }
+  },
   onLoad: function (options) {
-  
+    this.getstory(0)
+    this.getstory(1)
+    this.getCollection()
   },
 
   /**
