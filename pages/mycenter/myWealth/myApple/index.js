@@ -1,10 +1,16 @@
 // pages/childStore/index/index.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userData: {
+      RedGuo: 'loading...',
+      OrangeGuo: 'loading...'
+    },
     list:[{
       pid:"0",
       img_src:'/images/myinfo/textbanner.png',
@@ -41,9 +47,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getData()
   },
 
+  // 获取数据
+  getData:function() {
+    const _this = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "selectUserGuoGuo",
+        openid: app.globalData.openid
+      },
+      success: function (res) {
+        if (res.data.type) {
+          const info = res.data.info
+          const [RedGuo, OrangeGuo] = [info.redGuo, info.orangeGuo]
+          //奖品数据
+          const listData = res.data.prizeList
+          console.log(`奖品数据：${listData}`)
+
+          _this.setData({
+            userData: {
+              RedGuo: RedGuo,
+              OrangeGuo: OrangeGuo
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

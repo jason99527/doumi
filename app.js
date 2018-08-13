@@ -103,6 +103,10 @@ App({
       max: 100,   //总长度
       playing: true //是否正在播放  
     },
+    OldPlayItem:{ //播放接口被夺取(正在播放音乐 => 播放录制好的趣事/播放回复录音)
+      playSwitch: false,   //接口是否被夺取
+      oldData: {}   //用于记录原播放歌曲信息
+    },
     uploadStroyData: { //准备提交的故事信息
       stroyType: null, //故事类型  绘本||原创 || 趣事
       coverImg: null,  //故事封面
@@ -111,7 +115,8 @@ App({
       src: null,  //录音文件
       storyLength: null, // 故事长度123456
       text: null, //作者感想
-      time: null //上传时间
+      time: null, //上传时间
+      author: null
     }
   },
   //音乐播放器
