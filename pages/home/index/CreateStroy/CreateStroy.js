@@ -8,21 +8,7 @@ Page({
    */
   data: {
     num:0,
-    label:[
-      { tab: true, text: '可爱' },
-      { tab: false, text: '玄幻' },
-      { tab: false, text: '童话' },
-      { tab: false, text: '公主' },
-      { tab: false, text: '惊悚' },
-      { tab: false, text: '动物' },
-      { tab: false, text: '修仙' },
-      { tab: false, text: '修仙' },
-      { tab: false, text: '修仙' },
-      { tab: false, text: '修仙' },
-      { tab: false, text: '修仙' },
-      { tab: false, text: '修仙' },
-      { tab: false, text: '修仙' }
-    ],
+    label:[],
     Image:null, //上传的图片
     name:null, //故事名称
     type:null //故事类型
@@ -33,6 +19,46 @@ Page({
    */
   onLoad: function (options) {
     this.data.type = options.type
+    this.getSelectData()
+  },
+  // 发送请求获取标签
+  getSelectData: function () {
+    const that = this
+    wx.request({
+      url: App.globalData.domain,
+      data: {
+        action: "home55",
+        openid: App.globalData.openid
+      },
+      success: function (res) {
+        if (res.data.type) {
+          that.setData({
+            label: that.processData(res.data.list)
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
+  // 二次处理接口数据
+  processData: function (json) {
+    let array = []
+    let tab = 0
+    for (let i in json) {
+      if (json[i].isDel)
+        continue
+      tab ++
+      const obj = {}
+      obj.tab = tab === 1 ? true : false
+      obj.id = json[i].id
+      obj.text = json[i].name
+      array.push(obj)
+    }
+    console.log(array)
+    return array
   },
   //选择标签
   tab:function(e){

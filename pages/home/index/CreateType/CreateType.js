@@ -1,20 +1,20 @@
 // pages/home/index/CreateType/CreateType.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    list:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    
   },
-
   CreateStroyData: function(e){
     wx.navigateTo({
       url: `../CreateStroy/CreateStroy?type=${e.currentTarget.dataset.type}`
