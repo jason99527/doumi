@@ -130,6 +130,7 @@
   display:block;
   max-width:calc(100% - 21rpx);
   float:left;
+  height: 25rpx
 }
 .ItemLabel{
   width: 50%;

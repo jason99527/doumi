@@ -47,7 +47,7 @@
           <text class="text-overflow result-content-name">{{item.name}}</text>
           <view>
             <image src="../../../../images/Home/author.png" ></image>
-            <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+            <text class="text-overflow result-content-author">{{item.alias}}</text>
           </view>
         </view>
         <view>

@@ -129,11 +129,11 @@ Page({
     for (let i in json){
       const obj = {}
       obj.id = json[i].id
-      obj.typeName = json[i].typeName !== '' ? json[i].typeName.split(',') : ''
+      obj.typeName = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
       obj.imgPath = json[i].imgPath
-      obj.type = json[i].type
+      obj.type = json[i].storyType
       obj.name = json[i].name
-      obj.author = ''
+      obj.alias = json[i].alias
       obj.audioSrc = json[i].audioSrc
       array.push(obj)
     }
