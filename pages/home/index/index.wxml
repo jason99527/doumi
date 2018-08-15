@@ -17,7 +17,7 @@
       </view>
     </view>
     <view class="StoryBottom">
-      <view class="StroyItem"  wx:for="{{hotList}}" bindtap='ToPlay'>
+      <view class="StroyItem"  wx:for="{{hotList}}" bindtap='ToPlay' data-Id="{{item.id}}">
         <view class="Item-Img"><image src="{{item.homeImg}}" mode="aspectFill"></image></view>
         <view class="StroyItemBottom">
           <view class="ItemText">
@@ -46,11 +46,11 @@
       </view>
     </view>
     <view class="StoryBottom">
-      <view class="StroyItem"  wx:for="{{newList}}" bindtap='ToPlay'>
+      <view class="StroyItem"  wx:for="{{newList}}" bindtap='ToPlay' data-Id="{{item.id}}">
         <view class="Item-Img"><image src="{{item.homeImg}}" mode="aspectFill"></image></view>
         <view class="StroyItemBottom">
           <view class="ItemText">
-            <text class="TextOverflow">{{item.title}}</text>
+            <text class="TextOverflow">{{item.name}}</text>
             <view>
               <image src="../../../images/Home/author.png" mode="widthFix"></image>
               <text class="TextOverflow">{{item.author}}</text>

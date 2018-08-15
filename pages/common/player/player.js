@@ -10,6 +10,7 @@ Page({
     playSwitch:true, //是否播放
     starttime: '00:00', //开始时间
     duration: '05:00',  //总时长
+    playStop:false,
     playNum:0,//当前播放歌曲Index
     ListSwitch:false, //是否点开播放记录
     animateSWitch: true, //是否修改动画层z-index
@@ -21,7 +22,8 @@ Page({
       id:'10086',
       name:'测试歌曲',
       author:'歌曲作者',
-      src: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46'
+      img:'',
+      src: ''
     },
     playRecord:[  //播放记录
       {
@@ -59,7 +61,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.GetPlayState()
+    this.getMp3Data(options.id)
+    if (this.data.playStop){
+      console.log('停止播放')
+    }
     //页面初始化数据
     this.setData({
       starttime: App.globalData.PlayItem.starttime,  //当前时长
@@ -69,16 +74,69 @@ Page({
       playSwitch: App.globalData.PlayItem.playing //是否在播放
     })
     const _this = this;
-    //如果当前没有播放歌曲
-    if (!App.globalData.OldPlayItem.playSwitch){
-        this.SwitchPlay('此时此刻', '许巍', 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000', 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46')
+    // //如果当前没有播放歌曲
+    // if (!App.globalData.OldPlayItem.playSwitch){
+    //     this.SwitchPlay('此时此刻', '许巍', 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000', 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46')
+    //     App.innerAudioContext()
+    // }else{
+    //   // 切换播放源
+    //   App.globalData.PlayItem = App.globalData.OldPlayItem.oldData
+    //   App.switchMusic()
+    // }
+    // console.log(App.globalData.OldPlayItem.oldData, App.globalData.PlayItem.src)
+  },
+  // 获取歌曲信息
+  getMp3Data:function(id){
+    const _this = this
+    wx.request({
+      url: App.globalData.domain,
+      data: {
+        action: "selectStoryById",
+        openid: App.globalData.openid,
+        storyId:id
+      },
+      success: function (res) {
+        if (res.data.type) {
+          _this.JudegMp3(res.data.info)
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
+  // 判断是否需要切换歌曲信息
+  JudegMp3:function(info){
+    // 如果是同一首歌歌
+    // if (App.globalData.PlayItem.src === info.audioSrc){
+    //   return
+    // }else {
+      if (App.globalData.PlayItem.src === ''){
+        this.SwitchPlay(info.name, info.alias, info.imgPath, info.audioSrc)
         App.innerAudioContext()
-    }else{
-      // 切换播放源
-      App.globalData.PlayItem = App.globalData.OldPlayItem.oldData
-      App.switchMusic()
-    }
-    console.log(App.globalData.OldPlayItem.oldData, App.globalData.PlayItem.src)
+        this.innerAudioContext()
+      }else {
+        this.SwitchPlay(info.name, info.alias, info.imgPath, info.audioSrc)
+        App.switchMusic()
+      }
+      this.setData({
+        PlayItem: {  //当前播放歌曲信息
+          id: info.id,
+          name: info.name,
+          author: info.alias,
+          img: info.imgPath,
+          src: info.audioSrc
+        }
+      })
+      this.GetPlayState()
+      // App.globalData.PlayItem.src === '' ? (App.innerAudioContext(), this.innerAudioContext()) : ''
+      console.log(App.globalData.PlayItem)
+    // }
+  },
+  // 给播放接口重新绑定相关事件
+  innerAudioContext:function(){
+    const _this = this
     //监听播放器播放事件
     App.innerAudioContext.onTimeUpdate(function (res) {
       //修改当前页面数据 同时修改全局歌曲信息
@@ -96,8 +154,8 @@ Page({
       })
     });
     //暂停
-    App.innerAudioContext.onPause(function(){
-      App.globalData.PlayItem.playing =  false
+    App.innerAudioContext.onPause(function () {
+      App.globalData.PlayItem.playing = false
       _this.setData({
         playSwitch: false
       })
@@ -105,7 +163,9 @@ Page({
     })
     //停止
     App.innerAudioContext.onStop(function () {
-      console.log('停止')
+      _this.setData({
+        playStop:true
+      })
     })
   },
 
@@ -122,6 +182,9 @@ Page({
     wx.getBackgroundAudioPlayerState({
       success: function (res) {
         App.globalData.PlayItem.playing = res.status === 1 ? true : false
+        console.log(res)
+      },
+      fail:function(res){
         console.log(res)
       }
     })

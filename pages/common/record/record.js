@@ -1,5 +1,7 @@
 // pages/common/record/record.js
 const App = getApp()
+const upload = require('../../../utils/upload.js')
+const uploadData = upload.upLoadData
 
 Page({
 
@@ -231,7 +233,7 @@ Page({
             time: 0
           }
         })
-        console.log(this.data.Time)
+        // console.log(this.data.Time)
         if(this.data.Time  < 20){
           wx.showModal({
             title: '提示',
@@ -239,71 +241,80 @@ Page({
           })
           return;
         }else{
-          //stop 后才能得到音频地址
           const _this = this
-          this.recorderManager.stop()
-          this.recorderManager.onStop(res => {
-            _this.setData({
-              recordSrc: res.tempFilePath
+          if (this.data.recordSrc === null){
+            //stop 后才能得到音频地址
+            this.recorderManager.stop()
+            this.recorderManager.onStop(res => {
+              _this.successBtn(res.tempFilePath)
             })
-            console.log(_this.data.recordSrc)
-            App.globalData.uploadStroyData.src = _this.data.recordSrc
-            App.globalData.uploadStroyData.storyLength = _this.data.Time
-            //如果是从童言无忌页面跳转进来的则需要上传图片
-            if (_this.data.from === 'childStore') {
-              //如果还没有上传图片
-              if (_this.data.Image === null) {
-                _this.alert('请上传图片封面')
-                return;
-              }
-              App.globalData.uploadStroyData.stroyType = '趣事'
-              App.globalData.uploadStroyData.coverImg = _this.data.Image
-
-              wx.navigateTo({
-                url: '/pages/childStore/share/share'
-              })
-            } else {
-              // wx.showToast({
-              //   title: '上传成功',
-              //   duration: 2000
-              // })
-              _this.uploadData()
-            }
-            console.log(App.globalData.uploadStroyData)
-          })
+          }else {
+            this.successBtn(this.data.recordSrc)
+          }
         }
         break
       }
   },
+  successBtn:function(url){
+    this.setData({
+      recordSrc: url
+    })
+    console.log(this.data.recordSrc)
+    App.globalData.uploadStroyData.src = this.data.recordSrc
+    App.globalData.uploadStroyData.storyLength = this.data.Time
+    //如果是从童言无忌页面跳转进来的则需要上传图片
+    if (this.data.from === 'childStore') {
+      //如果还没有上传图片
+      if (this.data.Image === null) {
+        this.alert('请上传图片封面')
+        return;
+      }
+      App.globalData.uploadStroyData.stroyType = '趣事'
+      App.globalData.uploadStroyData.coverImg = this.data.Image
+
+      wx.navigateTo({
+        url: '/pages/childStore/share/share'
+      })
+    } else {
+      this.uploadData()
+    }
+    console.log(App.globalData.uploadStroyData)
+  },
   // 提交图片信息
   uploadData:function(){
+    // 制作提交链接
     const _this = this
     const OldUrl = App.globalData.domain
     const Ary = OldUrl.split('/')
     Ary[Ary.length - 1] = 'createStory'
     const Url = Ary.join('/') 
-    const URL = Url + `?openid=${App.globalData.openid}&label=${App.globalData.uploadStroyData.label}&name=${App.globalData.uploadStroyData.name}&storyType=${App.globalData.uploadStroyData.stroyType}`
-    console.log(Url, '\n', URL, '\n',App.globalData.uploadStroyData.label)
-    wx.uploadFile({
-      url: Url, 
-      filePath: App.globalData.uploadStroyData.coverImg,
-      name: 'coverImg',
-      formData: {
+    // 上传接口附带参数
+    const formImgData = {
         'coverImg': App.globalData.uploadStroyData.coverImg,
         'openid': App.globalData.openid,
         'label': App.globalData.uploadStroyData.label,
         'storyType': App.globalData.uploadStroyData.stroyType,
         'name': App.globalData.uploadStroyData.name
-      },
-      success: function (res) {
-        var data = res.data
-        console.log(res)
-        _this.uploadMp3(_this.getStoryId(res.data))
-        //do something
-      },
-      fail:function(res){
-        console.log('error:'+res)
-      }
+    }
+    // 调用wx接口上传图片级相关信息
+    uploadData('正在上传图片...', Url, App.globalData.uploadStroyData.coverImg, 'coverImg', formImgData).then(res=>{
+      // console.log(res)
+        wx.hideLoading()
+        if (res.statusCode !== 200 ){ //上传不成功
+          console.log('图片上传接口报错')
+          return
+        }
+        // console.log('ok')
+        // 如果图片上传成功则继续上传音频 传入故事ID
+      _this.uploadMp3(_this.getStoryId(res.data))
+    }).catch(res=>{ //接口调用错误
+      console.log('error:')
+      console.log(res)
+      wx.showToast({
+        title: '上传出错请重新上传',
+        icon: 'none',
+        duration: 2000
+      })
     })
   },
   //提取storyId
@@ -314,40 +325,49 @@ Page({
     const c = b[1].split(':')
     return parseInt(c[0])
   },
-
-  // 提交音频素材
-  uploadMp3: function (Id) {
+  // 上传音频
+  uploadMp3:function(Id){
     const _this = this
     const OldUrl = App.globalData.domain
     const Ary = OldUrl.split('/')
     Ary[Ary.length - 1] = 'bindStoryAudio'
     const Url = Ary.join('/') 
-    console.log(Id, '\n', Url, '\n', App.globalData.uploadStroyData.src)
 
-    const uploadTask = wx.uploadFile({
-      url: Url,
-      filePath: App.globalData.uploadStroyData.src,
-      name: 'src',
-      formData: {
-        'src': App.globalData.uploadStroyData.src,
-        'openid': App.globalData.openid,
-        'id': Id
-      },
-      success: function (res) {
-        var data = res.data
-        console.log(res)
-        //do something
-      },
-      fail: function (res) {
-        console.log('error:')
-        console.log(res)
-      }
-    })
-    
-    uploadTask.onProgressUpdate((res) => {
-      console.log('上传进度', res.progress)
-      console.log('已经上传的数据长度', res.totalBytesSent)
-      console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
+    const formMp3Data = {
+      'src': App.globalData.uploadStroyData.src,
+      'openid': App.globalData.openid,
+      'id': Id
+    }
+
+    uploadData('正在上传音频...', Url, App.globalData.uploadStroyData.src, 'src', formMp3Data).then(res => {
+        wx.hideLoading()
+        // console.log(res)
+        if (res.statusCode !== 200){
+          wx.showToast({
+            title: '上传出错请重新上传',
+            icon: 'none',
+            duration: 2000
+          })
+        }else{
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(()=>{
+            wx.reLaunch({
+              url: '/pages/home/index/index'
+            })
+          },1500)
+        }
+    }).catch(res=>{
+      console.log('error:')
+      console.log(res)
+      wx.showToast({
+        title: '上传出错请重新上传',
+        icon:'none',
+        duration: 2000
+      })
     })
   },
   //记录播放时间

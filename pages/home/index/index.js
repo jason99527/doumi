@@ -63,12 +63,12 @@ Page({
       obj.audioSrc = json[i].audioSrc
       array.push(obj)
     }
-    console.log(array)
+    // console.log(array)
     return array
   },
-  ToPlay:function(){
+  ToPlay:function(e){
     wx.navigateTo({
-      url: '/pages/common/player/player?id='
+      url: `/pages/common/player/player?id=${e.currentTarget.dataset.id}`
     })
   },
   //跳转搜索页
