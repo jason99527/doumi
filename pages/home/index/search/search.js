@@ -140,6 +140,11 @@ Page({
     console.log(array)
     return array
   },
+  ToPlay: function (e) {
+    wx.navigateTo({
+      url: `/pages/common/player/player?id=${e.currentTarget.dataset.id}`
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

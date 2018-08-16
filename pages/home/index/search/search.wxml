@@ -38,7 +38,7 @@
       未搜索到相关数据
     </view>
     <view wx:else>
-     <view class="result-content" wx:for="{{selectList}}" data-src="{{item.audioSrc}}">
+     <view class="result-content" wx:for="{{selectList}}" data-Id="{{item.id}}" bindtap='ToPlay'>
         <view>
           <image src="{{item.imgPath}}" mode='widthFix'></image>
           <view>{{item.type === 0 ? '原创' : '绘本'}}</view>

@@ -1,5 +1,5 @@
 <!--pages/home/component/StroyList/stroyList.wxml-->
-<view class='List' wx:for="{{list}}">
+<view class='List' wx:for="{{list}}" data-Id="{{item.id}}" bindtap='ToPlay'>
   <view class="TopLabel">
     <view wx:if="{{type === 'hot'}}" class="Label" style="{{index < 3 ? '' : 'background:#F0F0F0'}}">
       <image src="../../../../images/Home/hotItemList.png" style="{{index < 3 ? '' : 'display:none'}}"></image>

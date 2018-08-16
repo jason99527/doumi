@@ -1,4 +1,6 @@
 // pages/childStore/index/index.js
+const app = getApp()
+
 Page({
 
   /**
@@ -93,15 +95,34 @@ Page({
   },
 
   GoRecord:function(){
-    wx.navigateTo({
-      url: '/pages/common/record/record?from=childStore'
-    })
+    const openId = app.globalData.openid
+    if (openId === '') {
+      this._Authorization()
+    } else {
+      wx.navigateTo({
+        url: '/pages/common/record/record?from=childStore'
+      })
+    } 
   },
 
   GoMyShare:function(){
     wx.navigateTo({
       url: '/pages/childStore/myShare/myShare'
     })
-  }
-     
+  },
+  // 用户未登录
+  _Authorization: () => {
+    wx.showModal({
+      title: '提示',
+      content: '请先登录',
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          wx.redirectTo({
+            url: '/pages/home/Authorization/index?data=true'
+          })
+        }
+      }
+    })
+  },
 })

@@ -91,7 +91,7 @@ App({
     openid: '', //用户openid
     user_img: '', //用户头像地址
     user_name: '', //用户名字
-    user_first_play:true,
+    user_first_play:true,// 用户第一次打开播放器界面
     PlayItem: {  //当前播放歌曲信息
       id: '10086',  //歌曲id
       name: '测试歌曲', //歌曲名称
@@ -102,7 +102,8 @@ App({
       duration: '∞',  //总时长
       offset: 0,   //当前播放位置
       max: 100,   //总长度
-      playing: true //是否正在播放  
+      playing: true, //是否正在播放
+      playStop:false //播放停止
     },
     OldPlayItem:{ //播放接口被夺取(正在播放音乐 => 播放录制好的趣事/播放回复录音)
       playSwitch: false,   //接口是否被夺取
@@ -158,7 +159,6 @@ App({
       })
       //播放结束
       innerAudioContext.onEnded(() => {
-        // _this.nextplay(0);
         console.log('播放结束')
       })
       //歌曲加载中
@@ -179,7 +179,7 @@ App({
     }
   },
   //切换播放歌曲
-  switchMusic: function () {
+  switchMusic: function (seek) {
     this.innerAudioContext.pause()  //将正在播放的歌曲暂停
     this.innerAudioContext.seek(0)  //跳转到0秒
     this.innerAudioContext.title = this.globalData.PlayItem.name
@@ -187,6 +187,7 @@ App({
     this.innerAudioContext.singer = this.globalData.PlayItem.author
     this.innerAudioContext.coverImgUrl = this.globalData.PlayItem.coverImgUrl
     this.innerAudioContext.src = this.globalData.PlayItem.src //修改src地址
+    seek ? this.innerAudioContext.startTime = seek : ''
   },
 
   //全局录音接口
