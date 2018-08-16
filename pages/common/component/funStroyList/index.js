@@ -44,6 +44,12 @@ Component({
       wx.navigateTo({
         url: '/pages/common/comment/comment'
       })
-    }
+    },
+
+    ToPlay: function (e) {
+      wx.navigateTo({
+        url: `/pages/common/player/player?id=${e.currentTarget.dataset.id}`
+      })
+    },
   }
 })

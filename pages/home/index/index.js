@@ -9,7 +9,8 @@ Page({
   data: {
     scrollHeight:0,
     hotList:[],
-    newList: []
+    newList: [],
+    loading:false
   },
 
   /**
@@ -27,8 +28,16 @@ Page({
     })
     this.getSelectData()
   },
+
+  scrollTop:function(){
+    // this.setData({loading:true})
+    wx.showLoading({
+      title: '正在刷新数据',
+    })
+    this.getSelectData(1)
+  },
   // 发送搜索请求
-  getSelectData: function () {
+  getSelectData: function (scroll) {
     const that = this
     wx.request({
       url: app.globalData.domain,
@@ -45,6 +54,16 @@ Page({
           wx.showToast({
             title: res.data.msg,
           })
+        }
+        if (scroll) {
+          setTimeout(() => {
+            wx.hideLoading()
+            wx.showToast({
+              title: '数据刷新成功',
+              icon: 'success',
+              duration: 1200
+            })
+          }, 300)
         }
       }
     })

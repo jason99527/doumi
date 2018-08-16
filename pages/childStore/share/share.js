@@ -1,6 +1,8 @@
 // pages/childStore/share/share.js
 
 const App = getApp()
+const upload = require('../../../utils/upload.js')
+const uploadData = upload.upLoadData
 
 Page({
 
@@ -10,7 +12,15 @@ Page({
   data: {
     Text:null,//文本内容
     length:null,  //文本长度
-    TextHeight:null //文本行数
+    TextHeight:0, //文本行数
+    user:{
+      user_img:'/images/childStore/userPortrait.png',
+      user_name:'loading...'
+    },
+    uploadData:{
+      coverImg:null,
+      name:'loading...'
+    }
   },
   //输入框失去焦点事件
   bindTextAreaBlur:function(e){
@@ -35,70 +45,126 @@ Page({
       return
     }
     App.globalData.uploadStroyData.text = this.data.Text
-    console.log(App.globalData.uploadStroyData);
-    wx.showToast({
-      title: '上传成功',
-      duration: 2000
-    })
-    setTimeout(()=>{
-      wx.switchTab({
-        url: '/pages/childStore/index/index'
-      })
-    },1200)
+    // console.log(App.globalData.uploadStroyData.text, App.globalData.uploadStroyData.text.split('\n').join('&hc'));
+    // 提交数据
+    this.uploadData()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this._getData()
+  },
+  // 获取信息
+  _getData:function(){
+    this.setData({
+      user: {
+        user_img: App.globalData.user_img,
+        user_name: App.globalData.user_name
+      },
+      uploadData: {
+        coverImg: App.globalData.uploadStroyData.coverImg,
+        name: App.globalData.uploadStroyData.name
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+
+  // 制作新链接
+  setUploadURL:function(url){
+    const _this = this
+    const OldUrl = App.globalData.domain
+    const Ary = OldUrl.split('/')
+    Ary[Ary.length - 1] = url
+    return Ary.join('/')
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+
+  // 提交图片信息
+  uploadData: function () {
+    const _this = this
+    // 制作提交链接
+    const Url = this.setUploadURL('createInterestStory')
+    // console.log(Url)
+    // 上传接口附带参数
+    const formImgData = {
+      'coverImg': App.globalData.uploadStroyData.coverImg,
+      'openid': App.globalData.openid,
+      'text': App.globalData.uploadStroyData.text === null ? '' : App.globalData.uploadStroyData.text.split('\n').join('#hc'),
+      'name': App.globalData.uploadStroyData.name
+    }
+    // 调用wx接口上传图片级相关信息
+    uploadData('正在上传图片...', Url, App.globalData.uploadStroyData.coverImg, 'coverImg', formImgData).then(res => {
+      wx.hideLoading()
+      if (res.statusCode !== 200) { //上传不成功
+        console.log('图片上传接口报错')
+        return
+      }
+      // console.log('ok')
+      // 如果图片上传成功则继续上传音频 传入故事ID
+      _this.uploadMp3(_this.getStoryId(res.data))
+    }).catch(res => { //接口调用错误
+      console.log('error:')
+      console.log(res)
+      wx.showToast({
+        title: '上传出错请重新上传',
+        icon: 'none',
+        duration: 2000
+      })
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+
+  //提取storyId
+  getStoryId: function (String) {
+    // 原数据："{"msg":"提交成功","storyId":5,"code":0,"errorCode":"111111","type":true}"
+    const a = String.split(',')
+    const b = a[1].split(':')
+    const c = b[1].split(':')
+    return parseInt(c[0])
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
+  // 上传音频
+  uploadMp3: function (Id) {
+    // 制作提交链接
+    const Url = this.setUploadURL('bindInterestStoryAudio')
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+    const formMp3Data = {
+      'src': App.globalData.uploadStroyData.src,
+      'openid': App.globalData.openid,
+      'id': Id
+    }
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
+    uploadData('正在上传音频...', Url, App.globalData.uploadStroyData.src, 'src', formMp3Data).then(res => {
+      wx.hideLoading()
+      console.log(res)
+      if (res.statusCode !== 200) {
+        wx.showToast({
+          title: '上传出错请重新上传',
+          icon: 'none',
+          duration: 2000
+        })
+      } else {
+        wx.showToast({
+          title: '上传成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout(() => {
+          wx.reLaunch({
+            url:'/pages/childStore/index/index?from=share'
+          })
+        }, 1500)
+      }
+    }).catch(res => {
+      console.log('error:')
+      console.log(res)
+      wx.showToast({
+        title: '上传出错请重新上传',
+        icon: 'none',
+        duration: 2000
+      })
+    })
+  },
 })

@@ -8,9 +8,9 @@
         <view>{{item.time}}</view>
       </view>
       <text wx:if="{{item.text !== ''}}" class="item-content">{{item.text}}</text>
-      <view class="item-music">
+      <view class="item-music" data-id="{{item.id}}" bindtap="ToPlay">
         <view>
-          <image src="/images/Home/banner.png" mode='widthFix'></image>
+          <image src="{{item.imgPath}}" mode='widthFix'></image>
           <image src="/images/childStore/commentPlay.png"></image>
         </view>
         <view class="font-hidden">{{item.title}}</view>
