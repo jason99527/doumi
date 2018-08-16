@@ -91,6 +91,7 @@ App({
     openid: '', //用户openid
     user_img: '', //用户头像地址
     user_name: '', //用户名字
+    user_first_play:true,
     PlayItem: {  //当前播放歌曲信息
       id: '10086',  //歌曲id
       name: '测试歌曲', //歌曲名称
@@ -130,6 +131,7 @@ App({
 
       //开始播放
       innerAudioContext.onPlay(() => {
+        _this.globalData.PlayItem.playing = true
         wx.hideLoading()
         console.log('开始播放')
       })
@@ -145,8 +147,14 @@ App({
       // })
       //播放失败
       innerAudioContext.onError((res) => {
+        console.log('播放失败')
         console.log(res.errMsg)
         console.log(res.errCode)
+        wx.showToast({
+          title: '播放失败',
+          icon: 'none',
+          duration: 2000
+        })
       })
       //播放结束
       innerAudioContext.onEnded(() => {
@@ -179,7 +187,6 @@ App({
     this.innerAudioContext.singer = this.globalData.PlayItem.author
     this.innerAudioContext.coverImgUrl = this.globalData.PlayItem.coverImgUrl
     this.innerAudioContext.src = this.globalData.PlayItem.src //修改src地址
-    // this.innerAudioContext.play()   //播放
   },
 
   //全局录音接口

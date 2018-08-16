@@ -129,7 +129,7 @@ Page({
     for (let i in json){
       const obj = {}
       obj.id = json[i].id
-      obj.typeName = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
+      obj.typeName = (json[i].tagName !== '' && json[i].tagName !== null) ? json[i].tagName.split(',') : ''
       obj.imgPath = json[i].imgPath
       obj.type = json[i].storyType
       obj.name = json[i].name

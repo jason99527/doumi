@@ -23,7 +23,7 @@
       </view>
     </view>
     <view class="ListRight">
-      <view class="text-overflow" wx:for="{{item.label}}" wx:for-item="label">{{label}}</view>
+      <view class="text-overflow" wx:for="{{item.Label}}" wx:for-item="label">{{label}}</view>
     </view>
   </view>
  

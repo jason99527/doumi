@@ -44,7 +44,7 @@ Page({
     for (let i in json) {
       const obj = {}
       obj.id = json[i].id
-      obj.Label = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
+      obj.Label = (json[i].tagName !== '' && json[i].tagName !== null) ? json[i].tagName.split(',') : ''
       obj.img = json[i].imgPath
       obj.type = json[i].storyType === 0 ? '原创' : '绘本'
       obj.name = json[i].name

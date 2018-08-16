@@ -356,7 +356,7 @@ Page({
           })
           setTimeout(()=>{
             wx.reLaunch({
-              url: '/pages/home/index/index'
+              url: '/pages/mycenter/index/index?from=record'
             })
           },1500)
         }
