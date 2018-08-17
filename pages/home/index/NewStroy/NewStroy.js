@@ -1,4 +1,5 @@
 // pages/home/index/HotStroy/HotStroy.js
+const app = getApp()
 Page({
 
   /**
@@ -7,69 +8,6 @@ Page({
   data: {
     ListType: 'new',
     List: [
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '原创',
-        img: '../../../../images/Home/banner.png',
-        name: '123465789464684684864684646846884',
-        author: '宝爸',
-        label: ['可爱', '动人']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话123123123123123132',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      },
-      {
-        type: '绘本',
-        img: '../../../../images/Home/banner.png',
-        name: '宝宝第一次说话',
-        author: '宝妈',
-        label: ['可爱', '动人', '公主', '童话']
-      }
     ]
   },
 
@@ -77,7 +15,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getSelectData()
+  },
+  // 发送搜索请求
+  getSelectData: function () {
+    const that = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "getHotStoryList"
+      },
+      success: function (res) {
+        if (res.data.type) {
+          that.setData({
+            List: that.processData(res.data.hotList)
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
+  // 二次处理接口数据
+  processData: function (json) {
+    let array = []
+    for (let i in json) {
+      const obj = {}
+      obj.id = json[i].id
+      obj.Label = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
+      obj.img = json[i].imgPath
+      obj.type = json[i].storyType === 0 ? '原创' : '绘本'
+      obj.name = json[i].name
+      obj.author = json[i].alias
+      obj.audioSrc = json[i].audioSrc
+      array.push(obj)
+    }
+    console.log(array)
+    return array
   },
 
   /**

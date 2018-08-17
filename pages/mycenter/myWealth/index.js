@@ -78,7 +78,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.redirectTo({
-            url: '/pages/home/Authorization/index?data=false'
+            url: '/pages/home/Authorization/index?data=true'
           })
         }
       }

@@ -47,14 +47,11 @@
           <text class="text-overflow result-content-name">{{item.name}}</text>
           <view>
             <image src="../../../../images/Home/author.png" ></image>
-            <text class="text-overflow result-content-author">宝妈312312312312312qqqqqqqqqq</text>
+            <text class="text-overflow result-content-author">{{item.alias}}</text>
           </view>
         </view>
         <view>
-          <view class="text-overflow">可爱</view>
-          <view class="text-overflow">动物123123123</view>
-          <view class="text-overflow">动物231</view>
-          <view class="text-overflow">动物</view>
+          <view class="text-overflow" wx:for="{{item.typeName}}" wx:for-item="tag">{{tag}}</view>
         </view>
       </view>
     </view>

@@ -8,74 +8,8 @@ Page({
    */
   data: {
     scrollHeight:0,
-    hotList:[
-      {
-        id:1,
-        homeImg:'../../../images/Home/banner.png',
-        title:'放羊的小孩',
-        Label:['可爱','动人','童话','公主'],
-        itemtype:'原创',
-        author:'取唐增的经'
-      },
-      {
-        id: 2,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      },
-      {
-        id: 3,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      },
-      {
-        id: 4,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      }
-    ],
-    newList: [
-      {
-        id: 1,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      },
-      {
-        id: 2,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      },
-      {
-        id: 3,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      },
-      {
-        id: 4,
-        homeImg: '../../../images/Home/banner.png',
-        title: '放羊的小孩',
-        Label: ['可爱', '动人', '童话', '公主'],
-        itemtype: '原创',
-        author: '取唐增的经'
-      }
-    ]
+    hotList:[],
+    newList: []
   },
 
   /**
@@ -91,11 +25,50 @@ Page({
         });
       },
     })
+    this.getSelectData()
   },
-
-  ToPlay:function(){
+  // 发送搜索请求
+  getSelectData: function () {
+    const that = this
+    wx.request({
+      url: app.globalData.domain,
+      data: {
+        action: "getHomeStoryList"
+      },
+      success: function (res) {
+        if (res.data.type) {
+          that.setData({
+            hotList: that.processData(res.data.hotList),
+            newList: that.processData(res.data.newList)
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+          })
+        }
+      }
+    })
+  },
+  // 二次处理接口数据
+  processData: function (json) {
+    let array = []
+    for (let i in json) {
+      const obj = {}
+      obj.id = json[i].id
+      obj.Label = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
+      obj.homeImg = json[i].imgPath
+      obj.itemtype = json[i].storyType === 0 ? '原创' : '绘本'
+      obj.name = json[i].name
+      obj.author = json[i].alias
+      obj.audioSrc = json[i].audioSrc
+      array.push(obj)
+    }
+    // console.log(array)
+    return array
+  },
+  ToPlay:function(e){
     wx.navigateTo({
-      url: '/pages/common/player/player?id='
+      url: `/pages/common/player/player?id=${e.currentTarget.dataset.id}`
     })
   },
   //跳转搜索页
@@ -141,7 +114,7 @@ Page({
       success: function (res) {
         if (res.confirm) {
           wx.redirectTo({
-            url: '/pages/home/Authorization/index?data=false'
+            url: '/pages/home/Authorization/index?data=true'
           })
         }
       }

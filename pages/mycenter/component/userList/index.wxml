@@ -1,24 +1,25 @@
 
 <!--pages/mycenter/component/userList/index.wxml-->
 <view>
-  <view class='individual' wx:for="{{list}}" wx:key='item.user_name'>
+  <view class="display" wx:if='{{list==""}}'>暂无数据</view>
+  <view class='individual' wx:for="{{list}}" wx:key='item.id' data-id='item.id' data-i='{{index}}'>
     <view class='box'>
         <view class='head-box'>
-         <image src='{{item.header_url}}' class='header_img'></image>
+         <image src='{{item.header}}' class='header_img'></image>
         </view>
-        <text>{{item.user_name}}</text>  
+        <text>{{item.alias}}</text>  
     </view>
-    <view class='follow' wx:if="{{item.user_type=='1'}}">
-      <image src='/images/right.png' class='icon-right'></image>
-      已关注
-    </view>
-    <view class='follow' wx:elif="{{item.user_type=='2'}}">
+    <view class='follow' wx:if="{{item.type=='1'}}"  bindtap='cancelUser' data-i='{{index}}' data-userid='{{item.thisid}}'>
       <image src='/images/mutual.png' class='icon-mutual'></image>
       互相关注
     </view>
-     <view class='follow add' wx:else>
+     <view class='follow add' wx:elif="{{item.type=='0'&&fans}}"  bindtap='followUser' data-i='{{index}}' data-userid='{{item.thisid}}'>
       <image src='/images/add.png' class='icon-mutual'></image>
        关注
+    </view>
+    <view class='follow' wx:else  bindtap='cancelUser'  data-i='{{index}}' data-userid='{{item.thisid}}'>
+      <image src='/images/right.png' class='icon-right'></image>
+      已关注
     </view>
   </view>
 </view>

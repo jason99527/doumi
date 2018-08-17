@@ -9,7 +9,7 @@
   <view class="playerContent">
     <image src="../../../images/Player/right-img.png"></image>
     <view class="player-banner">
-      <image src="../../../images/Home/banner.png" mode="widthFix"></image>
+      <image src="{{PlayItem.img}}" mode="widthFix"></image>
     </view>
   </view>
   <view class="nav">

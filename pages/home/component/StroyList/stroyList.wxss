@@ -32,7 +32,7 @@
   text-align: center;
   line-height: 24rpx
 }
-.ListLeft image{width: 100rpx}
+.ListLeft image{width: 100rpx;min-height: 100%}
 .ListMiddle{height: 100rpx;color: #333;font-size: 32rpx;width: 344rpx}
 .ListMiddle>text{width: 100%;display: block;margin-bottom: 29rpx}
 .ListMiddle>view{color: #999;font-size: 28rpx}

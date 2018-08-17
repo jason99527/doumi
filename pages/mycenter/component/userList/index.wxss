@@ -56,3 +56,8 @@
   height:23rpx;
   margin-right:4rpx
 }
+.display{
+  text-align: center;
+  padding-top: 50rpx;
+  font-size:24rpx
+}

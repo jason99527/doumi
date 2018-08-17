@@ -111,8 +111,9 @@ Page({
       },
       success: function (res) {
         if (res.data.type) {
+          console.log(res.data)
           that.setData({
-            selectList: res.data.list
+            selectList: that.processData(res.data.list)
           })
         } else {
           wx.showToast({
@@ -121,6 +122,23 @@ Page({
         }
       }
     })
+  },
+  // 二次处理接口数据
+  processData:function(json){
+    let array = []
+    for (let i in json){
+      const obj = {}
+      obj.id = json[i].id
+      obj.typeName = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
+      obj.imgPath = json[i].imgPath
+      obj.type = json[i].storyType
+      obj.name = json[i].name
+      obj.alias = json[i].alias
+      obj.audioSrc = json[i].audioSrc
+      array.push(obj)
+    }
+    console.log(array)
+    return array
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

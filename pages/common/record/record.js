@@ -1,5 +1,7 @@
 // pages/common/record/record.js
 const App = getApp()
+const upload = require('../../../utils/upload.js')
+const uploadData = upload.upLoadData
 
 Page({
 
@@ -50,7 +52,7 @@ Page({
 
     //停止播放
     if (App.globalData.PlayItem.src !== '') {
-      App.innerAudioContext.stop()
+      App.innerAudioContext.pause()
     } 
     //如果没有实例化录音接口
     if (!App.recorderManager){
@@ -108,7 +110,7 @@ Page({
           clearInterval(this.setinterval)
           //停止播放
           if (App.globalData.PlayItem.src !== '') {
-            App.innerAudioContext.stop()
+            App.innerAudioContext.pause()
           } 
         }
 
@@ -212,7 +214,7 @@ Page({
           //结束计时器
           clearInterval(this.setinterval)
           //停止播放
-          App.innerAudioContext.stop()
+          App.innerAudioContext.pause()
         }
         break
       case 'success':
@@ -220,7 +222,7 @@ Page({
         clearInterval(this.setinterval)
         //停止播放
         if (App.globalData.PlayItem.src !== '') {
-          App.innerAudioContext.stop()
+          App.innerAudioContext.pause()
         } 
         //停止试听
         this.setData({
@@ -231,7 +233,7 @@ Page({
             time: 0
           }
         })
-        console.log(this.data.Time)
+        // console.log(this.data.Time)
         if(this.data.Time  < 20){
           wx.showModal({
             title: '提示',
@@ -239,34 +241,134 @@ Page({
           })
           return;
         }else{
-          App.globalData.uploadStroyData.src = this.data.recordSrc
-          App.globalData.uploadStroyData.storyLength = this.data.Time
-          // App.globalData.uploadStroyData.time = new Date()
-          // const utils = require('../../../utils/util.js')
-          // console.log(utils.formatTime(new Date()))
-          //如果是从童言无忌页面跳转进来的则需要上传图片
-          if (this.data.from === 'childStore'){
-            //如果还没有上传图片
-            if (this.data.Image === null) {
-                this.alert('请上传图片封面')
-                return;
-            }
-            App.globalData.uploadStroyData.stroyType = '趣事'
-            App.globalData.uploadStroyData.coverImg = this.data.Image
-
-            wx.navigateTo({
-              url: '/pages/childStore/share/share'
+          const _this = this
+          if (this.data.recordSrc === null){
+            //stop 后才能得到音频地址
+            this.recorderManager.stop()
+            this.recorderManager.onStop(res => {
+              _this.successBtn(res.tempFilePath)
             })
-          }else{
-            wx.showToast({
-              title: '上传成功',
-              duration: 2000
-            })
+          }else {
+            this.successBtn(this.data.recordSrc)
           }
-          console.log(App.globalData.uploadStroyData)
         }
         break
       }
+  },
+  successBtn:function(url){
+    this.setData({
+      recordSrc: url
+    })
+    console.log(this.data.recordSrc)
+    App.globalData.uploadStroyData.src = this.data.recordSrc
+    App.globalData.uploadStroyData.storyLength = this.data.Time
+    //如果是从童言无忌页面跳转进来的则需要上传图片
+    if (this.data.from === 'childStore') {
+      //如果还没有上传图片
+      if (this.data.Image === null) {
+        this.alert('请上传图片封面')
+        return;
+      }
+      App.globalData.uploadStroyData.stroyType = '趣事'
+      App.globalData.uploadStroyData.coverImg = this.data.Image
+
+      wx.navigateTo({
+        url: '/pages/childStore/share/share'
+      })
+    } else {
+      this.uploadData()
+    }
+    console.log(App.globalData.uploadStroyData)
+  },
+  // 提交图片信息
+  uploadData:function(){
+    // 制作提交链接
+    const _this = this
+    const OldUrl = App.globalData.domain
+    const Ary = OldUrl.split('/')
+    Ary[Ary.length - 1] = 'createStory'
+    const Url = Ary.join('/') 
+    // 上传接口附带参数
+    const formImgData = {
+        'coverImg': App.globalData.uploadStroyData.coverImg,
+        'openid': App.globalData.openid,
+        'label': App.globalData.uploadStroyData.label,
+        'storyType': App.globalData.uploadStroyData.stroyType,
+        'name': App.globalData.uploadStroyData.name
+    }
+    // 调用wx接口上传图片级相关信息
+    uploadData('正在上传图片...', Url, App.globalData.uploadStroyData.coverImg, 'coverImg', formImgData).then(res=>{
+      // console.log(res)
+        wx.hideLoading()
+        if (res.statusCode !== 200 ){ //上传不成功
+          console.log('图片上传接口报错')
+          return
+        }
+        // console.log('ok')
+        // 如果图片上传成功则继续上传音频 传入故事ID
+      _this.uploadMp3(_this.getStoryId(res.data))
+    }).catch(res=>{ //接口调用错误
+      console.log('error:')
+      console.log(res)
+      wx.showToast({
+        title: '上传出错请重新上传',
+        icon: 'none',
+        duration: 2000
+      })
+    })
+  },
+  //提取storyId
+  getStoryId: function (String){
+    // 原数据："{"msg":"提交成功","storyId":5,"code":0,"errorCode":"111111","type":true}"
+    const a = String.split(',')
+    const b = a[1].split(':')
+    const c = b[1].split(':')
+    return parseInt(c[0])
+  },
+  // 上传音频
+  uploadMp3:function(Id){
+    const _this = this
+    const OldUrl = App.globalData.domain
+    const Ary = OldUrl.split('/')
+    Ary[Ary.length - 1] = 'bindStoryAudio'
+    const Url = Ary.join('/') 
+
+    const formMp3Data = {
+      'src': App.globalData.uploadStroyData.src,
+      'openid': App.globalData.openid,
+      'id': Id
+    }
+
+    uploadData('正在上传音频...', Url, App.globalData.uploadStroyData.src, 'src', formMp3Data).then(res => {
+        wx.hideLoading()
+        // console.log(res)
+        if (res.statusCode !== 200){
+          wx.showToast({
+            title: '上传出错请重新上传',
+            icon: 'none',
+            duration: 2000
+          })
+        }else{
+          wx.showToast({
+            title: '上传成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(()=>{
+            wx.reLaunch({
+              url: '/pages/home/index/index'
+            })
+          },1500)
+        }
+    }).catch(res=>{
+      console.log('error:')
+      console.log(res)
+      wx.showToast({
+        title: '上传出错请重新上传',
+        icon:'none',
+        duration: 2000
+      })
+    })
   },
   //记录播放时间
   SetTime:function(){
@@ -339,11 +441,13 @@ Page({
     }
     
     // 赋值新播放信息
-    App.globalData.PlayItem.name = this.data.UpLoadData.title
+    App.globalData.PlayItem.name = App.globalData.uploadStroyData.name
     App.globalData.PlayItem.author = App.globalData.user_name
-    App.globalData.PlayItem.coverImgUrl = this.data.UpLoadData.image
+    App.globalData.PlayItem.coverImgUrl = App.globalData.uploadStroyData.coverImg
     App.globalData.PlayItem.src = src
-    
+
+    console.log(App.globalData.PlayItem)
+
     if (_switch) {
       App.innerAudioContext()
     }else{
@@ -364,6 +468,7 @@ Page({
     this.setData({
       [str]: e.detail.value
     })
+    App.globalData.PlayItem.name = e.detail.value
   },
   //遮罩层完成按钮
   cpmInputTitle:function(){

@@ -1,2 +1,2 @@
 <!--pages/mycenter/myAttention/index.wxml-->
-<user-list list="{{follo_list}}"></user-list>
+<user-list list="{{follo_list}}" bind:reload="reloadlist" fans="{{fans}}"></user-list>
