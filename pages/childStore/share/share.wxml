@@ -1,7 +1,7 @@
 <!--pages/childStore/share/share.wxml-->
 <view class="Top">
-  <image src="/images/childStore/userPortrait.png"></image>
-  <view class="name">宝妈</view>
+  <image src="{{user.user_img}}"></image>
+  <view class="name">{{user.user_name}}</view>
   <view class="button" bindtap='upLoad'>
     <image src="/images/childStore/upload.png"></image>
     发送
@@ -9,13 +9,13 @@
 </view>
 
 <view class="content">
-  <textarea bindblur="bindTextAreaBlur" bindlinechange="bindlinechange" maxlength='500' auto-height placeholder="说点什么吧..." placeholder-style="font-size:25rpx"/>
+  <textarea bindinput="bindTextAreaBlur" bindlinechange="bindlinechange" maxlength='500' auto-height placeholder="说点什么吧..." placeholder-style="font-size:25rpx"/>
   <view class="Data">
     <view class="img">
-      <image src="/images/Home/banner.png"></image>
+      <image src="{{uploadData.coverImg}}"></image>
       <image src="/images/childStore/commentPlay.png"></image>
     </view>
-    <view class="shareName">宝宝第一次说话</view>
+    <view class="shareName">{{uploadData.name}}</view>
   </view>
 </view>
 

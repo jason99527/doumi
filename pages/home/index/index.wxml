@@ -7,7 +7,10 @@
       <input placeholder='搜索故事关键字' disabled="true"></input>
     </view>
   </view>
-  <scroll-view scroll-y="true" style="height:{{ scrollHeight }}px;" id="ContentBox">
+  <scroll-view bindscrolltoupper="scrollTop" scroll-y="true" style="height:{{ scrollHeight }}px;" id="ContentBox">
+    <!-- <view class="{{loading ? 'HomeLoading HomeLoadingHidden' : 'HomeLoading'}}">
+      下拉刷新
+    </view> -->
       <view class="HomeHotStory StoryBox">
     <view class="StoryTop">
       <text>热门故事</text>

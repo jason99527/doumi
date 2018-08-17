@@ -25,6 +25,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    ToPlay: function (e) {
+      wx.navigateTo({
+        url: `/pages/common/player/player?id=${e.currentTarget.dataset.id}`
+      })
+    }
   }
 })

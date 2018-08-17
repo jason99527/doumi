@@ -9,7 +9,8 @@ Page({
   data: {
     scrollHeight:0,
     hotList:[],
-    newList: []
+    newList: [],
+    loading:false
   },
 
   /**
@@ -27,8 +28,16 @@ Page({
     })
     this.getSelectData()
   },
+
+  scrollTop:function(){
+    // this.setData({loading:true})
+    wx.showLoading({
+      title: '正在刷新数据',
+    })
+    this.getSelectData(1)
+  },
   // 发送搜索请求
-  getSelectData: function () {
+  getSelectData: function (scroll) {
     const that = this
     wx.request({
       url: app.globalData.domain,
@@ -46,6 +55,16 @@ Page({
             title: res.data.msg,
           })
         }
+        if (scroll) {
+          setTimeout(() => {
+            wx.hideLoading()
+            wx.showToast({
+              title: '数据刷新成功',
+              icon: 'success',
+              duration: 1200
+            })
+          }, 300)
+        }
       }
     })
   },
@@ -55,7 +74,7 @@ Page({
     for (let i in json) {
       const obj = {}
       obj.id = json[i].id
-      obj.Label = (json[i].typeName !== '' && json[i].typeName !== null) ? json[i].typeName.split(',') : ''
+      obj.Label = (json[i].tagName !== '' && json[i].tagName !== null) ? json[i].tagName.split(',') : ''
       obj.homeImg = json[i].imgPath
       obj.itemtype = json[i].storyType === 0 ? '原创' : '绘本'
       obj.name = json[i].name

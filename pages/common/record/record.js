@@ -356,7 +356,7 @@ Page({
           })
           setTimeout(()=>{
             wx.reLaunch({
-              url: '/pages/home/index/index'
+              url: '/pages/mycenter/index/index?from=record'
             })
           },1500)
         }
@@ -468,7 +468,7 @@ Page({
     this.setData({
       [str]: e.detail.value
     })
-    App.globalData.PlayItem.name = e.detail.value
+    App.globalData.uploadStroyData.name = e.detail.value
   },
   //遮罩层完成按钮
   cpmInputTitle:function(){

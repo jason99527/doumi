@@ -10,7 +10,7 @@ Page({
     playSwitch:true, //是否播放
     starttime: '00:00', //开始时间
     duration: '05:00',  //总时长
-    playStop:false,
+    playEnd:false,
     playNum:0,//当前播放歌曲Index
     ListSwitch:false, //是否点开播放记录
     animateSWitch: true, //是否修改动画层z-index
@@ -20,8 +20,8 @@ Page({
     },
     PlayItem:{  //当前播放歌曲信息
       id:'10086',
-      name:'测试歌曲',
-      author:'歌曲作者',
+      name:'Loading...',
+      author:'Loading...',
       img:'',
       src: ''
     },
@@ -29,26 +29,6 @@ Page({
       {
         name:'放羊的小孩',
         author:'取唐僧的经'
-      },
-      {
-        name: '放羊的小孩',
-        author: '取唐僧的经'
-      },
-      {
-        name: '放羊的小孩',
-        author: '取唐僧的经'
-      },
-      {
-        name: '放羊的小孩',
-        author: '取唐僧的经'
-      },
-      {
-        name: '放羊的小孩',
-        author: '取唐僧的经'
-      },
-      {
-        name: '放羊的小孩',
-        author: '取唐僧的经'
       },
       {
         name: '放羊的小孩',
@@ -61,29 +41,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取歌曲ID
     this.getMp3Data(options.id)
-    if (this.data.playStop){
-      console.log('停止播放')
-    }
-    //页面初始化数据
-    this.setData({
-      starttime: App.globalData.PlayItem.starttime,  //当前时长
-      duration: App.globalData.PlayItem.duration,  //总时长
-      offset: App.globalData.PlayItem.offset,  //播放器当前长度
-      max: App.globalData.PlayItem.max, //播放器总长度
-      playSwitch: App.globalData.PlayItem.playing //是否在播放
-    })
+    // 同步全局音频信息
+    this.synchronization()
+    // 判断是否第一次播放 显示置顶小程序提示
+    this.firstPlay()
+
     const _this = this;
-    // //如果当前没有播放歌曲
-    // if (!App.globalData.OldPlayItem.playSwitch){
-    //     this.SwitchPlay('此时此刻', '许巍', 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000', 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46')
-    //     App.innerAudioContext()
-    // }else{
-    //   // 切换播放源
-    //   App.globalData.PlayItem = App.globalData.OldPlayItem.oldData
-    //   App.switchMusic()
-    // }
-    // console.log(App.globalData.OldPlayItem.oldData, App.globalData.PlayItem.src)
+
+  },
+  firstPlay:function(){
+    if (App.globalData.user_first_play){
+      wx.showModal({
+        title: '提示',
+        content: '置顶小程序即可在后台播放故事哦',
+        showCancel:false
+      })
+      App.globalData.user_first_play = false
+    }
   },
   // 获取歌曲信息
   getMp3Data:function(id){
@@ -106,32 +82,55 @@ Page({
       }
     })
   },
+  // 同步数据
+  synchronization:function(){
+    this.setData({
+      starttime: App.globalData.PlayItem.starttime,  //当前时长
+      duration: App.globalData.PlayItem.duration,  //总时长
+      offset: App.globalData.PlayItem.offset,  //播放器当前长度
+      max: App.globalData.PlayItem.max, //播放器总长度
+      playSwitch: App.globalData.PlayItem.playing, //是否在播放
+      PlayItem: {  //当前播放歌曲信息
+        id: App.globalData.PlayItem.id,
+        name: App.globalData.PlayItem.name,
+        author: App.globalData.PlayItem.author,
+        img: App.globalData.PlayItem.coverImgUrl,
+        src: App.globalData.PlayItem.src
+      }
+    })
+  },
   // 判断是否需要切换歌曲信息
   JudegMp3:function(info){
+    if (info.audioSrc === '' || info.audioSrc === null){
+      wx.showToast({
+        title: '音频地址出错',
+        icon: 'none',
+        duration: 2000
+      })
+      return 
+    }
     // 如果是同一首歌歌
-    // if (App.globalData.PlayItem.src === info.audioSrc){
-    //   return
-    // }else {
+    if (App.globalData.PlayItem.src === info.audioSrc){
+      this.innerAudioContext()
+      // 如果已经停止
+      console.log(App.globalData.PlayItem.playStop)
+      if (App.globalData.PlayItem.playStop) {
+        this.historyPlayData(App.globalData.PlayItem.offset)
+      }
+      return
+    }else {
       if (App.globalData.PlayItem.src === ''){
         this.SwitchPlay(info.name, info.alias, info.imgPath, info.audioSrc)
         App.innerAudioContext()
-        this.innerAudioContext()
       }else {
         this.SwitchPlay(info.name, info.alias, info.imgPath, info.audioSrc)
         App.switchMusic()
       }
-      this.setData({
-        PlayItem: {  //当前播放歌曲信息
-          id: info.id,
-          name: info.name,
-          author: info.alias,
-          img: info.imgPath,
-          src: info.audioSrc
-        }
-      })
-      this.GetPlayState()
-      // App.globalData.PlayItem.src === '' ? (App.innerAudioContext(), this.innerAudioContext()) : ''
-      console.log(App.globalData.PlayItem)
+    }
+      this.innerAudioContext()
+      App.globalData.PlayItem.playing = true
+
+      // console.log(App.globalData.PlayItem)
     // }
   },
   // 给播放接口重新绑定相关事件
@@ -141,18 +140,25 @@ Page({
     App.innerAudioContext.onTimeUpdate(function (res) {
       //修改当前页面数据 同时修改全局歌曲信息
       const innerAudioContext = App.innerAudioContext
+      if (innerAudioContext.duration === 0){
+        return
+      }
       App.globalData.PlayItem.starttime = _this.funTime(innerAudioContext.currentTime)  //当前时长
       App.globalData.PlayItem.duration = _this.funTime(innerAudioContext.duration)  //总时长
       App.globalData.PlayItem.offset = parseInt(innerAudioContext.currentTime)  //播放器当前长度
       App.globalData.PlayItem.max = parseInt(innerAudioContext.duration) //播放器总长度
 
-      _this.setData({
-        starttime: App.globalData.PlayItem.starttime,  //当前时长
-        duration: App.globalData.PlayItem.duration,  //总时长
-        offset: App.globalData.PlayItem.offset,  //播放器当前长度
-        max: App.globalData.PlayItem.max //播放器总长度
-      })
+      _this.synchronization()
     });
+    //开始播放
+    App.innerAudioContext.onPlay(() => {
+      App.globalData.PlayItem.playing = true
+      _this.setData({
+        playEnd: false
+      })
+      wx.hideLoading()
+      console.log('开始播放')
+    })
     //暂停
     App.innerAudioContext.onPause(function () {
       App.globalData.PlayItem.playing = false
@@ -161,10 +167,23 @@ Page({
       })
       console.log('暂停')
     })
+    // 播放结束
+    App.innerAudioContext.onEnded(() => {
+      console.log('播放结束')
+      App.globalData.PlayItem.playing = false
+      _this.setData({
+        playEnd: true,
+        playSwitch:false
+      })
+    })
     //停止
     App.innerAudioContext.onStop(function () {
+      console.log('播放停止')
+      App.globalData.PlayItem.playing = false
+      App.globalData.PlayItem.playStop = true
       _this.setData({
-        playStop:true
+        playEnd: true,
+        playSwitch: false
       })
     })
   },
@@ -175,19 +194,6 @@ Page({
     const set = parseInt(time % 60) < 10 ? '0' + parseInt(time % 60) : parseInt(time % 60);
     const Time = min + ':' + set;
     return Time;
-  },
-
-  // 获取后台音频播放进度
-  GetPlayState: function(){
-    wx.getBackgroundAudioPlayerState({
-      success: function (res) {
-        App.globalData.PlayItem.playing = res.status === 1 ? true : false
-        console.log(res)
-      },
-      fail:function(res){
-        console.log(res)
-      }
-    })
   },
 
   // 修改播放源全局变量
@@ -201,9 +207,18 @@ Page({
   //拖动进度条 松开
   sliderchange: function (e) {
     const val = e.detail.value
-    App.innerAudioContext.seek(val)
-    App.innerAudioContext.play()
+    if (this.data.playEnd === false){
+      App.innerAudioContext.seek(val)
+      App.innerAudioContext.play()
+    }else {
+      this.historyPlayData(val)
+    }
     App.globalData.PlayItem.playing = true
+  },
+  // 音频停止 重新播放并定位到上次播放的坐标
+  historyPlayData: function (val) {
+    this.SwitchPlay(App.globalData.PlayItem.name, App.globalData.PlayItem.author, App.globalData.PlayItem.coverImgUrl, App.globalData.PlayItem.src)
+    App.switchMusic(val)
   },
 
   //拖动进度条 移动

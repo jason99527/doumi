@@ -53,6 +53,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 发布完故事跳转到我的故事页
+    if (options.from === 'record'){
+      wx.navigateTo({
+        url: '/pages/mycenter/myStory/index?id='
+      })
+    }
+
     var that = this
     if (app.globalData.openid != '') {
       wx.request({

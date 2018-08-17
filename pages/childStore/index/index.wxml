@@ -1,32 +1,35 @@
 <!--pages/childStore/index/index.wxml-->
-<view class="Me">
-  <view bindtap='GoMyShare'>
-    <image src="../../../images/childStore/myPortrait.png"></image>
+<scroll-view id="scrollView" bindscrolltolower="scrollButton" scroll-y="true" style="height:{{ scrollHeight }}px;">
+  <view class="Me">
+    <view bindtap='GoMyShare'>
+      <image src="{{user.img}}"></image>
+    </view>
+    <view class="font-hidden">
+        {{user.name}}
+    </view>
+    <view bindtap='GoRecord'>
+      <image src="../../../images/childStore/+.png"></image>
+      上传趣事
+    </view>
   </view>
-  <view class="font-hidden">
-      取唐僧的经123333312312321312312312
-  </view>
-  <view bindtap='GoRecord'>
-    <image src="../../../images/childStore/+.png"></image>
-    上传趣事
-  </view>
-</view>
 
-<view class="content">
-  <List class="item" wx:for="{{List}}" item="{{item}}"></List>
-</view>
+  <view class="content">
+    <List class="item" wx:for="{{List}}" item="{{item}}" wx:key="{{item}}" ></List>
+    <!-- <view class="{{loading ? 'loading loadingHidden' : 'loading'}}">上拉刷新</view> -->
+  </view>
 
-<view class="player">
-  <view>
-    <image src="../../../images/Home/banner.png" mode='widthFix'></image>
+  <view class="player">
+    <view>
+      <image src="../../../images/Home/banner.png" mode='widthFix'></image>
+    </view>
+    <view class="font-hidden">
+      宝宝第一次说话123123123123132133123123123123123123
+    </view>
+    <view>
+      <image src="../../../images/childStore/play.png"></image>
+    </view> 
+    <view>
+      <image src="../../../images/childStore/list.png"></image>
+    </view> 
   </view>
-  <view class="font-hidden">
-    宝宝第一次说话123123123123132133123123123123123123
-  </view>
-  <view>
-    <image src="../../../images/childStore/play.png"></image>
-  </view> 
-   <view>
-    <image src="../../../images/childStore/list.png"></image>
-  </view> 
-</view>
+</scroll-view>

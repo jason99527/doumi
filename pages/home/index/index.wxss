@@ -3,6 +3,7 @@
   overflow-y: scroll;
   background: #FEFEFE!important;
   padding-bottom: 40rpx;
+  position: relative
 }
 .TextOverflow{
   overflow: hidden;
@@ -186,4 +187,22 @@
 .AddButton image{
   height: 38rpx;
   width: 38rpx
+}
+
+.HomeLoading{
+  text-align: center;
+  font-size: 32rpx;
+  padding: 20rpx 0 10rpx;
+  height: 100rpx;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  line-height: 100rpx;
+  top: -120rpx;
+  /* transition: top .3s */
+}
+
+.HomeLoadingHidden{
+  position: static;
+  top: 0rpx
 }

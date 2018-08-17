@@ -1,4 +1,5 @@
 /* pages/childStore/index/index.wxss */
+#scrollView{position: relative}
 page{background: #EFF3F6}
 .Me{
   padding: 40rpx 30rpx;
@@ -41,3 +42,20 @@ page{background: #EFF3F6}
 .player>view:nth-child(3) image{width: 53rpx;height: 53rpx}
 .player>view:nth-child(4){width: 55rpx;}
 .player>view:nth-child(4) image{width: 55rpx;height: 46rpx}
+
+.loading{
+  text-align:center;
+  font-size:32rpx;
+  height:203rpx;
+  box-sizing:border-box;
+  position:fixed;
+  bottom: 0;left: 0;
+  width:100%;
+  line-height:200rpx;
+  /* margin-bottom:100rpx; */
+  /* bottom: -250rpx */
+}
+.loadingHidden{
+  position: static!important;
+  bottom: 0;
+}
